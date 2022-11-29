@@ -15,6 +15,7 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+    static let rootComponent = RootComponent()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         setRootViewController(for: scene)
@@ -39,10 +40,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 fileprivate extension SceneDelegate {
     func setRootViewController(for scene: UIScene) {
         guard let mainScene = (scene as? UIWindowScene) else { return }
-        let rootViewController = RootViewController()
-        let navigationController = UINavigationController(rootViewController: rootViewController)
         window = UIWindow(windowScene: mainScene)
-        window?.rootViewController = navigationController
+        window?.rootViewController = SceneDelegate.rootComponent.navigationController
         window?.makeKeyAndVisible()
     }
 }
