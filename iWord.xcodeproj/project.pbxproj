@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09F254E51DF323AB210EBC1A /* Pods_iWord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB3E5DD7BED42FA18B6A747 /* Pods_iWord.framework */; };
 		8D5DD2F42934FA0100C7A114 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD2F32934FA0100C7A114 /* AppDelegate.swift */; };
 		8D5DD2F62934FA0100C7A114 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD2F52934FA0100C7A114 /* SceneDelegate.swift */; };
 		8D5DD2F82934FA0100C7A114 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD2F72934FA0100C7A114 /* RootViewController.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2DB3E5DD7BED42FA18B6A747 /* Pods_iWord.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iWord.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5DD2F02934FA0100C7A114 /* iWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5DD2F32934FA0100C7A114 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D5DD2F52934FA0100C7A114 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		8D5DD2FC2934FA0200C7A114 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D5DD2FF2934FA0200C7A114 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D5DD3012934FA0200C7A114 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2556DF9D39502BE77250C55 /* Pods-iWord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iWord.release.xcconfig"; path = "Target Support Files/Pods-iWord/Pods-iWord.release.xcconfig"; sourceTree = "<group>"; };
+		C10CF98F55C9DC816049E3D9 /* Pods-iWord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iWord.debug.xcconfig"; path = "Target Support Files/Pods-iWord/Pods-iWord.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09F254E51DF323AB210EBC1A /* Pods_iWord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04B78A641B699994E06D35B1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C10CF98F55C9DC816049E3D9 /* Pods-iWord.debug.xcconfig */,
+				B2556DF9D39502BE77250C55 /* Pods-iWord.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		52554627F01AB984555AB59C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DB3E5DD7BED42FA18B6A747 /* Pods_iWord.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8D5DD2E72934FA0100C7A114 = {
 			isa = PBXGroup;
 			children = (
 				8D5DD2F22934FA0100C7A114 /* iWord */,
 				8D5DD2F12934FA0100C7A114 /* Products */,
+				04B78A641B699994E06D35B1 /* Pods */,
+				52554627F01AB984555AB59C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D5DD3042934FA0200C7A114 /* Build configuration list for PBXNativeTarget "iWord" */;
 			buildPhases = (
+				9824004B20752655607FE33C /* [CP] Check Pods Manifest.lock */,
 				8D5DD2EC2934FA0100C7A114 /* Sources */,
 				8D5DD2ED2934FA0100C7A114 /* Frameworks */,
 				8D5DD2EE2934FA0100C7A114 /* Resources */,
+				37C3F0FC58D3A384D4756150 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,6 +163,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		37C3F0FC58D3A384D4756150 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iWord/Pods-iWord-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iWord/Pods-iWord-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iWord/Pods-iWord-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9824004B20752655607FE33C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iWord-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D5DD2EC2934FA0100C7A114 /* Sources */ = {
@@ -278,6 +347,7 @@
 		};
 		8D5DD3052934FA0200C7A114 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C10CF98F55C9DC816049E3D9 /* Pods-iWord.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -305,6 +375,7 @@
 		};
 		8D5DD3062934FA0200C7A114 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2556DF9D39502BE77250C55 /* Pods-iWord.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
