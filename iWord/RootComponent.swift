@@ -21,8 +21,14 @@ final class RootComponent: BootstrapComponent {
 
 // MARK: - ViewControllers and navigation -
 extension RootComponent {
+    var mainCoordinator: MainCoordinator {
+        MainCoordinator(navController: navigationController)
+    }
+    
     var rootViewController: RootViewController {
-        RootViewController()
+        let rootVC = RootViewController()
+        rootVC.setCoordinator(mainCoordinator)
+        return rootVC
     }
     
     var navigationController: UINavigationController {
@@ -30,9 +36,5 @@ extension RootComponent {
         navigationController.isNavigationBarHidden = true
         navigationController.isToolbarHidden = true
         return navigationController
-    }
-    
-    var coordinator: MainCoordinator {
-        MainCoordinator(navController: navigationController)
     }
 }

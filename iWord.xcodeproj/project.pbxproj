@@ -88,8 +88,8 @@
 		8D5DD2F22934FA0100C7A114 /* iWord */ = {
 			isa = PBXGroup;
 			children = (
-				8D70A13D2938EE9A000AAC24 /* Coordinator */,
 				8DA550B42936468A00490835 /* RootComponent.swift */,
+				8D70A13D2938EE9A000AAC24 /* Coordinator */,
 				8DA550B7293649AF00490835 /* Generated */,
 				8D5DD3072934FC8900C7A114 /* SupportingFiles */,
 				8D5DD2F72934FA0100C7A114 /* RootViewController.swift */,

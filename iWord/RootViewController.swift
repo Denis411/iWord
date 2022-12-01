@@ -13,7 +13,7 @@
 
 import UIKit
 
-class RootViewController: UIViewController {
+final class RootViewController: ViewControllerWithCoordinator {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .orange
