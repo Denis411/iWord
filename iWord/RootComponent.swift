@@ -21,13 +21,8 @@ final class RootComponent: BootstrapComponent {
 
 // MARK: - ViewControllers and navigation -
 extension RootComponent {
-    var mainCoordinator: MainCoordinator {
-        MainCoordinator(navController: navigationController)
-    }
-    
     var rootViewController: RootViewController {
         let rootVC = RootViewController()
-        rootVC.setCoordinator(mainCoordinator)
         return rootVC
     }
     
