@@ -13,9 +13,25 @@
 
 import UIKit
 
-final class RootViewController: UIViewController {
+protocol RootViewModel {
+    func setView(_ view: RootViewController)
+}
+
+final class RootViewControllerImp: UIViewController, RootViewController {
+    private let viewModel: RootViewModel
+    
+    init(viewModel: RootViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .orange
+        viewModel.setView(self)
     }
 }

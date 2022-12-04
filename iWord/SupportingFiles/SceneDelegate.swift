@@ -15,24 +15,24 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
-    static let rootComponent = RootComponent()
-
+    let rootComponent = RootComponent()
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         setRootViewController(for: scene)
     }
-
+    
     func sceneDidDisconnect(_ scene: UIScene) {
     }
-
+    
     func sceneDidBecomeActive(_ scene: UIScene) {
     }
-
+    
     func sceneWillResignActive(_ scene: UIScene) {
     }
-
+    
     func sceneWillEnterForeground(_ scene: UIScene) {
     }
-
+    
     func sceneDidEnterBackground(_ scene: UIScene) {
     }
 }
@@ -41,7 +41,16 @@ fileprivate extension SceneDelegate {
     func setRootViewController(for scene: UIScene) {
         guard let mainScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: mainScene)
-        window?.rootViewController = SceneDelegate.rootComponent.navigationController
+        window?.rootViewController = createNavigationController()
         window?.makeKeyAndVisible()
+    }
+    
+    func createNavigationController() -> UINavigationController {
+        let navigationController = UINavigationController()
+        let rootViewController = rootComponent.rootScreenComponent.rootViewController
+        navigationController.pushViewController(rootViewController, animated: true)
+        navigationController.isNavigationBarHidden = true
+        navigationController.isToolbarHidden = true
+        return navigationController
     }
 }

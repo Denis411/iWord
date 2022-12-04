@@ -16,20 +16,25 @@ import NeedleFoundation
 import UIKit
 
 final class RootComponent: BootstrapComponent {
-    
+    var navigationController: UINavigationController {
+        let navigationController = UINavigationController()
+        navigationController.isNavigationBarHidden = true
+        navigationController.isToolbarHidden = true
+        return navigationController
+    }
 }
 
 // MARK: - ViewControllers and navigation -
 extension RootComponent {
-    var rootViewController: RootViewController {
-        let rootVC = RootViewController()
-        return rootVC
+    var rootScreenComponent: RootScreenComponent {
+        RootScreenComponent(parent: self)
     }
     
-    var navigationController: UINavigationController {
-        let navigationController = UINavigationController(rootViewController: self.rootViewController)
-        navigationController.isNavigationBarHidden = true
-        navigationController.isToolbarHidden = true
-        return navigationController
+    var secondVC: UIViewController {
+        UIViewController()
+    }
+    
+    var thirdVC: UIViewController {
+        UIViewController()
     }
 }
