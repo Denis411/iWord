@@ -46,11 +46,11 @@ fileprivate extension SceneDelegate {
     }
     
     func createNavigationController() -> UINavigationController {
-        let navigationController = UINavigationController()
         let rootViewController = rootComponent.rootScreenComponent.rootViewController
-        navigationController.pushViewController(rootViewController, animated: true)
-        navigationController.isNavigationBarHidden = true
-        navigationController.isToolbarHidden = true
-        return navigationController
+        let navController = rootComponent.navigationController
+        navController.pushViewController(rootViewController, animated: true)
+        navController.isNavigationBarHidden = true
+        navController.isToolbarHidden = true
+        return navController
     }
 }

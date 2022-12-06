@@ -24,15 +24,21 @@ protocol RootViewController: UIViewController {
     
 }
 
-final class RootViewModelImp: RootViewModel {
+final class RootViewModelImp {
     private let router: RootRouter
     private unowned var view: RootViewController?
     
     init(router: RootRouter) {
         self.router = router
     }
-    
+}
+
+extension RootViewModelImp: RootViewModel {
     func setView(_ view: RootViewController) {
         self.view = view
+    }
+    
+    func reactToTapOnCell(at index: IndexPath) {
+        router.routeToSecondVC(animated: false)
     }
 }

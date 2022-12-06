@@ -15,6 +15,7 @@ import UIKit
 
 protocol RootViewModel {
     func setView(_ view: RootViewController)
+    func reactToTapOnCell(at index: IndexPath)
 }
 
 final class RootFoldersViewControllerImp: UIViewController, RootViewController {
@@ -65,5 +66,9 @@ extension RootFoldersViewControllerImp: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         10
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.reactToTapOnCell(at: indexPath)
     }
 }

@@ -16,12 +16,12 @@ import NeedleFoundation
 import UIKit
 
 final class RootComponent: BootstrapComponent {
-    var navigationController: UINavigationController {
+    var navigationController: UINavigationController = {
         let navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
         navigationController.isToolbarHidden = true
         return navigationController
-    }
+    }()
 }
 
 // MARK: - ViewControllers and navigation -
