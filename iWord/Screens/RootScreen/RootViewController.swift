@@ -19,6 +19,7 @@ protocol RootViewModel {
 
 final class RootViewControllerImp: UIViewController, RootViewController {
     private let viewModel: RootViewModel
+    private let tableView = UITableView()
     
     init(viewModel: RootViewModel) {
         self.viewModel = viewModel
@@ -31,7 +32,33 @@ final class RootViewControllerImp: UIViewController, RootViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        performOnViewDidLoad()
+    }
+    
+    private func performOnViewDidLoad() {
         view.backgroundColor = .orange
+        
+        tableView.frame = view.frame
+        tableView.backgroundColor = .gray
+        view.addSubview(tableView)
+        
+        tableView.register(MainViewCell.self, forCellReuseIdentifier: MainViewCell.reusableID)
+        
         viewModel.setView(self)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+}
+
+extension RootViewControllerImp: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MainViewCell.reusableID, for: indexPath) as! MainViewCell
+        cell.setCellData(folderName: "100000", numberOfItems: 2, progressPercentage: 100)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
     }
 }
