@@ -35,7 +35,7 @@ final class RootRouterImp: RootRouter {
         navigationController.pushViewController(thirdVC, animated: animated)
     }
     
-    func dismissCurrectViewController(animated: Bool) {
+    func dismissCurrentViewController(animated: Bool) {
         navigationController.popToRootViewController(animated: animated)
     }
 }

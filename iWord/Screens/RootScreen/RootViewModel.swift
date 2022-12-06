@@ -17,7 +17,7 @@ import UIKit
 protocol RootRouter {
     func routeToSecondVC(animated: Bool)
     func routeToThirdVC(animated: Bool)
-    func dismissCurrectViewController(animated: Bool)
+    func dismissCurrentViewController(animated: Bool)
 }
 
 protocol RootViewController: UIViewController {

@@ -28,7 +28,7 @@ final class FolderTableViewCell: UITableViewCell {
     private let labelStackView = UIStackView()
     private let folderNameLabel = UILabel()
     private let numberOfItemsLabel = UILabel()
-//  TODO: progressView will be a colorful UIView after A B testing
+    //  TODO: progressView will be a colorful UIView after A B testing
     private let progressView = UILabel()
     
     
@@ -89,7 +89,7 @@ extension FolderTableViewCell {
         labelStackView.snp.makeConstraints { make in
             make.centerY.equalTo(folderImageView)
             make.left.equalTo(folderImageView.snp.right).offset(STACKVIEW_MERGIN)
-//          mark: negative num because of SnapKit bug
+            //          mark: negative num because of SnapKit bug
             make.right.equalTo(progressView.snp.left).offset(-STACKVIEW_MERGIN)
         }
     }
@@ -113,8 +113,8 @@ extension FolderTableViewCell {
     }
     
     private func configureFolderNameLabel() {
-//      Use R.swift
-//      Use color stratagy for colors and font sizes
+        //      Use R.swift
+        //      Use color strategy for colors and font sizes
         folderNameLabel.font = .systemFont(ofSize: 20)
         folderNameLabel.numberOfLines = 1
         folderNameLabel.textColor = .blue
