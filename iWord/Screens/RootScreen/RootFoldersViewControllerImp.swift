@@ -17,7 +17,7 @@ protocol RootViewModel {
     func setView(_ view: RootViewController)
 }
 
-final class RootViewControllerImp: UIViewController, RootViewController {
+final class RootFoldersViewControllerImp: UIViewController, RootViewController {
     private let viewModel: RootViewModel
     private let tableView = UITableView()
     
@@ -42,7 +42,7 @@ final class RootViewControllerImp: UIViewController, RootViewController {
         tableView.backgroundColor = .gray
         view.addSubview(tableView)
         
-        tableView.register(MainViewCell.self, forCellReuseIdentifier: MainViewCell.reusableID)
+        tableView.register(FolderTableViewCell.self, forCellReuseIdentifier: FolderTableViewCell.reusableID)
         
         viewModel.setView(self)
         tableView.delegate = self
@@ -50,9 +50,9 @@ final class RootViewControllerImp: UIViewController, RootViewController {
     }
 }
 
-extension RootViewControllerImp: UITableViewDelegate, UITableViewDataSource {
+extension RootFoldersViewControllerImp: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MainViewCell.reusableID, for: indexPath) as! MainViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FolderTableViewCell.reusableID, for: indexPath) as! FolderTableViewCell
         cell.setCellData(folderName: "100000", numberOfItems: 2, progressPercentage: 100)
         
         return cell

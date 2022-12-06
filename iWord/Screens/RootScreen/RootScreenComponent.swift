@@ -31,6 +31,6 @@ final class RootScreenComponent: Component<RootScreenDependencies> {
     }
     
     var rootViewController: RootViewController {
-        RootViewControllerImp(viewModel: viewModel)
+        RootFoldersViewControllerImp(viewModel: viewModel)
     }
 }

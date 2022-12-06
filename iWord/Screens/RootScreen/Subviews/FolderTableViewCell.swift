@@ -22,8 +22,8 @@ fileprivate let PROGRESS_VIEW_INSET: CGFloat = 20.0
 fileprivate let STACKVIEW_MERGIN: CGFloat = 10.0
 fileprivate let SPACING_BETWEEN_LABELS: CGFloat = 10.0
 
-final class MainViewCell: UITableViewCell {
-    static let reusableID = "MainViewCell"
+final class FolderTableViewCell: UITableViewCell {
+    static let reusableID = "FolderTableViewCell"
     private let folderImageView = UIImageView()
     private let labelStackView = UIStackView()
     private let folderNameLabel = UILabel()
@@ -49,7 +49,7 @@ final class MainViewCell: UITableViewCell {
 }
 
 // setSubviews
-extension MainViewCell {
+extension FolderTableViewCell {
     private func setUpUI() {
         addSubviews()
         setAllConstraints()
