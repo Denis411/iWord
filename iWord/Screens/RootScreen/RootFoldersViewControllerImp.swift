@@ -53,7 +53,12 @@ final class RootFoldersViewControllerImp: UIViewController, RootViewController {
 extension RootFoldersViewControllerImp: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FolderTableViewCell.reusableID, for: indexPath) as! FolderTableViewCell
-        cell.setCellData(folderName: "100000", numberOfItems: 2, progressPercentage: 100)
+        let model = RootFolderModel(
+            folderName: "Some name",
+            numberOfItems: 10000,
+            progressPercentage: 110
+        )
+        cell.setCellData(with: model)
         
         return cell
     }

@@ -41,10 +41,10 @@ final class FolderTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func setCellData(folderName: String, numberOfItems: Int16, progressPercentage: Int8) {
-        self.folderNameLabel.text = folderName
-        self.numberOfItemsLabel.text = String(numberOfItems)
-        self.progressView.text = String(progressPercentage)
+    public func setCellData(with model: RootFolderModel) {
+        self.folderNameLabel.text = model.folderName
+        self.numberOfItemsLabel.text = String(model.numberOfItems)
+        self.progressView.text = String(model.progressPercentage)
     }
 }
 
