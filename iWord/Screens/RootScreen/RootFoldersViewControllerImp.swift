@@ -12,6 +12,7 @@
 // frameworks are governed by their own individual licenses.
 
 import UIKit
+import Combine
 
 protocol RootViewModel {
     func setView(_ view: RootViewController)
@@ -21,6 +22,7 @@ protocol RootViewModel {
 final class RootFoldersViewControllerImp: UIViewController, RootViewController {
     private let viewModel: RootViewModel
     private let tableView = UITableView()
+    private let newFolderPublisher = PassthroughSubject<String, Never>()
     
     init(viewModel: RootViewModel) {
         self.viewModel = viewModel
@@ -71,6 +73,8 @@ extension RootFoldersViewControllerImp: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.reactToTapOnCell(at: indexPath)
+//        viewModel.reactToTapOnCell(at: indexPath)
+        let alert = AlertWithTextSubject()
+        alert.showAlert(on: self, textPublisher: newFolderPublisher)
     }
 }

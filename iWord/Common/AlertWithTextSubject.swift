@@ -15,26 +15,25 @@ import UIKit
 import Combine
 
 final class AlertWithTextSubject {
-    var enteredText = PassthroughSubject<String,Never>()
     
-    func showAlert(on viewController: UIViewController) {
-        let alert = createAleft()
+    func showAlert(on viewController: UIViewController, textPublisher: PassthroughSubject<String,Never>) {
+        let alert = createAleft(textPublisher: textPublisher)
         viewController.present(alert, animated: true)
     }
     
-    private func createAleft() -> UIAlertController {
+    private func createAleft(textPublisher: PassthroughSubject<String,Never>) -> UIAlertController {
         let alert = UIAlertController(title: "Enter Name For New Folder", message: nil, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = "Folder name"
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        let createAction = UIAlertAction(title: "Create", style: .default) { [unowned self] action in
+        let createAction = UIAlertAction(title: "Create", style: .default) { action in
             guard let name = alert.textFields?.first?.text else {
                 return
             }
             
-            self.enteredText.send(name)
+            textPublisher.send(name)
         }
         
         alert.addAction(cancelAction)
