@@ -13,7 +13,7 @@
 
 import Foundation
 
-struct RootFolderModel {
+struct RootFolderCellModel {
     let folderName: String
     let numberOfItems: Int16
     let progressPercentage: Int8
