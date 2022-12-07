@@ -57,8 +57,10 @@ extension RootFoldersViewControllerImp: UITableViewDelegate, UITableViewDataSour
         let model = RootFolderCellModel(
             folderName: "Some name",
             numberOfItems: 10000,
-            progressPercentage: 110
+            progressPercentage: 110,
+            dateOfCreation: Date()
         )
+        
         cell.setCellData(with: model)
         
         return cell
