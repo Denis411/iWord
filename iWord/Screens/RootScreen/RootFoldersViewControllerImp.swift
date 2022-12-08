@@ -21,8 +21,11 @@ protocol RootViewModel {
 
 final class RootFoldersViewControllerImp: UIViewController, RootViewController {
     private let viewModel: RootViewModel
-    private let tableView = UITableView()
-    private let newFolderPublisher = PassthroughSubject<String, Never>()
+    private var backgroundView: RootFolderView { view as! RootFolderView }
+    
+    override func loadView() {
+        view = RootFolderView()
+    }
     
     init(viewModel: RootViewModel) {
         self.viewModel = viewModel
@@ -35,46 +38,5 @@ final class RootFoldersViewControllerImp: UIViewController, RootViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        performOnViewDidLoad()
-    }
-    
-    private func performOnViewDidLoad() {
-        view.backgroundColor = .orange
-        
-        tableView.frame = view.frame
-        tableView.backgroundColor = .gray
-        view.addSubview(tableView)
-        
-        tableView.register(FolderTableViewCell.self, forCellReuseIdentifier: FolderTableViewCell.reusableID)
-        
-        viewModel.setView(self)
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-}
-
-extension RootFoldersViewControllerImp: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FolderTableViewCell.reusableID, for: indexPath) as! FolderTableViewCell
-        let model = RootFolderCellModel(
-            folderName: "Some name",
-            numberOfItems: 10000,
-            progressPercentage: 110,
-            dateOfCreation: Date()
-        )
-        
-        cell.setCellData(with: model)
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        viewModel.reactToTapOnCell(at: indexPath)
-        let alert = AlertWithTextSubject()
-        alert.showAlert(on: self, textPublisher: newFolderPublisher)
     }
 }
