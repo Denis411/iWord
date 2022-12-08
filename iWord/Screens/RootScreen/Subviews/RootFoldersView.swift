@@ -15,7 +15,7 @@ import UIKit
 
 final class RootFolderView: UIView {
     private let tableView = UITableView()
-    private var folderCellInfos: [RootFolderCellModel] = []
+    private var folderCellInfos: [RootFolderCellInfo] = []
     
     init() {
         super.init(frame: .zero)
@@ -89,11 +89,11 @@ extension RootFolderView {
         tableView.deleteRows(at: indexPath, with: animation)
     }
     
-    func addCell(cellInfo: RootFolderCellModel, at: Int ) {
+    func addCell(cellInfo: RootFolderCellInfo, at: Int ) {
         folderCellInfos.insert(cellInfo, at: at)
     }
     
-    func setCellInfo(cellInfo: [RootFolderCellModel]) {
+    func setCellInfo(cellInfo: [RootFolderCellInfo]) {
         folderCellInfos = cellInfo
     }
 }

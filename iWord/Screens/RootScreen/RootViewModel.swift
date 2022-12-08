@@ -27,7 +27,7 @@ protocol RootViewController: UIViewController {
 final class RootViewModelImp {
     private let router: RootRouter
     private unowned var view: RootViewController?
-    private var folderModels: [RootFolderCellModel] = []
+    private var folderModels: [RootFolderCellInfo] = []
     
     init(router: RootRouter) {
         self.router = router
