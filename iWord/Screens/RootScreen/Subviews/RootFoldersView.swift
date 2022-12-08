@@ -15,6 +15,7 @@ import UIKit
 
 final class RootFolderView: UIView {
     private let tableView = UITableView()
+    private var folderCellInfos: [RootFolderCellModel] = []
     
     init() {
         super.init(frame: .zero)
@@ -63,14 +64,9 @@ extension RootFolderView {
 extension RootFolderView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FolderTableViewCell.reusableID, for: indexPath) as! FolderTableViewCell
-        let model = RootFolderCellModel(
-            folderName: "Some name",
-            numberOfItems: 10000,
-            progressPercentage: 110,
-            dateOfCreation: Date()
-        )
         
-        cell.setCellData(with: model)
+        let cellInfo = folderCellInfos[indexPath.row]
+        cell.setCellData(with: cellInfo)
         
         return cell
     }
@@ -83,5 +79,21 @@ extension RootFolderView: UITableViewDelegate, UITableViewDataSource {
 //        viewModel.reactToTapOnCell(at: indexPath)
 //        let alert = AlertWithTextSubject()
 //        alert.showAlert(on: self, textPublisher: newFolderPublisher)
+    }
+}
+
+// MARK: -Public methods-
+extension RootFolderView {
+    func removeCell(at indexPath: [IndexPath], with animation: UITableView.RowAnimation) {
+        indexPath.forEach { folderCellInfos.remove(at: $0.row) }
+        tableView.deleteRows(at: indexPath, with: animation)
+    }
+    
+    func addCell(cellInfo: RootFolderCellModel, at: Int ) {
+        folderCellInfos.insert(cellInfo, at: at)
+    }
+    
+    func setCellInfo(cellInfo: [RootFolderCellModel]) {
+        folderCellInfos = cellInfo
     }
 }
