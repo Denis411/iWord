@@ -22,6 +22,7 @@
 		8D70A1BF293C6382000AAC24 /* RootScreenComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70A1BE293C6382000AAC24 /* RootScreenComponent.swift */; };
 		8DA550B52936468A00490835 /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA550B42936468A00490835 /* RootComponent.swift */; };
 		8DA550BB29364A7000490835 /* Needle.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA550BA29364A7000490835 /* Needle.generated.swift */; };
+		8DAF4EA22950A41500C066AA /* CommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAF4EA12950A41500C066AA /* CommonView.swift */; };
 		8DB22C2229422DD900F629E4 /* RootFoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB22C2129422DD900F629E4 /* RootFoldersView.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		8D70A1BE293C6382000AAC24 /* RootScreenComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootScreenComponent.swift; sourceTree = "<group>"; };
 		8DA550B42936468A00490835 /* RootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootComponent.swift; sourceTree = "<group>"; };
 		8DA550BA29364A7000490835 /* Needle.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Needle.generated.swift; sourceTree = "<group>"; };
+		8DAF4EA12950A41500C066AA /* CommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonView.swift; sourceTree = "<group>"; };
 		8DB22C2129422DD900F629E4 /* RootFoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootFoldersView.swift; sourceTree = "<group>"; };
 		B2556DF9D39502BE77250C55 /* Pods-iWord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iWord.release.xcconfig"; path = "Target Support Files/Pods-iWord/Pods-iWord.release.xcconfig"; sourceTree = "<group>"; };
 		C10CF98F55C9DC816049E3D9 /* Pods-iWord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iWord.debug.xcconfig"; path = "Target Support Files/Pods-iWord/Pods-iWord.debug.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		8D70A162293903BE000AAC24 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				8DAF4EA02950A2DC00C066AA /* CommonSubviews */,
 				8D70A163293903D4000AAC24 /* RootScreen */,
 			);
 			path = Screens;
@@ -172,6 +175,14 @@
 				8DA550BA29364A7000490835 /* Needle.generated.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		8DAF4EA02950A2DC00C066AA /* CommonSubviews */ = {
+			isa = PBXGroup;
+			children = (
+				8DAF4EA12950A41500C066AA /* CommonView.swift */,
+			);
+			path = CommonSubviews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +329,7 @@
 				8D2E005A2940E3B2001EF42C /* AlertWithTextSubject.swift in Sources */,
 				8D10D054293F91A30097916B /* FolderTableViewCell.swift in Sources */,
 				8D10D057293FA9D70097916B /* RootFolderCellInfo.swift in Sources */,
+				8DAF4EA22950A41500C066AA /* CommonView.swift in Sources */,
 				8D5DD2F42934FA0100C7A114 /* AppDelegate.swift in Sources */,
 				8D5DD2F62934FA0100C7A114 /* SceneDelegate.swift in Sources */,
 				8D70A1BB293C610A000AAC24 /* RootRouter.swift in Sources */,

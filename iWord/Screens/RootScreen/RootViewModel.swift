@@ -34,6 +34,10 @@ extension RootViewModelImp: RootViewModel {
     func reactToTapOnCell(at index: IndexPath) {
         router.routeToSecondVC(animated: false)
     }
+
+    func deleteCellModel(at index: IndexPath) {
+        folderModels.value.remove(at: index.row)
+    }
 }
 
 // TODO: - Remove after testing -

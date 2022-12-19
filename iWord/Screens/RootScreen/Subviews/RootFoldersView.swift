@@ -13,19 +13,17 @@
 
 import UIKit
 
-final class RootFolderView: UIView {
+final class RootFolderView: CommonView {
     private let tableView = UITableView()
     private var folderCellInfos: [RootFolderCellInfo] = []
 
     private var onCellTapAction: ((IndexPath) -> Void)?
-    
-    init() {
-        super.init(frame: .zero)
-        setUpUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private var onCellDeletionAction: ((IndexPath) -> Void)?
+
+    override func setUpUI() {
+        addSubviews()
+        setAllConstraints()
+        configureAllViews()
     }
 
     func setFolderCellInfos(_ cellInfos: [RootFolderCellInfo]) {
@@ -39,15 +37,13 @@ extension RootFolderView {
     func setOnCellTapAction(_ action: @escaping (IndexPath) -> Void) {
         self.onCellTapAction = action
     }
+
+    func setOnCellDeletionAction(_ action: @escaping (IndexPath) -> Void) {
+        self.onCellDeletionAction = action
+    }
 }
 
 extension RootFolderView {
-    private func setUpUI() {
-        addSubviews()
-        setAllConstraints()
-        configureAllViews()
-    }
-    
     private func addSubviews() {
         self.addSubview(tableView)
     }
@@ -91,5 +87,16 @@ extension RootFolderView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         onCellTapAction?(indexPath)
+    }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let contextualAction = UIContextualAction(style: .normal, title: "Delete") { [unowned self] contextualAction, view, completionHandler in
+            self.onCellDeletionAction?(indexPath)
+            completionHandler(true)
+        }
+
+        contextualAction.backgroundColor = .red
+
+        return UISwipeActionsConfiguration(actions: [contextualAction])
     }
 }
