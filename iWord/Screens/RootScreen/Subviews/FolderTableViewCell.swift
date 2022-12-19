@@ -74,7 +74,8 @@ extension FolderTableViewCell {
     private func setFolderImageViewConstraints() {
         folderImageView.snp.makeConstraints { make in
             make.height.width.equalTo(IMAGE_VIEW_EDGE)
-            make.left.top.bottom.equalToSuperview().inset(IMAGE_VIEW_INSET)
+            make.left.equalToSuperview().inset(IMAGE_VIEW_INSET)
+            make.centerY.equalToSuperview()
         }
     }
     
