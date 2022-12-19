@@ -15,13 +15,14 @@ import UIKit
 import Combine
 
 protocol RootViewModel {
-    func setView(_ view: RootViewController)
+    var folderModels: CurrentValueSubject<[RootFolderCellInfo], Never> { get }
     func reactToTapOnCell(at index: IndexPath)
 }
 
-final class RootFoldersViewControllerImp: UIViewController, RootViewController {
+final class RootFoldersViewControllerImp: UIViewController {
     private let viewModel: RootViewModel
-    private var backgroundView: RootFolderView { view as! RootFolderView }
+    private var mainView: RootFolderView { view as! RootFolderView }
+    private var disposedBag = Set<AnyCancellable>()
     
     override func loadView() {
         view = RootFolderView()
@@ -38,5 +39,22 @@ final class RootFoldersViewControllerImp: UIViewController, RootViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setMainViewActions()
+        bind()
+    }
+
+    private func setMainViewActions() {
+        mainView.setOnCellTapAction { [unowned self] indexPath in
+            self.viewModel.reactToTapOnCell(at: indexPath)
+        }
+    }
+
+    private func bind() {
+        viewModel.folderModels
+            .receive(on: RunLoop.main)
+            .sink { [unowned self] arrayOfFolderCells in
+                self.mainView.setFolderCellInfos(arrayOfFolderCells)
+            }
+            .store(in: &disposedBag)
     }
 }

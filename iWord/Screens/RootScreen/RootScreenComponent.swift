@@ -30,7 +30,7 @@ final class RootScreenComponent: Component<RootScreenDependencies> {
                       thirdVC: dependency.thirdVC)
     }
     
-    var rootViewController: RootViewController {
+    var rootViewController: UIViewController {
         RootFoldersViewControllerImp(viewModel: viewModel)
     }
 }

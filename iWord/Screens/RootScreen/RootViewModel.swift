@@ -11,8 +11,8 @@
 // released under various Open-Source licenses. Use of those libraries and
 // frameworks are governed by their own individual licenses.
 
-import Foundation
 import UIKit
+import Combine
 
 protocol RootRouter {
     func routeToSecondVC(animated: Bool)
@@ -20,26 +20,35 @@ protocol RootRouter {
     func dismissCurrentViewController(animated: Bool)
 }
 
-protocol RootViewController: UIViewController {
-    
-}
-
 final class RootViewModelImp {
     private let router: RootRouter
-    private unowned var view: RootViewController?
-    private var folderModels: [RootFolderCellInfo] = []
+    var folderModels = CurrentValueSubject<[RootFolderCellInfo], Never>([])
     
     init(router: RootRouter) {
         self.router = router
+        setFakeData()
     }
 }
 
 extension RootViewModelImp: RootViewModel {
-    func setView(_ view: RootViewController) {
-        self.view = view
-    }
-    
     func reactToTapOnCell(at index: IndexPath) {
         router.routeToSecondVC(animated: false)
+    }
+}
+
+// TODO: - Remove after testing -
+extension RootViewModelImp {
+    private func setFakeData() {
+        DispatchQueue.main.async { [unowned self] in
+            sleep(4)
+            let fakeData = RootFolderCellInfo(
+                folderName: "some",
+                numberOfItems: 3,
+                progressPercentage: 3,
+                dateOfCreation: Date()
+            )
+
+            self.folderModels.send([fakeData, fakeData, fakeData])
+        }
     }
 }

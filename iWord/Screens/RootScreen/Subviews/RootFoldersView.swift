@@ -16,6 +16,8 @@ import UIKit
 final class RootFolderView: UIView {
     private let tableView = UITableView()
     private var folderCellInfos: [RootFolderCellInfo] = []
+
+    private var onCellTapAction: ((IndexPath) -> Void)?
     
     init() {
         super.init(frame: .zero)
@@ -24,6 +26,18 @@ final class RootFolderView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func setFolderCellInfos(_ cellInfos: [RootFolderCellInfo]) {
+        self.folderCellInfos = cellInfos
+        tableView.reloadData()
+    }
+}
+
+// MARK: - Action setting -
+extension RootFolderView {
+    func setOnCellTapAction(_ action: @escaping (IndexPath) -> Void) {
+        self.onCellTapAction = action
     }
 }
 
@@ -72,28 +86,10 @@ extension RootFolderView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        folderCellInfos.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        viewModel.reactToTapOnCell(at: indexPath)
-//        let alert = AlertWithTextSubject()
-//        alert.showAlert(on: self, textPublisher: newFolderPublisher)
-    }
-}
-
-// MARK: -Public methods-
-extension RootFolderView {
-    func removeCell(at indexPath: [IndexPath], with animation: UITableView.RowAnimation) {
-        indexPath.forEach { folderCellInfos.remove(at: $0.row) }
-        tableView.deleteRows(at: indexPath, with: animation)
-    }
-    
-    func addCell(cellInfo: RootFolderCellInfo, at: Int ) {
-        folderCellInfos.insert(cellInfo, at: at)
-    }
-    
-    func setCellInfo(cellInfo: [RootFolderCellInfo]) {
-        folderCellInfos = cellInfo
+        onCellTapAction?(indexPath)
     }
 }
