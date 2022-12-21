@@ -49,6 +49,10 @@ extension RootViewModelImp: RootViewModel {
     func deleteCellModel(at index: IndexPath) {
         folderModels.value.remove(at: index.row)
     }
+
+    func addFolder(with name: FolderName) {
+        folderContainer.addFolder(with: name)
+    }
 }
 
 // TODO: - Remove after testing -

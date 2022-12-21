@@ -18,6 +18,7 @@ protocol RootViewModel {
     var folderModels: CurrentValueSubject<[RootFolderCellInfo], Never> { get }
     func reactToTapOnCell(at index: IndexPath)
     func deleteCellModel(at index: IndexPath)
+    func addFolder(with name: FolderName)
 }
 
 final class RootFoldersViewControllerImp: UIViewController {
