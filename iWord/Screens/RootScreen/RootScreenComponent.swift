@@ -21,13 +21,20 @@ protocol RootScreenDependencies: Dependency {
 
 final class RootScreenComponent: Component<RootScreenDependencies> {
     var viewModel: RootViewModel {
-        RootViewModelImp(router: router)
+        RootViewModelImp(
+            router: router,
+            folderContainer: folderContainer
+        )
     }
     
-    var router: RootRouter {
+    private var router: RootRouter {
         RootRouterImp(navigationController: dependency.navigationController,
                       secondVC: dependency.secondVC,
                       thirdVC: dependency.thirdVC)
+    }
+
+    private var folderContainer: FolderContainer {
+        FolderContainerImp()
     }
     
     var rootViewController: UIViewController {

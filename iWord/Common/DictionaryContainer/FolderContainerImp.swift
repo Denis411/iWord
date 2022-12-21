@@ -15,12 +15,6 @@ import Foundation
 
 typealias FolderName = String
 
-protocol FolderContainer {
-    func addFolder(with name: FolderName)
-    func removeFolder(with name: FolderName)
-    func getAllFolders() -> [Folder]
-}
-
 final class FolderContainerImp: FolderContainer {
     private var folders: Set<Folder> = []
 

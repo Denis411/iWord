@@ -20,12 +20,23 @@ protocol RootRouter {
     func dismissCurrentViewController(animated: Bool)
 }
 
+protocol FolderContainer {
+    func addFolder(with name: FolderName)
+    func removeFolder(with name: FolderName)
+    func getAllFolders() -> [Folder]
+}
+
 final class RootViewModelImp {
     private let router: RootRouter
+    private let folderContainer: FolderContainer
     var folderModels = CurrentValueSubject<[RootFolderCellInfo], Never>([])
     
-    init(router: RootRouter) {
+    init(
+        router: RootRouter,
+        folderContainer: FolderContainer
+    ) {
         self.router = router
+        self.folderContainer = folderContainer
         setFakeData()
     }
 }

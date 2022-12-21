@@ -86,6 +86,7 @@
 		8D10D052293F83030097916B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8DAF4EA32950AC6B00C066AA /* DictionaryContainer */,
 				8D10D050293F82E20097916B /* Logger.swift */,
 				8D2E00592940E3B2001EF42C /* AlertWithTextSubject.swift */,
 			);
@@ -122,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				8DA550B42936468A00490835 /* RootComponent.swift */,
-				8DAF4EA32950AC6B00C066AA /* DictionaryContainer */,
 				8D10D052293F83030097916B /* Common */,
 				8DA550B7293649AF00490835 /* Generated */,
 				8D5DD3072934FC8900C7A114 /* SupportingFiles */,
