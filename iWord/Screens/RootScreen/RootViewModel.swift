@@ -50,7 +50,8 @@ extension RootViewModelImp: RootViewModel {
         folderModels.value.remove(at: index.row)
     }
 
-    func addFolder(with name: FolderName) {
+    func addFolder() {
+        let name = "New folder"
         folderContainer.addFolder(with: name)
     }
 }

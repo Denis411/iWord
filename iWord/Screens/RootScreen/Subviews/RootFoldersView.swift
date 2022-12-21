@@ -16,9 +16,11 @@ import UIKit
 final class RootFolderView: CommonView {
     private let tableView = UITableView()
     private var folderCellInfos: [RootFolderCellInfo] = []
+    private var addFolderButton = UIButton()
 
     private var onCellTapAction: ((IndexPath) -> Void)?
     private var onCellDeletionAction: ((IndexPath) -> Void)?
+    private var onAddFolderButtonAction: (() -> Void)?
 
     override func setUpUI() {
         addSubviews()
@@ -41,15 +43,21 @@ extension RootFolderView {
     func setOnCellDeletionAction(_ action: @escaping (IndexPath) -> Void) {
         self.onCellDeletionAction = action
     }
+
+    func setOnAddFolderButtonAction(_ action: @escaping () -> Void) {
+        self.onAddFolderButtonAction = action
+    }
 }
 
 extension RootFolderView {
     private func addSubviews() {
         self.addSubview(tableView)
+        self.addSubview(addFolderButton)
     }
     
     private func setAllConstraints() {
         setTableViewConstraints()
+        setAddFolderButtonConstraints()
     }
     
     private func setTableViewConstraints() {
@@ -57,9 +65,18 @@ extension RootFolderView {
             make.edges.equalToSuperview()
         }
     }
+
+    private func setAddFolderButtonConstraints() {
+        addFolderButton.snp.makeConstraints { make in
+            make.height.width.equalTo(50)
+            make.right.equalToSuperview().inset(50)
+            make.bottom.equalToSuperview().inset(50)
+        }
+    }
     
     private func configureAllViews() {
         configureTableView()
+        configureAddFolderButton()
     }
     
     private func configureTableView() {
@@ -68,6 +85,14 @@ extension RootFolderView {
         tableView.register(FolderTableViewCell.self, forCellReuseIdentifier: FolderTableViewCell.reusableID)
         
         tableView.backgroundColor = .gray
+    }
+
+    private func configureAddFolderButton() {
+        addFolderButton.backgroundColor = .red
+        addFolderButton.layer.cornerRadius = 5
+        addFolderButton.addTarget(self, action: #selector(addFolderAction), for: .touchUpInside)
+        let image = UIImage(systemName: "plus")
+        addFolderButton.setImage(image, for: .normal)
     }
 }
 
@@ -98,5 +123,12 @@ extension RootFolderView: UITableViewDelegate, UITableViewDataSource {
         contextualAction.backgroundColor = .red
 
         return UISwipeActionsConfiguration(actions: [contextualAction])
+    }
+}
+
+// Button actions
+extension RootFolderView {
+    @objc func addFolderAction(_sender: UIButton) {
+        onAddFolderButtonAction?()
     }
 }

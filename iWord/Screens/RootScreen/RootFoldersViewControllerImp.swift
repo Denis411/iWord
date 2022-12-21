@@ -18,7 +18,7 @@ protocol RootViewModel {
     var folderModels: CurrentValueSubject<[RootFolderCellInfo], Never> { get }
     func reactToTapOnCell(at index: IndexPath)
     func deleteCellModel(at index: IndexPath)
-    func addFolder(with name: FolderName)
+    func addFolder()
 }
 
 final class RootFoldersViewControllerImp: UIViewController {
@@ -52,6 +52,10 @@ final class RootFoldersViewControllerImp: UIViewController {
 
         mainView.setOnCellDeletionAction { [unowned self] indexPath in
             self.viewModel.deleteCellModel(at: indexPath)
+        }
+
+        mainView.setOnAddFolderButtonAction { [unowned self] in
+            self.viewModel.addFolder()
         }
     }
 
