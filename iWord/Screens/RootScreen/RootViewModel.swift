@@ -24,6 +24,7 @@ protocol FolderContainer {
     func addFolder(with name: FolderName)
     func removeFolder(with name: FolderName)
     func getAllFolders() -> [Folder]
+    func saveAllChanges()
 }
 
 final class RootViewModelImp {
@@ -58,6 +59,10 @@ extension RootViewModelImp: RootViewModel {
     func addFolder() {
         let name = "New folder"
         folderContainer.addFolder(with: name)
+    }
+
+    func saveAllChanges() {
+        folderContainer.saveAllChanges()
     }
 }
 

@@ -20,6 +20,7 @@ protocol RootViewModel {
     func reactToTapOnCell(at index: IndexPath)
     func deleteCellModel(at index: IndexPath)
     func addFolder()
+    func saveAllChanges()
 }
 
 final class RootFoldersViewControllerImp: UIViewController {
@@ -45,6 +46,11 @@ final class RootFoldersViewControllerImp: UIViewController {
         setMainViewActions()
         viewModel.loadAllFolders()
         bind()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.saveAllChanges()
     }
 
     private func setMainViewActions() {

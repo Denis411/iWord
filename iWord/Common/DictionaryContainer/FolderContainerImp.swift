@@ -54,6 +54,9 @@ final class FolderContainerImp: FolderContainer {
         return Array(folders)
     }
 
+    func saveAllChanges() {
+//        use data base layer to save edited list of folder if needed
+    }
 }
 
 extension FolderContainerImp {
