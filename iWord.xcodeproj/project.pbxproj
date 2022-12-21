@@ -86,6 +86,7 @@
 		8D10D052293F83030097916B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8DAF4EA02950A2DC00C066AA /* CommonSubviews */,
 				8DAF4EA32950AC6B00C066AA /* DictionaryContainer */,
 				8D10D050293F82E20097916B /* Logger.swift */,
 				8D2E00592940E3B2001EF42C /* AlertWithTextSubject.swift */,
@@ -146,7 +147,6 @@
 		8D70A162293903BE000AAC24 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				8DAF4EA02950A2DC00C066AA /* CommonSubviews */,
 				8D70A163293903D4000AAC24 /* RootScreen */,
 			);
 			path = Screens;
