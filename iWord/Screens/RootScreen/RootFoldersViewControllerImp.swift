@@ -16,6 +16,7 @@ import Combine
 
 protocol RootViewModel {
     var folderModels: CurrentValueSubject<[RootFolderCellInfo], Never> { get }
+    func loadAllFolders()
     func reactToTapOnCell(at index: IndexPath)
     func deleteCellModel(at index: IndexPath)
     func addFolder()
@@ -42,6 +43,7 @@ final class RootFoldersViewControllerImp: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setMainViewActions()
+        viewModel.loadAllFolders()
         bind()
     }
 

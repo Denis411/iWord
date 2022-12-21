@@ -48,6 +48,9 @@ final class FolderContainerImp: FolderContainer {
     }
 
     func getAllFolders() -> [Folder] {
+        #if DEBUG
+        return getFakeFolders()
+        #endif
         return Array(folders)
     }
 
@@ -71,4 +74,17 @@ struct Folder: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(folderName)
     }
+}
+
+
+fileprivate func getFakeFolders() -> [Folder] {
+    let singleFolder = Folder(
+        folderName: "None",
+        numberOfItems: 0,
+        progressPercentage: 0,
+        dateOfCreation: Date(),
+        isPinned: Bool.random()
+    )
+
+    return [singleFolder, singleFolder, singleFolder, singleFolder]
 }

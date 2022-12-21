@@ -37,11 +37,16 @@ final class RootViewModelImp {
     ) {
         self.router = router
         self.folderContainer = folderContainer
-        setFakeData()
     }
 }
 
 extension RootViewModelImp: RootViewModel {
+    func loadAllFolders() {
+        let allFolder = folderContainer.getAllFolders()
+        let allFolderModels = allFolder.map { $0.toRootFolderCellInfo() }
+        folderModels.send(allFolderModels)
+    }
+
     func reactToTapOnCell(at index: IndexPath) {
         router.routeToSecondVC(animated: false)
     }
@@ -56,19 +61,13 @@ extension RootViewModelImp: RootViewModel {
     }
 }
 
-// TODO: - Remove after testing -
-extension RootViewModelImp {
-    private func setFakeData() {
-        DispatchQueue.main.async { [unowned self] in
-            sleep(4)
-            let fakeData = RootFolderCellInfo(
-                folderName: "some",
-                numberOfItems: 3,
-                progressPercentage: 3,
-                dateOfCreation: Date()
-            )
-
-            self.folderModels.send([fakeData, fakeData, fakeData])
-        }
+extension Folder {
+    func toRootFolderCellInfo() -> RootFolderCellInfo {
+        RootFolderCellInfo(
+            folderName: self.folderName,
+            numberOfItems: self.numberOfItems,
+            progressPercentage: self.progressPercentage,
+            dateOfCreation: self.dateOfCreation
+        )
     }
 }
