@@ -38,3 +38,10 @@ extension RootComponent {
         UIViewController()
     }
 }
+
+// MARK: - Error handling -
+extension RootComponent {
+    var errorAlert: ErrorAlert {
+        ErrorAlertImp()
+    }
+}
