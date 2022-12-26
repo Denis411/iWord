@@ -99,13 +99,13 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		8D29A97E29597A2900EBF0F1 /* LixicalUnitListScreen */ = {
+		8D29A97E29597A2900EBF0F1 /* LexicalUnitListScreen */ = {
 			isa = PBXGroup;
 			children = (
 				8D29A98129597D0600EBF0F1 /* Subviews */,
 				8D29A98229597D4100EBF0F1 /* LexicalUnitListViewController.swift */,
 			);
-			path = LixicalUnitListScreen;
+			path = LexicalUnitListScreen;
 			sourceTree = "<group>";
 		};
 		8D29A97F29597B1B00EBF0F1 /* Routers */ = {
@@ -176,7 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				8D70A163293903D4000AAC24 /* FolderListScreen */,
-				8D29A97E29597A2900EBF0F1 /* LixicalUnitListScreen */,
+				8D29A97E29597A2900EBF0F1 /* LexicalUnitListScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
