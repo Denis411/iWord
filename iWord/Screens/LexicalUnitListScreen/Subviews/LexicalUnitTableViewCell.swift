@@ -14,11 +14,17 @@
 import UIKit
 import SnapKit
 
-struct LexicalUnitCellInfo {
+struct LexicalUnitCellInfo: Hashable {
     let image: UIImage?
     let progressPercentage: Int8
     let unitOriginalValue: String
     let unitPrimaryTranslation: String
+    let isPinned: Bool
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(unitOriginalValue)
+        hasher.combine(unitPrimaryTranslation)
+    }
 }
 
 fileprivate let UNIT_IMAGE_VIEW_EDGES: CGFloat = 20.0
