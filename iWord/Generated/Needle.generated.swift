@@ -22,11 +22,14 @@ public func registerProviderFactories() {
 // MARK: - Providers
 
 private class RootScreenDependenciesac0a88b3c4e283ae5de9BaseProvider: RootScreenDependencies {
-    var navigationController: UINavigationController {
-        return rootComponent.navigationController
-    }
     var alertWithTextClosure: AlertWithTextClosure {
         return rootComponent.alertWithTextClosure
+    }
+    var errorAlert: ErrorAlert {
+        return rootComponent.errorAlert
+    }
+    var navigationController: UINavigationController {
+        return rootComponent.navigationController
     }
     var secondVC: UIViewController {
         return rootComponent.secondVC

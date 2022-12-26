@@ -16,11 +16,18 @@ import Foundation
 typealias FolderName = String
 
 final class FolderContainerImp: FolderContainer {
+    private let errorAlert: ErrorAlert
     private var folders: Set<Folder> = []
+
+    init(errorAlert: ErrorAlert) {
+        self.errorAlert = errorAlert
+    }
 
     func addFolder(with name: FolderName) {
         guard !doesFolderExist(folderName: name) else {
-            fatalError()
+            let message = "Sorry, folder named \(name) already exists."
+            errorAlert.presentAlert(with: message)
+            return
         }
 
         let newFolder = Folder(

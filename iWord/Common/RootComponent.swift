@@ -24,12 +24,21 @@ final class RootComponent: BootstrapComponent {
     }()
 }
 
-// MARK: - ViewControllers and navigation -
+// MARK: - Alerts -
 extension RootComponent {
     var alertWithTextClosure: AlertWithTextClosure {
         AlertWithTextClosureImp()
     }
 
+    var errorAlert: ErrorAlert {
+        shared {
+            ErrorAlertImp()
+        }
+    }
+}
+
+// MARK: - ViewControllers and navigation -
+extension RootComponent {
     var rootScreenComponent: RootScreenComponent {
         RootScreenComponent(parent: self)
     }
@@ -40,12 +49,5 @@ extension RootComponent {
     
     var thirdVC: UIViewController {
         UIViewController()
-    }
-}
-
-// MARK: - Error handling -
-extension RootComponent {
-    var errorAlert: ErrorAlert {
-        ErrorAlertImp()
     }
 }
