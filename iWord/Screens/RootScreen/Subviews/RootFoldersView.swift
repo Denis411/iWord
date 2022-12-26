@@ -15,7 +15,7 @@ import UIKit
 
 final class RootFolderView: CommonView {
     private let tableView = UITableView()
-    private var folderCellInfos: [RootFolderCellInfo] = []
+    private var folderCellInfos: [Folder] = []
     private var addFolderButton = UIButton()
 
     private var onCellTapAction: ((IndexPath) -> Void)?
@@ -28,7 +28,7 @@ final class RootFolderView: CommonView {
         configureAllViews()
     }
 
-    func setFolderCellInfos(_ cellInfos: [RootFolderCellInfo]) {
+    func setFolderCellInfos(_ cellInfos: [Folder]) {
         self.folderCellInfos = cellInfos
         tableView.reloadData()
     }

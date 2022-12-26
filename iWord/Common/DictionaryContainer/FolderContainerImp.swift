@@ -12,12 +12,14 @@
 // frameworks are governed by their own individual licenses.
 
 import Foundation
+import Combine
 
 typealias FolderName = String
 
 final class FolderContainerImp: FolderContainer {
     private let errorAlert: ErrorAlert
     private var folders: Set<Folder> = []
+    var folderModels = CurrentValueSubject<[Folder], Never>([])
 
     init(errorAlert: ErrorAlert) {
         self.errorAlert = errorAlert
@@ -38,7 +40,7 @@ final class FolderContainerImp: FolderContainer {
             isPinned: false
         )
 
-        folders.insert(newFolder)
+        folderModels.value.append(newFolder)
     }
 
     func removeFolder(with name: FolderName) {
@@ -46,7 +48,7 @@ final class FolderContainerImp: FolderContainer {
             fatalError()
         }
 
-        folders.forEach { folder in
+        folderModels.value.forEach { folder in
             if folder.folderName == name {
                 folders.remove(folder)
                 return
@@ -54,11 +56,12 @@ final class FolderContainerImp: FolderContainer {
         }
     }
 
-    func getAllFolders() -> [Folder] {
+    func loadFolderModelsFromDataBase() {
         #if DEBUG
-        return getFakeFolders()
+        let fakeFolderModels = getFakeFolders()
+        folderModels.value = fakeFolderModels
         #endif
-        return Array(folders)
+//      use data base layer to load existing folder models
     }
 
     func saveAllChanges() {

@@ -15,7 +15,7 @@ import UIKit
 import Combine
 
 protocol RootViewModel {
-    var folderModels: CurrentValueSubject<[RootFolderCellInfo], Never> { get }
+    var folderModels: CurrentValueSubject<[Folder], Never> { get }
     func loadAllFolders()
     func reactToTapOnCell(at index: IndexPath)
     func deleteCellModel(at index: IndexPath)
@@ -70,8 +70,8 @@ final class RootFoldersViewControllerImp: UIViewController {
     private func bind() {
         viewModel.folderModels
             .receive(on: RunLoop.main)
-            .sink { [unowned self] arrayOfFolderCells in
-                self.mainView.setFolderCellInfos(arrayOfFolderCells)
+            .sink { [unowned self] arrayOfFolders in
+                self.mainView.setFolderCellInfos(arrayOfFolders)
             }
             .store(in: &disposedBag)
     }

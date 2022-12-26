@@ -21,17 +21,20 @@ protocol RootRouter {
 }
 
 protocol FolderContainer {
+    var folderModels: CurrentValueSubject<[Folder], Never> { get }
     func addFolder(with name: FolderName)
     func removeFolder(with name: FolderName)
-    func getAllFolders() -> [Folder]
     func saveAllChanges()
+    func loadFolderModelsFromDataBase()
 }
 
 final class RootViewModelImp {
     private let router: RootRouter
     private let folderContainer: FolderContainer
     private let alertWithTextClosure: AlertWithTextClosure
-    var folderModels = CurrentValueSubject<[RootFolderCellInfo], Never>([])
+    var folderModels: CurrentValueSubject<[Folder], Never> {
+        folderContainer.folderModels
+    }
     
     init(
         router: RootRouter,
@@ -46,9 +49,7 @@ final class RootViewModelImp {
 
 extension RootViewModelImp: RootViewModel {
     func loadAllFolders() {
-        let allFolder = folderContainer.getAllFolders()
-        let allFolderModels = allFolder.map { $0.toRootFolderCellInfo() }
-        folderModels.send(allFolderModels)
+        folderContainer.loadFolderModelsFromDataBase()
     }
 
     func reactToTapOnCell(at index: IndexPath) {
