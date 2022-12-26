@@ -16,11 +16,11 @@ import Combine
 
 final class AlertWithTextClosure {
     func showAlert(on viewController: UIViewController, textFieldTextAction: @escaping (String?) -> Void) {
-        let alert = createAleft(textFieldTextAction: textFieldTextAction)
+        let alert = createAlet(textFieldTextAction: textFieldTextAction)
         viewController.present(alert, animated: true)
     }
     
-    private func createAleft(textFieldTextAction: @escaping (String?) -> Void) -> UIAlertController {
+    private func createAlet(textFieldTextAction: @escaping (String?) -> Void) -> UIAlertController {
         let alert = UIAlertController(title: "Enter Name For New Folder", message: nil, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = "Folder name"
