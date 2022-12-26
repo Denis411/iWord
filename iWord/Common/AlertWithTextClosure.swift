@@ -15,12 +15,13 @@ import UIKit
 import Combine
 
 final class AlertWithTextClosure {
-    func showAlert(on viewController: UIViewController, textFieldTextAction: @escaping (String?) -> Void) {
-        let alert = createAlet(textFieldTextAction: textFieldTextAction)
-        viewController.present(alert, animated: true)
+    func showAlert(textFieldTextAction: @escaping (String?) -> Void) {
+        let alert = createAlert(textFieldTextAction: textFieldTextAction)
+        let presentingScreenReference = getPresentingVC()
+        presentingScreenReference?.present(alert, animated: true)
     }
     
-    private func createAlet(textFieldTextAction: @escaping (String?) -> Void) -> UIAlertController {
+    private func createAlert(textFieldTextAction: @escaping (String?) -> Void) -> UIAlertController {
         let alert = UIAlertController(title: "Enter Name For New Folder", message: nil, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = "Folder name"
@@ -40,5 +41,15 @@ final class AlertWithTextClosure {
         alert.addAction(createAction)
         
         return alert
+    }
+
+    private func getPresentingVC() -> UIViewController? {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let sceneDelegate = windowScene.delegate as? SceneDelegate
+        else {
+            return nil
+        }
+
+        return sceneDelegate.window?.rootViewController
     }
 }
