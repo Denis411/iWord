@@ -37,7 +37,8 @@ final class FolderContainerImp: FolderContainer {
             numberOfItems: 0,
             progressPercentage: 0,
             dateOfCreation: Date(),
-            isPinned: false
+            isPinned: false,
+            isForwarded: false
         )
 
         folderModels.value.append(newFolder)
@@ -83,6 +84,7 @@ struct Folder: Hashable {
     let progressPercentage: Int8
     let dateOfCreation: Date
     let isPinned: Bool
+    let isForwarded: Bool
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(folderName)
@@ -96,7 +98,8 @@ fileprivate func getFakeFolders() -> [Folder] {
         numberOfItems: 0,
         progressPercentage: 0,
         dateOfCreation: Date(),
-        isPinned: Bool.random()
+        isPinned: Bool.random(),
+        isForwarded: false
     )
 
     return [singleFolder, singleFolder, singleFolder, singleFolder]

@@ -74,14 +74,3 @@ extension RootViewModelImp: RootViewModel {
         folderContainer.saveAllChanges()
     }
 }
-
-extension Folder {
-    func toRootFolderCellInfo() -> RootFolderCellInfo {
-        RootFolderCellInfo(
-            folderName: self.folderName,
-            numberOfItems: self.numberOfItems,
-            progressPercentage: self.progressPercentage,
-            dateOfCreation: self.dateOfCreation
-        )
-    }
-}
