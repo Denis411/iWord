@@ -25,6 +25,9 @@ private class RootScreenDependenciesac0a88b3c4e283ae5de9BaseProvider: RootScreen
     var navigationController: UINavigationController {
         return rootComponent.navigationController
     }
+    var alertWithTextClosure: AlertWithTextClosure {
+        return rootComponent.alertWithTextClosure
+    }
     var secondVC: UIViewController {
         return rootComponent.secondVC
     }

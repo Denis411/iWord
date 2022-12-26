@@ -15,6 +15,7 @@ import NeedleFoundation
 
 protocol RootScreenDependencies: Dependency {
     var navigationController: UINavigationController { get }
+    var alertWithTextClosure: AlertWithTextClosure { get }
     var secondVC: UIViewController { get }
     var thirdVC: UIViewController { get }
 }
@@ -23,7 +24,8 @@ final class RootScreenComponent: Component<RootScreenDependencies> {
     var viewModel: RootViewModel {
         RootViewModelImp(
             router: router,
-            folderContainer: folderContainer
+            folderContainer: folderContainer,
+            alertWithTextClosure: dependency.alertWithTextClosure
         )
     }
     

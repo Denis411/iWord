@@ -30,14 +30,17 @@ protocol FolderContainer {
 final class RootViewModelImp {
     private let router: RootRouter
     private let folderContainer: FolderContainer
+    private let alertWithTextClosure: AlertWithTextClosure
     var folderModels = CurrentValueSubject<[RootFolderCellInfo], Never>([])
     
     init(
         router: RootRouter,
-        folderContainer: FolderContainer
+        folderContainer: FolderContainer,
+        alertWithTextClosure: AlertWithTextClosure
     ) {
         self.router = router
         self.folderContainer = folderContainer
+        self.alertWithTextClosure = alertWithTextClosure
     }
 }
 
@@ -57,8 +60,13 @@ extension RootViewModelImp: RootViewModel {
     }
 
     func addFolder() {
-        let name = "New folder"
-        folderContainer.addFolder(with: name)
+        alertWithTextClosure.showAlert { [unowned self] enteredText in
+            guard let enteredText = enteredText else {
+                return
+            }
+
+            self.folderContainer.addFolder(with: enteredText)
+        }
     }
 
     func saveAllChanges() {

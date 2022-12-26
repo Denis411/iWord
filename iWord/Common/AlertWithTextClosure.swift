@@ -14,7 +14,11 @@
 import UIKit
 import Combine
 
-final class AlertWithTextClosure {
+protocol AlertWithTextClosure {
+    func showAlert(textFieldTextAction: @escaping (String?) -> Void)
+}
+
+final class AlertWithTextClosureImp: AlertWithTextClosure {
     func showAlert(textFieldTextAction: @escaping (String?) -> Void) {
         let alert = createAlert(textFieldTextAction: textFieldTextAction)
         let presentingScreenReference = getPresentingVC()

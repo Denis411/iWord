@@ -26,6 +26,10 @@ final class RootComponent: BootstrapComponent {
 
 // MARK: - ViewControllers and navigation -
 extension RootComponent {
+    var alertWithTextClosure: AlertWithTextClosure {
+        AlertWithTextClosureImp()
+    }
+
     var rootScreenComponent: RootScreenComponent {
         RootScreenComponent(parent: self)
     }
