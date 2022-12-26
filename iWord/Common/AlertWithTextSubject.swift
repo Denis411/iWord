@@ -15,13 +15,12 @@ import UIKit
 import Combine
 
 final class AlertWithTextSubject {
-    
-    func showAlert(on viewController: UIViewController, textPublisher: PassthroughSubject<String,Never>) {
-        let alert = createAleft(textPublisher: textPublisher)
+    func showAlert(on viewController: UIViewController, textFieldTextAction: @escaping (String?) -> Void) {
+        let alert = createAleft(textFieldTextAction: textFieldTextAction)
         viewController.present(alert, animated: true)
     }
     
-    private func createAleft(textPublisher: PassthroughSubject<String,Never>) -> UIAlertController {
+    private func createAleft(textFieldTextAction: @escaping (String?) -> Void) -> UIAlertController {
         let alert = UIAlertController(title: "Enter Name For New Folder", message: nil, preferredStyle: .alert)
         alert.addTextField { textField in
             textField.placeholder = "Folder name"
@@ -30,10 +29,11 @@ final class AlertWithTextSubject {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         let createAction = UIAlertAction(title: "Create", style: .default) { action in
             guard let name = alert.textFields?.first?.text else {
+                textFieldTextAction(nil)
                 return
             }
             
-            textPublisher.send(name)
+            textFieldTextAction(name)
         }
         
         alert.addAction(cancelAction)
