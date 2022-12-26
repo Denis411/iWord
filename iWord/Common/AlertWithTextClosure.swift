@@ -14,7 +14,7 @@
 import UIKit
 import Combine
 
-final class AlertWithTextSubject {
+final class AlertWithTextClosure {
     func showAlert(on viewController: UIViewController, textFieldTextAction: @escaping (String?) -> Void) {
         let alert = createAleft(textFieldTextAction: textFieldTextAction)
         viewController.present(alert, animated: true)
