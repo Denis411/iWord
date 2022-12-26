@@ -54,7 +54,6 @@ extension FolderTableViewCell {
         addSubviews()
         setAllConstraints()
         configureAllView()
-        configureAllView()
     }
     
     private func addSubviews() {
