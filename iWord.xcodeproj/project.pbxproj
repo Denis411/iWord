@@ -96,6 +96,13 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		8D29A97E29597A2900EBF0F1 /* LixicalUnitListScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LixicalUnitListScreen;
+			sourceTree = "<group>";
+		};
 		8D5DD2E72934FA0100C7A114 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				8D70A163293903D4000AAC24 /* FolderListScreen */,
+				8D29A97E29597A2900EBF0F1 /* LixicalUnitListScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
