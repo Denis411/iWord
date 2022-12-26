@@ -140,12 +140,12 @@
 		8D70A162293903BE000AAC24 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				8D70A163293903D4000AAC24 /* RootScreen */,
+				8D70A163293903D4000AAC24 /* FolderListScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		8D70A163293903D4000AAC24 /* RootScreen */ = {
+		8D70A163293903D4000AAC24 /* FolderListScreen */ = {
 			isa = PBXGroup;
 			children = (
 				8D70A1C0293C6B2C000AAC24 /* Subviews */,
@@ -154,7 +154,7 @@
 				8D70A1BC293C62A9000AAC24 /* RootViewModel.swift */,
 				8D70A1BE293C6382000AAC24 /* RootScreenComponent.swift */,
 			);
-			path = RootScreen;
+			path = FolderListScreen;
 			sourceTree = "<group>";
 		};
 		8D70A1C0293C6B2C000AAC24 /* Subviews */ = {
