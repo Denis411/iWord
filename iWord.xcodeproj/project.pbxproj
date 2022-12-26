@@ -86,9 +86,10 @@
 		8D10D052293F83030097916B /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				8DA550B42936468A00490835 /* RootComponent.swift */,
+				8D29A98029597B3100EBF0F1 /* RootComponent */,
+				8D29A97F29597B1B00EBF0F1 /* Routers */,
 				8DAF4EA02950A2DC00C066AA /* CommonSubviews */,
-				8DAF4EA32950AC6B00C066AA /* DictionaryContainer */,
+				8DAF4EA32950AC6B00C066AA /* DictionaryContainers */,
 				8D10D050293F82E20097916B /* Logger.swift */,
 				8D2E00592940E3B2001EF42C /* AlertWithTextClosure.swift */,
 				8D29A9702953593500EBF0F1 /* ErrorAlert.swift */,
@@ -101,6 +102,22 @@
 			children = (
 			);
 			path = LixicalUnitListScreen;
+			sourceTree = "<group>";
+		};
+		8D29A97F29597B1B00EBF0F1 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				8D70A1BA293C610A000AAC24 /* MainRouter.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		8D29A98029597B3100EBF0F1 /* RootComponent */ = {
+			isa = PBXGroup;
+			children = (
+				8DA550B42936468A00490835 /* RootComponent.swift */,
+			);
+			path = RootComponent;
 			sourceTree = "<group>";
 		};
 		8D5DD2E72934FA0100C7A114 = {
@@ -158,7 +175,6 @@
 			children = (
 				8D70A1C0293C6B2C000AAC24 /* Subviews */,
 				8D5DD2F72934FA0100C7A114 /* RootFoldersViewControllerImp.swift */,
-				8D70A1BA293C610A000AAC24 /* MainRouter.swift */,
 				8D70A1BC293C62A9000AAC24 /* RootViewModel.swift */,
 				8D70A1BE293C6382000AAC24 /* RootScreenComponent.swift */,
 			);
@@ -190,13 +206,13 @@
 			path = CommonSubviews;
 			sourceTree = "<group>";
 		};
-		8DAF4EA32950AC6B00C066AA /* DictionaryContainer */ = {
+		8DAF4EA32950AC6B00C066AA /* DictionaryContainers */ = {
 			isa = PBXGroup;
 			children = (
 				8DAF4EA42950AC9D00C066AA /* FolderContainerImp.swift */,
 				8D29A96E2953488300EBF0F1 /* LexicalUnitContainerImp.swift */,
 			);
-			path = DictionaryContainer;
+			path = DictionaryContainers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
