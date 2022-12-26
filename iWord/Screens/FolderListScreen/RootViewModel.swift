@@ -14,7 +14,7 @@
 import UIKit
 import Combine
 
-protocol RootRouter {
+protocol MainRouter {
     func routeToSecondVC(animated: Bool)
     func routeToThirdVC(animated: Bool)
     func dismissCurrentViewController(animated: Bool)
@@ -29,7 +29,7 @@ protocol FolderContainer {
 }
 
 final class RootViewModelImp {
-    private let router: RootRouter
+    private let router: MainRouter
     private let folderContainer: FolderContainer
     private let alertWithTextClosure: AlertWithTextClosure
     var folderModels: CurrentValueSubject<[Folder], Never> {
@@ -37,7 +37,7 @@ final class RootViewModelImp {
     }
     
     init(
-        router: RootRouter,
+        router: MainRouter,
         folderContainer: FolderContainer,
         alertWithTextClosure: AlertWithTextClosure
     ) {

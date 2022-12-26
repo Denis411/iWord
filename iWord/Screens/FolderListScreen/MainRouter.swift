@@ -14,7 +14,7 @@
 import Foundation
 import UIKit
 
-final class RootRouterImp: RootRouter {
+final class MainRouterImp: MainRouter {
     private let navigationController: UINavigationController
     private let secondVC: UIViewController
     private let thirdVC: UIViewController

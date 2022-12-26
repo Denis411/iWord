@@ -30,8 +30,8 @@ final class RootScreenComponent: Component<RootScreenDependencies> {
         )
     }
     
-    private var router: RootRouter {
-        RootRouterImp(navigationController: dependency.navigationController,
+    private var router: MainRouter {
+        MainRouterImp(navigationController: dependency.navigationController,
                       secondVC: dependency.secondVC,
                       thirdVC: dependency.thirdVC)
     }
