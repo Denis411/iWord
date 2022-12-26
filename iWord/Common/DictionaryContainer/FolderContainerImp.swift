@@ -18,7 +18,6 @@ typealias FolderName = String
 
 final class FolderContainerImp: FolderContainer {
     private let errorAlert: ErrorAlert
-    private var folders: Set<Folder> = []
     var folderModels = CurrentValueSubject<[Folder], Never>([])
 
     init(errorAlert: ErrorAlert) {
@@ -29,6 +28,7 @@ final class FolderContainerImp: FolderContainer {
         guard !doesFolderExist(folderName: name) else {
             let message = "Sorry, folder named \(name) already exists."
             errorAlert.presentAlert(with: message)
+            Log.error("You tried to add a folder with taken name")
             return
         }
 
@@ -45,16 +45,14 @@ final class FolderContainerImp: FolderContainer {
     }
 
     func removeFolder(with name: FolderName) {
-        guard doesFolderExist(folderName: name) else {
+        let index = folderModels.value.firstIndex { $0.folderName == name }
+
+        guard let index = index else {
+            Log.error("You tried to remove a non-existing folder")
             fatalError()
         }
 
-        folderModels.value.forEach { folder in
-            if folder.folderName == name {
-                folders.remove(folder)
-                return
-            }
-        }
+        folderModels.value.remove(at: index)
     }
 
     func loadFolderModelsFromDataBase() {
@@ -72,7 +70,7 @@ final class FolderContainerImp: FolderContainer {
 
 extension FolderContainerImp {
     private func doesFolderExist(folderName: FolderName) -> Bool {
-        folders.contains { folder in
+        folderModels.value.contains { folder in
             folder.folderName == folderName
         }
     }
@@ -88,6 +86,7 @@ struct Folder: Hashable {
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(folderName)
+        hasher.combine(isForwarded)
     }
 }
 
