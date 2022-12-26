@@ -13,6 +13,7 @@
 		8D29A96F2953488300EBF0F1 /* LexicalUnitContainerImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D29A96E2953488300EBF0F1 /* LexicalUnitContainerImp.swift */; };
 		8D29A9712953593500EBF0F1 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D29A9702953593500EBF0F1 /* ErrorAlert.swift */; };
 		8D29A98329597D4100EBF0F1 /* LexicalUnitListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D29A98229597D4100EBF0F1 /* LexicalUnitListViewController.swift */; };
+		8D29A98529597DA100EBF0F1 /* LexicalUnitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D29A98429597DA100EBF0F1 /* LexicalUnitListView.swift */; };
 		8D2E005A2940E3B2001EF42C /* AlertWithTextClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2E00592940E3B2001EF42C /* AlertWithTextClosure.swift */; };
 		8D5DD2F42934FA0100C7A114 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD2F32934FA0100C7A114 /* AppDelegate.swift */; };
 		8D5DD2F62934FA0100C7A114 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD2F52934FA0100C7A114 /* SceneDelegate.swift */; };
@@ -36,6 +37,7 @@
 		8D29A96E2953488300EBF0F1 /* LexicalUnitContainerImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitContainerImp.swift; sourceTree = "<group>"; };
 		8D29A9702953593500EBF0F1 /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		8D29A98229597D4100EBF0F1 /* LexicalUnitListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitListViewController.swift; sourceTree = "<group>"; };
+		8D29A98429597DA100EBF0F1 /* LexicalUnitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitListView.swift; sourceTree = "<group>"; };
 		8D2E00592940E3B2001EF42C /* AlertWithTextClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWithTextClosure.swift; sourceTree = "<group>"; };
 		8D5DD2F02934FA0100C7A114 /* iWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5DD2F32934FA0100C7A114 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		8D29A98129597D0600EBF0F1 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				8D29A98429597DA100EBF0F1 /* LexicalUnitListView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DAF4EA52950AC9D00C066AA /* FolderContainerImp.swift in Sources */,
+				8D29A98529597DA100EBF0F1 /* LexicalUnitListView.swift in Sources */,
 				8DB22C2229422DD900F629E4 /* RootFoldersView.swift in Sources */,
 				8D5DD2F82934FA0100C7A114 /* RootFoldersViewControllerImp.swift in Sources */,
 				8D29A98329597D4100EBF0F1 /* LexicalUnitListViewController.swift in Sources */,

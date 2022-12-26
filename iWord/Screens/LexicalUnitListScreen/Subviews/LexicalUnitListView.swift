@@ -13,9 +13,7 @@
 
 import UIKit
 
-class LexicalUnitListViewController: UIViewController {
+class LexicalUnitListView: UIView {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+
 }
