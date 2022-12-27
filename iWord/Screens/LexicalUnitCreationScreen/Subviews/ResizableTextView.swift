@@ -35,6 +35,10 @@ final class ResizableTextView: UITextView {
     }
 
     private func reactionToContentSizeChanging() {
+        if contentSize.height >= maximumHeight {
+            return
+        }
+
         heightConstraint?.isActive = false
 
         heightConstraint?.constant = contentSize.height
