@@ -17,6 +17,7 @@
 		8D29A98729597DF000EBF0F1 /* LexicalUnitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D29A98629597DF000EBF0F1 /* LexicalUnitTableViewCell.swift */; };
 		8D29A989295A9E5B00EBF0F1 /* LexcicalUnitScreenComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D29A988295A9E5B00EBF0F1 /* LexcicalUnitScreenComponent.swift */; };
 		8D29A98B295AA0E700EBF0F1 /* LexicalUnitViewModeImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D29A98A295AA0E700EBF0F1 /* LexicalUnitViewModeImp.swift */; };
+		8D29A98D295ADCF500EBF0F1 /* AddItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D29A98C295ADCF500EBF0F1 /* AddItemButton.swift */; };
 		8D2E005A2940E3B2001EF42C /* AlertWithTextClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2E00592940E3B2001EF42C /* AlertWithTextClosure.swift */; };
 		8D5DD2F42934FA0100C7A114 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD2F32934FA0100C7A114 /* AppDelegate.swift */; };
 		8D5DD2F62934FA0100C7A114 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD2F52934FA0100C7A114 /* SceneDelegate.swift */; };
@@ -44,6 +45,7 @@
 		8D29A98629597DF000EBF0F1 /* LexicalUnitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitTableViewCell.swift; sourceTree = "<group>"; };
 		8D29A988295A9E5B00EBF0F1 /* LexcicalUnitScreenComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexcicalUnitScreenComponent.swift; sourceTree = "<group>"; };
 		8D29A98A295AA0E700EBF0F1 /* LexicalUnitViewModeImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitViewModeImp.swift; sourceTree = "<group>"; };
+		8D29A98C295ADCF500EBF0F1 /* AddItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemButton.swift; sourceTree = "<group>"; };
 		8D2E00592940E3B2001EF42C /* AlertWithTextClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWithTextClosure.swift; sourceTree = "<group>"; };
 		8D5DD2F02934FA0100C7A114 /* iWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5DD2F32934FA0100C7A114 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				8DAF4EA12950A41500C066AA /* CommonView.swift */,
+				8D29A98C295ADCF500EBF0F1 /* AddItemButton.swift */,
 			);
 			path = CommonSubviews;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D29A98D295ADCF500EBF0F1 /* AddItemButton.swift in Sources */,
 				8D29A989295A9E5B00EBF0F1 /* LexcicalUnitScreenComponent.swift in Sources */,
 				8DAF4EA52950AC9D00C066AA /* FolderContainerImp.swift in Sources */,
 				8D29A98529597DA100EBF0F1 /* LexicalUnitListView.swift in Sources */,
