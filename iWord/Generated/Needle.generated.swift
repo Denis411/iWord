@@ -25,16 +25,18 @@ public func registerProviderFactories() {
 // MARK: - Providers
 
 private class LexicalUnitScreenDependenciesfecbfdfd5a0d1bb2a628BaseProvider: LexicalUnitScreenDependencies {
-
-
-    init() {
-
+    var errorAlert: ErrorAlert {
+        return rootComponent.errorAlert
+    }
+    private let rootComponent: RootComponent
+    init(rootComponent: RootComponent) {
+        self.rootComponent = rootComponent
     }
 }
 /// ^->RootComponent->LexicalUnitScreenComponent
 private class LexicalUnitScreenDependenciesfecbfdfd5a0d1bb2a628Provider: LexicalUnitScreenDependenciesfecbfdfd5a0d1bb2a628BaseProvider {
     init(component: NeedleFoundation.Scope) {
-        super.init()
+        super.init(rootComponent: component.parent as! RootComponent)
     }
 }
 private class RootScreenDependenciesac0a88b3c4e283ae5de9BaseProvider: RootScreenDependencies {

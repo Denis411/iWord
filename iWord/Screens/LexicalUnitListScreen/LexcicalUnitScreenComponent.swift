@@ -14,11 +14,25 @@
 import NeedleFoundation
 
 protocol LexicalUnitScreenDependencies: Dependency {
-
+//    var router: MainRouter { get }
+    var errorAlert: ErrorAlert { get }
 }
 
 final class LexicalUnitScreenComponent: Component<LexicalUnitScreenDependencies> {
     var lexicalUnitListViewController: LexicalUnitListViewController {
-        LexicalUnitListViewController()
+        LexicalUnitListViewController(viewModel: lexicalViewModel)
+    }
+
+    private var lexicalViewModel: LexicalUnitViewModel {
+        LexicalUnitViewModelImp(
+//            router: dependency.router,
+            lexicalUnitContainer: lexicalUnitContainer
+        )
+    }
+
+    private var lexicalUnitContainer: LexicalUnitContainer {
+        LexicalUnitContainerImp(errorAlert: dependency.errorAlert,
+//    TODO: correct mechanism of inserting the nameersc
+                                workingFolderName: "None")
     }
 }

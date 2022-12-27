@@ -12,9 +12,21 @@
 // frameworks are governed by their own individual licenses.
 
 import UIKit
+import Combine
 
 class LexicalUnitListViewController: UIViewController {
-    var mainView: LexicalUnitListView { view as! LexicalUnitListView }
+    private var mainView: LexicalUnitListView { view as! LexicalUnitListView }
+    private var viewModel: LexicalUnitViewModel
+    private var disposedBag = Set<AnyCancellable>()
+
+    init(viewModel: LexicalUnitViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func loadView() {
         view = LexicalUnitListView()
@@ -22,5 +34,30 @@ class LexicalUnitListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.loadUnitsFromDataBase()
+        bind()
+    }
+
+    private func bind() {
+        viewModel.unitModels
+            .receive(on: RunLoop.main)
+            .sink { [unowned self] lexicalUnitModels in
+//              TODO: - Transformation should be in VM
+                let lexicalUnitCellInfo = lexicalUnitModels.map { $0.toLexicalUnitCellInfo() }
+                self.mainView.updateCellInfo(with: lexicalUnitCellInfo)
+            }
+            .store(in: &disposedBag)
+    }
+}
+
+fileprivate extension LexicalUnit {
+    func toLexicalUnitCellInfo() -> LexicalUnitCellInfo {
+        LexicalUnitCellInfo(
+            image: nil,
+            progressPercentage: self.progressPercentage,
+            originalLexicalUnit: self.originalLexicalUnit,
+            primaryTranslation: self.primaryTranslation,
+            translations: self.translations,
+            isPinned: self.isPinned)
     }
 }

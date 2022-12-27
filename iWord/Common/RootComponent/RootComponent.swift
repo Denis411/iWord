@@ -25,14 +25,12 @@ final class RootComponent: BootstrapComponent {
     }()
 
     var router: MainRouter {
-        shared {
         let secondVC = lexicalUnitScreenComponent.lexicalUnitListViewController
         let thirdVC = UIViewController()
 
         return MainRouterImp(navigationController: self.navigationController,
                       secondVC: secondVC,
                       thirdVC: thirdVC)
-        }
     }
 }
 
