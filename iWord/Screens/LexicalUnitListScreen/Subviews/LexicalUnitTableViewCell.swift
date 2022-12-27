@@ -14,16 +14,25 @@
 import UIKit
 import SnapKit
 
+struct PrimaryTranslation {
+    let partOfSpeech: PartOfSpeech
+    let translation: String
+}
+
 struct LexicalUnitCellInfo: Hashable {
     let image: UIImage?
-    let progressPercentage: Int8
-    let unitOriginalValue: String
-    let unitPrimaryTranslation: String
+    let progressPercentage: UInt8
+    let originalLexicalUnit: String
+    let primaryTranslation: PrimaryTranslation
+    let translations: [PartOfSpeech: [String]]
     let isPinned: Bool
 
+    static func == (lhs: LexicalUnitCellInfo, rhs: LexicalUnitCellInfo) -> Bool {
+        lhs.originalLexicalUnit == rhs.originalLexicalUnit
+    }
+
     func hash(into hasher: inout Hasher) {
-        hasher.combine(unitOriginalValue)
-        hasher.combine(unitPrimaryTranslation)
+        hasher.combine(originalLexicalUnit)
     }
 }
 
@@ -55,8 +64,8 @@ class LexicalUnitTableViewCell: UITableViewCell {
     public func setUpCellData(with model: LexicalUnitCellInfo) {
         self.unitImageView.image = model.image
         self.progressView.text = String(model.progressPercentage)
-        self.unitPrimaryTranslation.text = model.unitPrimaryTranslation
-        self.unitOriginalValue.text = model.unitOriginalValue
+        self.unitPrimaryTranslation.text = model.primaryTranslation.translation
+        self.unitOriginalValue.text = model.originalLexicalUnit
     }
 }
 
