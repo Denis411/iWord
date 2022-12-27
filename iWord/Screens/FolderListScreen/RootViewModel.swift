@@ -15,7 +15,7 @@ import UIKit
 import Combine
 
 protocol MainRouter {
-    func routeToSecondVC(animated: Bool)
+    func routeToLexicalUnitListViewController(animated: Bool)
     func routeToThirdVC(animated: Bool)
     func dismissCurrentViewController(animated: Bool)
 }
@@ -53,7 +53,7 @@ extension RootViewModelImp: RootViewModel {
     }
 
     func reactToTapOnCell(at index: IndexPath) {
-        router.routeToSecondVC(animated: false)
+        router.routeToLexicalUnitListViewController(animated: false)
     }
 
     func deleteCellModel(at index: IndexPath) {
