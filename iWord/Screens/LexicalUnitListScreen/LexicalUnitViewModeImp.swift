@@ -52,6 +52,7 @@ extension LexicalUnitViewModelImp: LexicalUnitViewModel {
         let newLexicalUnit = LexicalUnit(
             originalLexicalUnit: "Original work",
             primaryTranslation: primaryTranslation,
+            description: "Description",
             translations: [.noun: ["None"]],
             isPinned: false,
             isFavorite: false,

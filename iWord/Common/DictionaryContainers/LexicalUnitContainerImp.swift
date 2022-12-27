@@ -79,6 +79,7 @@ extension LexicalUnitContainerImp {
 struct LexicalUnit: Equatable, Hashable {
     let originalLexicalUnit: String
     let primaryTranslation: PrimaryTranslation
+    let description: String
     let translations: [PartOfSpeech: [String]]
     let isPinned: Bool
     let isFavorite: Bool
@@ -133,6 +134,7 @@ fileprivate func getFakeLexicalUnitModels() -> [LexicalUnit] {
     let singleLexicalUnitModel = LexicalUnit(
         originalLexicalUnit: "Cat",
         primaryTranslation: primaryTranslation,
+        description: "Description",
         translations: translations,
         isPinned: Bool.random(),
         isFavorite: Bool.random(),
