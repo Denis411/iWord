@@ -15,6 +15,7 @@ import Foundation
 import Combine
 
 protocol LexicalUnitContainer {
+    var lexicalUnitModels: CurrentValueSubject<[LexicalUnit], Never> { get }
     func loadAllUnitModelsFromDataBase()
     func deleteUnitModel(at index: Int)
     func deleteUnitModels(at indexes: [Int])
@@ -73,6 +74,7 @@ extension LexicalUnitContainerImp {
 
 struct LexicalUnit {
     let originalLexicalUnit: String
+    let primaryTranslation: PrimaryTranslation
     let translations: [PartOfSpeech: [String]]
     let isPinned: Bool
     let isFavorite: Bool
@@ -112,10 +114,13 @@ enum TryResults {
 }
 
 fileprivate func getFakeLexicalUnitModels() -> [LexicalUnit] {
+    let primaryTranslation = PrimaryTranslation(partOfSpeech: .noun, translation: "猫")
     let translations: [PartOfSpeech : [String]] = [ .noun : ["猫", "恶妇"]]
     let tries: [Exercise : TryResults] = [.reading : .success(times: 5)]
+    
     let singleLexicalUnitModel = LexicalUnit(
         originalLexicalUnit: "Cat",
+        primaryTranslation: primaryTranslation,
         translations: translations,
         isPinned: Bool.random(),
         isFavorite: Bool.random(),
@@ -126,8 +131,5 @@ fileprivate func getFakeLexicalUnitModels() -> [LexicalUnit] {
         tries: tries
     )
 
-    return [singleLexicalUnitModel,
-            singleLexicalUnitModel,
-            singleLexicalUnitModel,
-            singleLexicalUnitModel]
+    return [singleLexicalUnitModel]
 }
