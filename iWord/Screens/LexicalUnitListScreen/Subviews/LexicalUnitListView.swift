@@ -26,12 +26,22 @@ final class LexicalUnitListView: CommonView {
         createDiffableDataSource()
     }()
 
+    private var onDeleteUnitAction: ((IndexPath) -> Void)?
+
     override func setUpUI() {
         addAllSubviews()
         addAllConstraints()
         configureAllSubviews()
     }
 }
+
+// set actions
+extension LexicalUnitListView {
+    func setOnDeleteUnitAction(_ action: @escaping (IndexPath) -> Void) {
+        self.onDeleteUnitAction = action
+    }
+}
+
 
 extension LexicalUnitListView {
     private func addAllSubviews() {
@@ -66,7 +76,14 @@ extension LexicalUnitListView {
 
 // UITableView
 extension LexicalUnitListView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let contextualAction = UIContextualAction(style: .normal, title: "Delete") { [unowned self] _ , view, completionHandler in
+            self.onDeleteUnitAction?(indexPath)
+            completionHandler(true)
+        }
 
+        return UISwipeActionsConfiguration(actions: [contextualAction])
+    }
 }
 
 // MARK: - DiffableDataSource -

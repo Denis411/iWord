@@ -34,6 +34,7 @@ class LexicalUnitListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setMainViewActions()
         bind()
     }
 
@@ -45,6 +46,12 @@ class LexicalUnitListViewController: UIViewController {
     func loadUnitsFromDataBase(for folder: FolderName) {
         viewModel.loadUnitsFromDataBase(for: folder)
         self.title = folder
+    }
+
+    private func setMainViewActions() {
+        mainView.setOnDeleteUnitAction { [unowned self] indexPath in
+            self.viewModel.deleteLexicalUnit(at: indexPath)
+        }
     }
 
     private func bind() {

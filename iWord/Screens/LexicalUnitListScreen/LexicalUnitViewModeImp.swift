@@ -17,6 +17,7 @@ import Combine
 protocol LexicalUnitViewModel {
     var unitModels: CurrentValueSubject<[LexicalUnit], Never> { get }
     func loadUnitsFromDataBase(for folder: FolderName)
+    func deleteLexicalUnit(at index: IndexPath)
 }
 
 final class LexicalUnitViewModelImp {
@@ -38,5 +39,9 @@ final class LexicalUnitViewModelImp {
 extension LexicalUnitViewModelImp: LexicalUnitViewModel {
     func loadUnitsFromDataBase(for folder: FolderName) {
         lexicalUnitContainer.loadUnitsFromDataBase(for: folder)
+    }
+
+    func deleteLexicalUnit(at index: IndexPath) {
+        lexicalUnitContainer.deleteUnitModel(at: index.row)
     }
 }
