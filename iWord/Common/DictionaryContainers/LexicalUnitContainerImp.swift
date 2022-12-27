@@ -16,7 +16,7 @@ import Combine
 
 protocol LexicalUnitContainer {
     var lexicalUnitModels: CurrentValueSubject<[LexicalUnit], Never> { get }
-    func loadAllUnitModelsFromDataBase()
+    func loadUnitsFromDataBase(for folder: FolderName)
     func deleteUnitModel(at index: Int)
     func deleteUnitModels(at indexes: [Int])
     func appendUnitModel(unit: LexicalUnit)
@@ -25,18 +25,15 @@ protocol LexicalUnitContainer {
 
 final class LexicalUnitContainerImp: LexicalUnitContainer {
     private let errorAlert: ErrorAlert
-    private let workingFolderName: FolderName
+    private var workingFolderName: FolderName = ""
     var lexicalUnitModels = CurrentValueSubject<[LexicalUnit], Never>([])
 
-    init(
-        errorAlert: ErrorAlert,
-        workingFolderName: FolderName
-    ) {
+    init(errorAlert: ErrorAlert) {
         self.errorAlert = errorAlert
-        self.workingFolderName = workingFolderName
     }
 
-    func loadAllUnitModelsFromDataBase() {
+    func loadUnitsFromDataBase(for folder: FolderName) {
+        workingFolderName = folder
         #if DEBUG
         let fakeUnitModels = getFakeLexicalUnitModels()
         lexicalUnitModels.value = fakeUnitModels

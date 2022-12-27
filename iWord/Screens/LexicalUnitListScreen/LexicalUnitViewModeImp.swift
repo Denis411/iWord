@@ -16,7 +16,7 @@ import Combine
 
 protocol LexicalUnitViewModel {
     var unitModels: CurrentValueSubject<[LexicalUnit], Never> { get }
-    func loadUnitsFromDataBase()
+    func loadUnitsFromDataBase(for folder: FolderName)
 }
 
 final class LexicalUnitViewModelImp {
@@ -36,8 +36,7 @@ final class LexicalUnitViewModelImp {
 }
 
 extension LexicalUnitViewModelImp: LexicalUnitViewModel {
-    func loadUnitsFromDataBase() {
-        lexicalUnitContainer.loadAllUnitModelsFromDataBase()
+    func loadUnitsFromDataBase(for folder: FolderName) {
+        lexicalUnitContainer.loadUnitsFromDataBase(for: folder)
     }
-
 }

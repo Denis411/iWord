@@ -15,7 +15,7 @@ import UIKit
 import Combine
 
 protocol MainRouter {
-    func routeToLexicalUnitListViewController(animated: Bool)
+    func routeToLexicalUnitListViewController(for folder: FolderName, animated: Bool)
     func routeToThirdVC(animated: Bool)
     func dismissCurrentViewController(animated: Bool)
 }
@@ -53,7 +53,8 @@ extension RootViewModelImp: RootViewModel {
     }
 
     func reactToTapOnCell(at index: IndexPath) {
-        router.routeToLexicalUnitListViewController(animated: false)
+        let folderName = folderModels.value[index.row].folderName
+        router.routeToLexicalUnitListViewController(for: folderName, animated: true)
     }
 
     func deleteCellModel(at index: IndexPath) {

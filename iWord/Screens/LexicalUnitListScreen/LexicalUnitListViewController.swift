@@ -34,8 +34,11 @@ class LexicalUnitListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.loadUnitsFromDataBase()
         bind()
+    }
+
+    func loadUnitsFromDataBase(for folder: FolderName) {
+        viewModel.loadUnitsFromDataBase(for: folder)
     }
 
     private func bind() {

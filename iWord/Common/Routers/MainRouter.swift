@@ -16,19 +16,20 @@ import UIKit
 
 final class MainRouterImp: MainRouter {
     private let navigationController: UINavigationController
-    private let lexicalUnitListViewController: UIViewController
+    private let lexicalUnitListViewController: LexicalUnitListViewController
     private let thirdVC: UIViewController
     
     init(navigationController: UINavigationController,
-         secondVC: UIViewController,
+         secondVC: LexicalUnitListViewController,
          thirdVC: UIViewController) {
         self.navigationController = navigationController
         self.lexicalUnitListViewController = secondVC
         self.thirdVC = thirdVC
     }
     
-    func routeToLexicalUnitListViewController(animated: Bool) {
+    func routeToLexicalUnitListViewController(for folder: FolderName, animated: Bool) {
         navigationController.pushViewController(lexicalUnitListViewController, animated: animated)
+        lexicalUnitListViewController.loadUnitsFromDataBase(for: folder)
     }
     
     func routeToThirdVC(animated: Bool) {

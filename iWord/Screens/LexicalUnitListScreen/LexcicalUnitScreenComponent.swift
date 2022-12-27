@@ -31,8 +31,6 @@ final class LexicalUnitScreenComponent: Component<LexicalUnitScreenDependencies>
     }
 
     private var lexicalUnitContainer: LexicalUnitContainer {
-        LexicalUnitContainerImp(errorAlert: dependency.errorAlert,
-//    TODO: correct mechanism of inserting the nameersc
-                                workingFolderName: "None")
+        LexicalUnitContainerImp(errorAlert: dependency.errorAlert)
     }
 }
