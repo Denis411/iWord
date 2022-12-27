@@ -30,6 +30,14 @@ final class AddItemButton: UIButton {
     func setAction(_ action: @escaping EmptyClosure) {
         self.onTapAction = action
     }
+
+    func addConstraints() {
+        self.snp.makeConstraints { make in
+            make.height.width.equalTo(50)
+            make.right.equalToSuperview().inset(50)
+            make.bottom.equalToSuperview().inset(50)
+        }
+    }
 }
 
 extension AddItemButton {

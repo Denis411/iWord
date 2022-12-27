@@ -20,6 +20,7 @@ enum Section {
 
 final class LexicalUnitListView: CommonView {
     private let tableView = UITableView()
+    private var addLexicalUnitButton = AddItemButton()
     //  TODO: - Use in a separated class if the file longer than 300 lines -
     private lazy var tableViewDiffableDataSource: UITableViewDiffableDataSource<Section,LexicalUnitCellInfo> = {
         createDiffableDataSource()
@@ -35,10 +36,12 @@ final class LexicalUnitListView: CommonView {
 extension LexicalUnitListView {
     private func addAllSubviews() {
         self.addSubview(tableView)
+        self.addSubview(addLexicalUnitButton)
     }
 
     private func addAllConstraints() {
         addTableViewConstraints()
+        addLexicalUnitButton.addConstraints()
     }
 
     private func addTableViewConstraints() {

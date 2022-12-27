@@ -56,20 +56,12 @@ extension RootFolderView {
     
     private func setAllConstraints() {
         setTableViewConstraints()
-        setAddFolderButtonConstraints()
+        addFolderButton.addConstraints()
     }
     
     private func setTableViewConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-        }
-    }
-
-    private func setAddFolderButtonConstraints() {
-        addFolderButton.snp.makeConstraints { make in
-            make.height.width.equalTo(50)
-            make.right.equalToSuperview().inset(50)
-            make.bottom.equalToSuperview().inset(50)
         }
     }
     
