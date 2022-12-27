@@ -15,6 +15,7 @@ import Foundation
 import NeedleFoundation
 import UIKit
 
+// MARK: - Navigation -
 final class RootComponent: BootstrapComponent {
     var navigationController: UINavigationController = {
         let navigationController = UINavigationController()
@@ -22,6 +23,17 @@ final class RootComponent: BootstrapComponent {
         navigationController.isToolbarHidden = true
         return navigationController
     }()
+
+    var router: MainRouter {
+        shared {
+        let secondVC = lexicalUnitScreenComponent.lexicalUnitListViewController
+        let thirdVC = UIViewController()
+
+        return MainRouterImp(navigationController: self.navigationController,
+                      secondVC: secondVC,
+                      thirdVC: thirdVC)
+        }
+    }
 }
 
 // MARK: - Alerts -
@@ -37,17 +49,13 @@ extension RootComponent {
     }
 }
 
-// MARK: - ViewControllers and navigation -
+// MARK: - Screens -
 extension RootComponent {
     var rootScreenComponent: RootScreenComponent {
         RootScreenComponent(parent: self)
     }
-    
-    var secondVC: UIViewController {
-        UIViewController()
-    }
-    
-    var thirdVC: UIViewController {
-        UIViewController()
+
+    var lexicalUnitScreenComponent: LexicalUnitScreenComponent {
+        LexicalUnitScreenComponent(parent: self)
     }
 }

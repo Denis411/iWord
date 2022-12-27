@@ -10,6 +10,9 @@ private let needleDependenciesHash : String? = nil
 // MARK: - Registration
 
 public func registerProviderFactories() {
+    __DependencyProviderRegistry.instance.registerDependencyProviderFactory(for: "^->RootComponent->LexicalUnitScreenComponent") { component in
+        return LexicalUnitScreenDependenciesfecbfdfd5a0d1bb2a628Provider(component: component)
+    }
     __DependencyProviderRegistry.instance.registerDependencyProviderFactory(for: "^->RootComponent->RootScreenComponent") { component in
         return RootScreenDependenciesac0a88b3c4e283ae5de9Provider(component: component)
     }
@@ -21,6 +24,19 @@ public func registerProviderFactories() {
 
 // MARK: - Providers
 
+private class LexicalUnitScreenDependenciesfecbfdfd5a0d1bb2a628BaseProvider: LexicalUnitScreenDependencies {
+
+
+    init() {
+
+    }
+}
+/// ^->RootComponent->LexicalUnitScreenComponent
+private class LexicalUnitScreenDependenciesfecbfdfd5a0d1bb2a628Provider: LexicalUnitScreenDependenciesfecbfdfd5a0d1bb2a628BaseProvider {
+    init(component: NeedleFoundation.Scope) {
+        super.init()
+    }
+}
 private class RootScreenDependenciesac0a88b3c4e283ae5de9BaseProvider: RootScreenDependencies {
     var alertWithTextClosure: AlertWithTextClosure {
         return rootComponent.alertWithTextClosure
@@ -31,11 +47,8 @@ private class RootScreenDependenciesac0a88b3c4e283ae5de9BaseProvider: RootScreen
     var navigationController: UINavigationController {
         return rootComponent.navigationController
     }
-    var secondVC: UIViewController {
-        return rootComponent.secondVC
-    }
-    var thirdVC: UIViewController {
-        return rootComponent.thirdVC
+    var router: MainRouter {
+        return rootComponent.router
     }
     private let rootComponent: RootComponent
     init(rootComponent: RootComponent) {

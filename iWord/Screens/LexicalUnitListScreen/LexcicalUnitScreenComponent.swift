@@ -1,4 +1,4 @@
-// Data of creation: 26/12/22
+// Data of creation: 27/12/22
 // Create by Denis Ulianov aka Денис Александрович Ульянов
 // Using Swift 5.0
 // Running on macOS 12.5
@@ -11,16 +11,14 @@
 // released under various Open-Source licenses. Use of those libraries and
 // frameworks are governed by their own individual licenses.
 
-import UIKit
+import NeedleFoundation
 
-class LexicalUnitListViewController: UIViewController {
-    var mainView: LexicalUnitListView { view as! LexicalUnitListView }
+protocol LexicalUnitScreenDependencies: Dependency {
 
-    override func loadView() {
-        view = LexicalUnitListView()
-    }
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+final class LexicalUnitScreenComponent: Component<LexicalUnitScreenDependencies> {
+    var lexicalUnitListViewController: LexicalUnitListViewController {
+        LexicalUnitListViewController()
     }
 }

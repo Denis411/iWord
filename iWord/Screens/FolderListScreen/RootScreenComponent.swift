@@ -17,23 +17,16 @@ protocol RootScreenDependencies: Dependency {
     var alertWithTextClosure: AlertWithTextClosure { get }
     var errorAlert: ErrorAlert { get }
     var navigationController: UINavigationController { get }
-    var secondVC: UIViewController { get }
-    var thirdVC: UIViewController { get }
+    var router: MainRouter { get }
 }
 
 final class RootScreenComponent: Component<RootScreenDependencies> {
     var viewModel: RootViewModel {
         RootViewModelImp(
-            router: router,
+            router: dependency.router,
             folderContainer: folderContainer,
             alertWithTextClosure: dependency.alertWithTextClosure
         )
-    }
-    
-    private var router: MainRouter {
-        MainRouterImp(navigationController: dependency.navigationController,
-                      secondVC: dependency.secondVC,
-                      thirdVC: dependency.thirdVC)
     }
 
     private var folderContainer: FolderContainer {
