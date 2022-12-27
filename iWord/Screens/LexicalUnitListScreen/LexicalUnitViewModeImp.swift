@@ -12,23 +12,32 @@
 // frameworks are governed by their own individual licenses.
 
 import Foundation
+import Combine
 
 protocol LexicalUnitViewModel {
-
+    var unitModels: CurrentValueSubject<[LexicalUnit], Never> { get }
+    func loadUnitsFromDataBase()
 }
 
-final class LexicalUnitViewModelImp: LexicalUnitViewModel {
-    private let router: MainRouter
+final class LexicalUnitViewModelImp {
+//    private let router: MainRouter
     private let lexicalUnitContainer: LexicalUnitContainer
-    private let alertWithTextClosure: AlertWithTextClosure
+    var unitModels: CurrentValueSubject<[LexicalUnit], Never> {
+        lexicalUnitContainer.lexicalUnitModels
+    }
 
     init(
-        router: MainRouter,
-        lexicalUnitContainer: LexicalUnitContainer,
-        alertWithTextClosure: AlertWithTextClosure
+//        router: MainRouter,
+        lexicalUnitContainer: LexicalUnitContainer
     ) {
-        self.router = router
+//        self.router = router
         self.lexicalUnitContainer = lexicalUnitContainer
-        self.alertWithTextClosure = alertWithTextClosure
     }
+}
+
+extension LexicalUnitViewModelImp: LexicalUnitViewModel {
+    func loadUnitsFromDataBase() {
+        lexicalUnitContainer.loadAllUnitModelsFromDataBase()
+    }
+
 }
