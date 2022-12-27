@@ -21,9 +21,9 @@ enum Section {
 final class LexicalUnitListView: CommonView {
     private let tableView = UITableView()
     //  TODO: - Use in a separated class if the file longer than 300 lines -
-    private var tableViewDiffableDataSource: UITableViewDiffableDataSource<Section,LexicalUnitCellInfo> {
+    private lazy var tableViewDiffableDataSource: UITableViewDiffableDataSource<Section,LexicalUnitCellInfo> = {
         createDiffableDataSource()
-    }
+    }()
 
     override func setUpUI() {
         addAllSubviews()
@@ -102,12 +102,15 @@ extension LexicalUnitListView {
         if tupleOfPinnedAndRegularModels.pinned == [] {
             snapshot.appendSections([.regular])
             snapshot.appendItems(tupleOfPinnedAndRegularModels.regular, toSection: .regular)
+            tableViewDiffableDataSource.apply(snapshot)
             return
         }
 
         snapshot.appendSections([.pinned, .regular])
         snapshot.appendItems(tupleOfPinnedAndRegularModels.pinned, toSection: .pinned)
         snapshot.appendItems(tupleOfPinnedAndRegularModels.regular, toSection: .regular)
+
+        tableViewDiffableDataSource.apply(snapshot)
     }
 
     private func separatePinedModels(from models: [LexicalUnitCellInfo]) -> (pinned: [LexicalUnitCellInfo], regular: [LexicalUnitCellInfo]) {
