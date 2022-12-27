@@ -18,6 +18,7 @@ final class LexicalUnitCreationView: CommonView {
     private let audioButtonsStackView = UIStackView()
     private let recordAudioButton = LexicalUnitCreationAudioButton()
     private let playAudioButton = LexicalUnitCreationAudioButton()
+    private let lexicalDescriptionTextView = ResizableTextView(maximumHeight: 90)
 
     override func setUpUI() {
         addAllSubviews()
@@ -40,11 +41,13 @@ extension LexicalUnitCreationView {
         self.addSubview(audioButtonsStackView)
         self.audioButtonsStackView.addArrangedSubview(recordAudioButton)
         self.audioButtonsStackView.addArrangedSubview(playAudioButton)
+        self.addSubview(lexicalDescriptionTextView)
     }
 
     private func setAllConstraints() {
         setResizableTextViewConstraints()
         setAudioButtonsStackViewConstraints()
+        setLexicalDescriptionConstraints()
     }
 
     private func setResizableTextViewConstraints() {
@@ -63,11 +66,22 @@ extension LexicalUnitCreationView {
         }
     }
 
+    private func setLexicalDescriptionConstraints() {
+        lexicalDescriptionTextView.snp.makeConstraints { make in
+            make.top.equalTo(audioButtonsStackView.snp.bottom).offset(20)
+            make.left.right.equalToSuperview().inset(40)
+        }
+    }
+
     private func configureAllSubviews() {
-        configureSelf()
         configureAudioButtonsStackView()
         configureRecordAudioButton()
         configurePlayAudioButton()
+        configureSelf()
+    }
+
+    private func configureResizableTextView() {
+
     }
 
     private func configureAudioButtonsStackView() {
@@ -90,5 +104,9 @@ extension LexicalUnitCreationView {
 
     private func configureSelf() {
         self.backgroundColor = .gray
+    }
+
+    private func configureLexicalDescriptionConstraints() {
+
     }
 }
