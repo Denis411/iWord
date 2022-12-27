@@ -37,8 +37,14 @@ class LexicalUnitListViewController: UIViewController {
         bind()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationController()
+    }
+
     func loadUnitsFromDataBase(for folder: FolderName) {
         viewModel.loadUnitsFromDataBase(for: folder)
+        self.title = folder
     }
 
     private func bind() {
@@ -52,6 +58,14 @@ class LexicalUnitListViewController: UIViewController {
             .store(in: &disposedBag)
     }
 }
+
+// MARK: - NavController logic -
+extension LexicalUnitListViewController {
+    private func setNavigationController() {
+        self.navigationController?.isNavigationBarHidden = false
+    }
+}
+
 
 fileprivate extension LexicalUnit {
     func toLexicalUnitCellInfo() -> LexicalUnitCellInfo {

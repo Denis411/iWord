@@ -48,6 +48,10 @@ final class RootFoldersViewControllerImp: UIViewController {
         bind()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        setNavigationController()
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         viewModel.saveAllChanges()
@@ -74,5 +78,12 @@ final class RootFoldersViewControllerImp: UIViewController {
                 self.mainView.setFolderCellInfos(arrayOfFolders)
             }
             .store(in: &disposedBag)
+    }
+}
+
+extension RootFoldersViewControllerImp {
+    private func setNavigationController() {
+        self.navigationController?.isNavigationBarHidden = false
+        self.title = "Your folders"
     }
 }
