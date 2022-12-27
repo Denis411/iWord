@@ -13,6 +13,28 @@
 
 import UIKit
 
-class LexicalUnitCreationView: UIView {
-    
+final class LexicalUnitCreationView: CommonView {
+    let resizableTextView = UITextView()
+
+    override func setUpUI() {
+        addAllSubviews()
+        setAllConstraints()
+        configureAllSubviews()
+    }
+}
+
+extension LexicalUnitCreationView {
+    private func addAllSubviews() {
+        self.addSubview(resizableTextView)
+    }
+
+    private func setAllConstraints() {
+        resizableTextView.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview().inset(40)
+        }
+    }
+
+    private func configureAllSubviews() {
+
+    }
 }

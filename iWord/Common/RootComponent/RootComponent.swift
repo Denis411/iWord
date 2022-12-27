@@ -56,4 +56,8 @@ extension RootComponent {
     var lexicalUnitScreenComponent: LexicalUnitScreenComponent {
         LexicalUnitScreenComponent(parent: self)
     }
+
+    var lexicalUnitCreationComponent: LexicalUnitCreationComponent {
+        LexicalUnitCreationComponent(parent: self)
+    }
 }
