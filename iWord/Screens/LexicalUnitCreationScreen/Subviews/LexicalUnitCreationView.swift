@@ -14,29 +14,78 @@
 import UIKit
 
 final class LexicalUnitCreationView: CommonView {
-    let resizableTextView = ResizableTextView(maximumHeight: 90)
+    private let resizableTextView = ResizableTextView(maximumHeight: 90)
+    private let audioButtonsStackView = UIStackView()
+    private let recordAudioButton = LexicalUnitCreationAudioButton()
+    private let playAudioButton = LexicalUnitCreationAudioButton()
 
     override func setUpUI() {
         addAllSubviews()
         setAllConstraints()
         configureAllSubviews()
     }
+
+    func setActionForRecordAudioButton(_ action: @escaping EmptyClosure) {
+        recordAudioButton.setAction(action)
+    }
+
+    func setActionForPlayAudioButton(_ action: @escaping EmptyClosure) {
+        playAudioButton.setAction(action)
+    }
 }
 
 extension LexicalUnitCreationView {
     private func addAllSubviews() {
         self.addSubview(resizableTextView)
+        self.addSubview(audioButtonsStackView)
+        self.audioButtonsStackView.addArrangedSubview(recordAudioButton)
+        self.audioButtonsStackView.addArrangedSubview(playAudioButton)
     }
 
     private func setAllConstraints() {
+        setResizableTextViewConstraints()
+        setAudioButtonsStackViewConstraints()
+    }
+
+    private func setResizableTextViewConstraints() {
         resizableTextView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(40)
             make.top.equalToSuperview().inset(100)
         }
     }
 
+    private func setAudioButtonsStackViewConstraints() {
+        audioButtonsStackView.snp.makeConstraints { make in
+            make.top.equalTo(resizableTextView.snp.bottom).offset(20)
+            make.left.equalTo(resizableTextView.snp.left)
+            make.right.equalTo(resizableTextView.snp.right)
+            make.height.equalTo(50)
+        }
+    }
+
     private func configureAllSubviews() {
         configureSelf()
+        configureAudioButtonsStackView()
+        configureRecordAudioButton()
+        configurePlayAudioButton()
+    }
+
+    private func configureAudioButtonsStackView() {
+        audioButtonsStackView.axis = .horizontal
+        audioButtonsStackView.spacing = 20
+        audioButtonsStackView.distribution = .fillEqually
+    }
+
+    private func configureRecordAudioButton() {
+        let image = UIImage(systemName: "circle.fill")?.withRenderingMode(.alwaysTemplate)
+        recordAudioButton.imageView?.tintColor = .red
+        recordAudioButton.setImage(image, for: .normal)
+    }
+
+    private func configurePlayAudioButton() {
+        let image = UIImage(systemName: "play.fill")?.withRenderingMode(.alwaysTemplate)
+        playAudioButton.imageView?.tintColor = .green
+        playAudioButton.setImage(image, for: .normal)
     }
 
     private func configureSelf() {
