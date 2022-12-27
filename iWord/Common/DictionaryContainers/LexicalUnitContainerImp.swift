@@ -12,26 +12,62 @@
 // frameworks are governed by their own individual licenses.
 
 import Foundation
+import Combine
 
 protocol LexicalUnitContainer {
-    func getAllUnitsInFolder(with name: FolderName) -> [LexicalUnit]
-    func deleteUnitsInFolder(in folder: FolderName, units: [LexicalUnit])
-    func addUnitToFolder(to folder: FolderName, unit: LexicalUnit)
+    func loadAllUnitModelsFromDataBase()
+    func deleteUnitModel(at index: Int)
+    func deleteUnitModels(at indexes: [Int])
+    func appendUnitModel(unit: LexicalUnit)
+    func saveAllChanges()
 }
 
 final class LexicalUnitContainerImp: LexicalUnitContainer {
-    private var lexicalUnits: [LexicalUnit] = []
+    private let errorAlert: ErrorAlert
+    private let workingFolderName: FolderName
+    var lexicalUnitModels = CurrentValueSubject<[LexicalUnit], Never>([])
 
-    func getAllUnitsInFolder(with name: FolderName) -> [LexicalUnit] {
-        return []
+    init(
+        errorAlert: ErrorAlert,
+        workingFolderName: FolderName
+    ) {
+        self.errorAlert = errorAlert
+        self.workingFolderName = workingFolderName
     }
 
-    func deleteUnitsInFolder(in folder: FolderName, units: [LexicalUnit]) {
-
+    func loadAllUnitModelsFromDataBase() {
+        #if DEBUG
+        let fakeUnitModels = getFakeLexicalUnitModels()
+        lexicalUnitModels.value = fakeUnitModels
+        return
+        #endif
+        lexicalUnitModels.value = []
     }
 
-    func addUnitToFolder(to folder: FolderName, unit: LexicalUnit) {
+    func deleteUnitModel(at index: Int) {
+        lexicalUnitModels.value.remove(at: index)
+    }
 
+    func deleteUnitModels(at indexes: [Int]) {
+        indexes.forEach { [unowned self] index in
+            self.deleteUnitModel(at: index)
+        }
+    }
+
+    func appendUnitModel(unit: LexicalUnit) {
+        lexicalUnitModels.value.append(unit)
+    }
+
+    func saveAllChanges() {
+//        use data base layer to save edited list of units if needed
+//        this class is supposed to be used as a CoreData container so changes are not saved automatically
+    }
+}
+
+extension LexicalUnitContainerImp {
+// correct once you have a real data base
+    private func doesFolderExist() -> Bool {
+        true
     }
 }
 
@@ -39,6 +75,7 @@ struct LexicalUnit {
     let originalLexicalUnit: String
     let translations: [PartOfSpeech: [String]]
     let isPinned: Bool
+    let isFavorite: Bool
     let humanVoiceRecording: Data?
     let images: [Data]?
     let progressPercentage: UInt8
@@ -68,7 +105,29 @@ enum Exercise: Hashable {
     case crossword
 }
 
+// TODO: - Add dates to times before publishing to AppStore -
 enum TryResults {
     case success(times: Int)
     case failure(times: Int)
+}
+
+fileprivate func getFakeLexicalUnitModels() -> [LexicalUnit] {
+    let translations: [PartOfSpeech : [String]] = [ .noun : ["猫", "恶妇"]]
+    let tries: [Exercise : TryResults] = [.reading : .success(times: 5)]
+    let singleLexicalUnitModel = LexicalUnit(
+        originalLexicalUnit: "Cat",
+        translations: translations,
+        isPinned: Bool.random(),
+        isFavorite: Bool.random(),
+        humanVoiceRecording: nil,
+        images: nil,
+        progressPercentage: 0,
+        dateOfAdding: Date(),
+        tries: tries
+    )
+
+    return [singleLexicalUnitModel,
+            singleLexicalUnitModel,
+            singleLexicalUnitModel,
+            singleLexicalUnitModel]
 }
