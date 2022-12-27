@@ -27,6 +27,8 @@
 		8D70A1BB293C610A000AAC24 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70A1BA293C610A000AAC24 /* MainRouter.swift */; };
 		8D70A1BD293C62A9000AAC24 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70A1BC293C62A9000AAC24 /* RootViewModel.swift */; };
 		8D70A1BF293C6382000AAC24 /* RootScreenComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70A1BE293C6382000AAC24 /* RootScreenComponent.swift */; };
+		8D7BC5CC295AF92900F7D825 /* LexicalUnitCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7BC5CB295AF92900F7D825 /* LexicalUnitCreationViewController.swift */; };
+		8D7BC5CF295AF96800F7D825 /* LexicalUnitCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7BC5CE295AF96800F7D825 /* LexicalUnitCreationView.swift */; };
 		8DA550B52936468A00490835 /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA550B42936468A00490835 /* RootComponent.swift */; };
 		8DA550BB29364A7000490835 /* Needle.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA550BA29364A7000490835 /* Needle.generated.swift */; };
 		8DAF4EA22950A41500C066AA /* CommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAF4EA12950A41500C066AA /* CommonView.swift */; };
@@ -57,6 +59,8 @@
 		8D70A1BA293C610A000AAC24 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		8D70A1BC293C62A9000AAC24 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		8D70A1BE293C6382000AAC24 /* RootScreenComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootScreenComponent.swift; sourceTree = "<group>"; };
+		8D7BC5CB295AF92900F7D825 /* LexicalUnitCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationViewController.swift; sourceTree = "<group>"; };
+		8D7BC5CE295AF96800F7D825 /* LexicalUnitCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationView.swift; sourceTree = "<group>"; };
 		8DA550B42936468A00490835 /* RootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootComponent.swift; sourceTree = "<group>"; };
 		8DA550BA29364A7000490835 /* Needle.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Needle.generated.swift; sourceTree = "<group>"; };
 		8DAF4EA12950A41500C066AA /* CommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonView.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 			children = (
 				8D70A163293903D4000AAC24 /* FolderListScreen */,
 				8D29A97E29597A2900EBF0F1 /* LexicalUnitListScreen */,
+				8D7BC5CA295AF8C200F7D825 /* LexicalUnitCreationScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -211,6 +216,23 @@
 			children = (
 				8DB22C2129422DD900F629E4 /* RootFoldersView.swift */,
 				8D10D053293F91A30097916B /* FolderTableViewCell.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		8D7BC5CA295AF8C200F7D825 /* LexicalUnitCreationScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8D7BC5CD295AF94600F7D825 /* Subviews */,
+				8D7BC5CB295AF92900F7D825 /* LexicalUnitCreationViewController.swift */,
+			);
+			path = LexicalUnitCreationScreen;
+			sourceTree = "<group>";
+		};
+		8D7BC5CD295AF94600F7D825 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				8D7BC5CE295AF96800F7D825 /* LexicalUnitCreationView.swift */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -378,11 +400,13 @@
 			files = (
 				8D29A98D295ADCF500EBF0F1 /* AddItemButton.swift in Sources */,
 				8D29A989295A9E5B00EBF0F1 /* LexcicalUnitScreenComponent.swift in Sources */,
+				8D7BC5CF295AF96800F7D825 /* LexicalUnitCreationView.swift in Sources */,
 				8DAF4EA52950AC9D00C066AA /* FolderContainerImp.swift in Sources */,
 				8D29A98529597DA100EBF0F1 /* LexicalUnitListView.swift in Sources */,
 				8DB22C2229422DD900F629E4 /* RootFoldersView.swift in Sources */,
 				8D5DD2F82934FA0100C7A114 /* RootFoldersViewControllerImp.swift in Sources */,
 				8D29A98329597D4100EBF0F1 /* LexicalUnitListViewController.swift in Sources */,
+				8D7BC5CC295AF92900F7D825 /* LexicalUnitCreationViewController.swift in Sources */,
 				8D29A98729597DF000EBF0F1 /* LexicalUnitTableViewCell.swift in Sources */,
 				8D70A1BD293C62A9000AAC24 /* RootViewModel.swift in Sources */,
 				8DA550B52936468A00490835 /* RootComponent.swift in Sources */,
