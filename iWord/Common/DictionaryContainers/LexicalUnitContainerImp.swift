@@ -53,6 +53,12 @@ final class LexicalUnitContainerImp: LexicalUnitContainer {
     }
 
     func appendUnitModel(unit: LexicalUnit) {
+        let doesUnitAlreadyExist = doesLexicalUnitExist(unit)
+        if doesUnitAlreadyExist {
+            Log.warning("Lexical unit cannot be added cuz it already exists")
+            errorAlert.presentAlert(with: "Lexical unit cannot be added cuz it already exists")
+            return
+        }
         lexicalUnitModels.value.append(unit)
     }
 
@@ -63,13 +69,14 @@ final class LexicalUnitContainerImp: LexicalUnitContainer {
 }
 
 extension LexicalUnitContainerImp {
-// correct once you have a real data base
-    private func doesFolderExist() -> Bool {
-        true
+    private func doesLexicalUnitExist(_ unit: LexicalUnit) -> Bool {
+        lexicalUnitModels.value.contains { lexicalUnit in
+            lexicalUnit == unit
+        }
     }
 }
 
-struct LexicalUnit {
+struct LexicalUnit: Equatable, Hashable {
     let originalLexicalUnit: String
     let primaryTranslation: PrimaryTranslation
     let translations: [PartOfSpeech: [String]]
@@ -80,6 +87,14 @@ struct LexicalUnit {
     let progressPercentage: UInt8
     let dateOfAdding: Date
     let tries: [Exercise: TryResults]
+
+    static func == (lhs: LexicalUnit, rhs: LexicalUnit) -> Bool {
+        lhs.originalLexicalUnit == rhs.originalLexicalUnit
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(originalLexicalUnit)
+    }
 }
 
 enum PartOfSpeech {

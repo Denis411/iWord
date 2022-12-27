@@ -27,6 +27,7 @@ final class LexicalUnitListView: CommonView {
     }()
 
     private var onDeleteUnitAction: ((IndexPath) -> Void)?
+    private var onAddLexicalUnitAction: EmptyClosure?
 
     override func setUpUI() {
         addAllSubviews()
@@ -39,6 +40,10 @@ final class LexicalUnitListView: CommonView {
 extension LexicalUnitListView {
     func setOnDeleteUnitAction(_ action: @escaping (IndexPath) -> Void) {
         self.onDeleteUnitAction = action
+    }
+
+    func setOnAddLexicalUnitAction(_ action: @escaping EmptyClosure) {
+        self.onAddLexicalUnitAction = action
     }
 }
 
@@ -63,6 +68,7 @@ extension LexicalUnitListView {
     private func configureAllSubviews() {
         configureTableView()
         configureInitialDiffableSnapshot()
+        confitureAddLexicalUnitButton()
     }
 
     private func configureTableView() {
@@ -71,6 +77,12 @@ extension LexicalUnitListView {
         tableView.backgroundColor = .gray
         tableView.delegate = self
         tableView.dataSource = tableViewDiffableDataSource
+    }
+
+    private func confitureAddLexicalUnitButton() {
+        addLexicalUnitButton.setAction { [unowned self] in
+            self.onAddLexicalUnitAction?()
+        }
     }
 }
 

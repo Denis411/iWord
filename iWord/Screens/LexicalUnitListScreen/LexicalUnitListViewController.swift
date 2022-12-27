@@ -52,6 +52,10 @@ class LexicalUnitListViewController: UIViewController {
         mainView.setOnDeleteUnitAction { [unowned self] indexPath in
             self.viewModel.deleteLexicalUnit(at: indexPath)
         }
+
+        mainView.setOnAddLexicalUnitAction { [unowned self] in
+            self.viewModel.appendLexicalUnit()
+        }
     }
 
     private func bind() {

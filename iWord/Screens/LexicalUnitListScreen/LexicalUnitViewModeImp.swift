@@ -18,6 +18,7 @@ protocol LexicalUnitViewModel {
     var unitModels: CurrentValueSubject<[LexicalUnit], Never> { get }
     func loadUnitsFromDataBase(for folder: FolderName)
     func deleteLexicalUnit(at index: IndexPath)
+    func appendLexicalUnit()
 }
 
 final class LexicalUnitViewModelImp {
@@ -43,5 +44,24 @@ extension LexicalUnitViewModelImp: LexicalUnitViewModel {
 
     func deleteLexicalUnit(at index: IndexPath) {
         lexicalUnitContainer.deleteUnitModel(at: index.row)
+    }
+
+    func appendLexicalUnit() {
+        let primaryTranslation = PrimaryTranslation(partOfSpeech: .noun, translation: "Primary translation")
+
+        let newLexicalUnit = LexicalUnit(
+            originalLexicalUnit: "Original work",
+            primaryTranslation: primaryTranslation,
+            translations: [.noun: ["None"]],
+            isPinned: false,
+            isFavorite: false,
+            humanVoiceRecording: nil,
+            images: nil,
+            progressPercentage: 0,
+            dateOfAdding: Date(),
+            tries: [.reading: .success(times: 0)]
+        )
+
+        lexicalUnitContainer.appendUnitModel(unit: newLexicalUnit)
     }
 }
