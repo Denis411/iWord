@@ -46,7 +46,7 @@ fileprivate extension SceneDelegate {
     }
     
     func createNavigationController() -> UINavigationController {
-        let rootViewController = rootComponent.rootScreenComponent.rootViewController
+        let rootViewController = rootComponent.lexicalUnitCreationComponent.lexicalUnitCreationViewController
         let navController = rootComponent.navigationController
         navController.pushViewController(rootViewController, animated: true)
         navController.isNavigationBarHidden = true

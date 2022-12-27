@@ -14,7 +14,7 @@
 import UIKit
 
 final class LexicalUnitCreationView: CommonView {
-    let resizableTextView = UITextView()
+    let resizableTextView = ResizableTextView(maximumHeight: 90)
 
     override func setUpUI() {
         addAllSubviews()
@@ -30,11 +30,16 @@ extension LexicalUnitCreationView {
 
     private func setAllConstraints() {
         resizableTextView.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview().inset(40)
+            make.left.right.equalToSuperview().inset(40)
+            make.top.equalToSuperview().inset(100)
         }
     }
 
     private func configureAllSubviews() {
+        configureSelf()
+    }
 
+    private func configureSelf() {
+        self.backgroundColor = .gray
     }
 }

@@ -19,7 +19,7 @@ class LexicalUnitCreationViewController: UIViewController {
     override func loadView() {
         view = LexicalUnitCreationView()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
