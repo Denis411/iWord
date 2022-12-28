@@ -17,7 +17,7 @@ final class LexicalUnitCreationTableViewCell: UITableViewCell {
     static let reusableID = "LexicalUnitTableViewCell"
     private var partOfSpeech: PartOfSpeech = .notSet
     private var translation: String = ""
-    private let translationTextField = ResizableTextView(maximumHeight: 1000)
+    private let translationTextView = ResizableTextView(maximumHeight: 1000)
     private let removeButton = UIButton()
     private let partOfSpeechView = UIView()
     private var onRemoveAction: EmptyClosure?
@@ -34,7 +34,7 @@ final class LexicalUnitCreationTableViewCell: UITableViewCell {
     func setTranslation(partOfSpeech: PartOfSpeech, translation: String) {
         self.partOfSpeech = partOfSpeech
         self.translation = translation
-        self.translationTextField.text = translation
+        self.translationTextView.text = translation
     }
 
     func setOnRemoveAction(_ action: @escaping EmptyClosure) {
@@ -50,7 +50,7 @@ extension LexicalUnitCreationTableViewCell {
     }
 
     private func addAllSubviews() {
-        contentView.addSubview(translationTextField)
+        contentView.addSubview(translationTextView)
         contentView.addSubview(removeButton)
         contentView.addSubview(partOfSpeechView)
     }
@@ -62,7 +62,7 @@ extension LexicalUnitCreationTableViewCell {
     }
 
     private func setTranslationTextFieldConstraints() {
-        translationTextField.snp.makeConstraints { make in
+        translationTextView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(20)
         }
     }
