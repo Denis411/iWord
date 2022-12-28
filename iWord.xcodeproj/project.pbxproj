@@ -257,8 +257,8 @@
 			children = (
 				8D7BC5CE295AF96800F7D825 /* LexicalUnitCreationView.swift */,
 				8D965B1D295C891600F84C61 /* LexicalUnitCreationTableView.swift */,
-				8D965B19295B17EC00F84C61 /* LexicalUnitCreationAudioButton.swift */,
 				8D965B1F295C89A100F84C61 /* LexicalUnitCreationTableViewCell.swift */,
+				8D965B19295B17EC00F84C61 /* LexicalUnitCreationAudioButton.swift */,
 			);
 			path = LexicalUnitCreationView;
 			sourceTree = "<group>";
