@@ -14,8 +14,7 @@
 import UIKit
 
 final class LexicalUnitCreationView: CommonView {
-//  TODO: - rename resizableTextView
-    private let resizableTextView = ResizableTextView(maximumHeight: 90)
+    private let primaryTranslationTextView = ResizableTextView(maximumHeight: 90)
     private let audioButtonsStackView = UIStackView()
     private let recordAudioButton = LexicalUnitCreationAudioButton()
     private let playAudioButton = LexicalUnitCreationAudioButton()
@@ -39,7 +38,7 @@ final class LexicalUnitCreationView: CommonView {
 
 extension LexicalUnitCreationView {
     private func addAllSubviews() {
-        self.addSubview(resizableTextView)
+        self.addSubview(primaryTranslationTextView)
         self.addSubview(audioButtonsStackView)
         self.audioButtonsStackView.addArrangedSubview(recordAudioButton)
         self.audioButtonsStackView.addArrangedSubview(playAudioButton)
@@ -55,7 +54,7 @@ extension LexicalUnitCreationView {
     }
 
     private func setResizableTextViewConstraints() {
-        resizableTextView.snp.makeConstraints { make in
+        primaryTranslationTextView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(40)
             make.top.equalToSuperview().inset(100)
         }
@@ -63,9 +62,9 @@ extension LexicalUnitCreationView {
 
     private func setAudioButtonsStackViewConstraints() {
         audioButtonsStackView.snp.makeConstraints { make in
-            make.top.equalTo(resizableTextView.snp.bottom).offset(20)
-            make.left.equalTo(resizableTextView.snp.left)
-            make.right.equalTo(resizableTextView.snp.right)
+            make.top.equalTo(primaryTranslationTextView.snp.bottom).offset(20)
+            make.left.equalTo(primaryTranslationTextView.snp.left)
+            make.right.equalTo(primaryTranslationTextView.snp.right)
             make.height.equalTo(50)
         }
     }
@@ -117,7 +116,7 @@ extension LexicalUnitCreationView {
     }
 
     private func configurePrimaryTranslationTextView() {
-        resizableTextView.addMainActionToolBarWithButton(button: "Next")
+        primaryTranslationTextView.addMainActionToolBarWithButton(button: "Next")
     }
 
     private func configureLexicalDescriptionConstraints() {
@@ -128,7 +127,7 @@ extension LexicalUnitCreationView {
 extension LexicalUnitCreationView: UITextViewToolBarButtonAction {
     func setOnToolBarButtonAction(sender: UITextView) {
         switch sender {
-        case resizableTextView:
+        case primaryTranslationTextView:
             finishEditingPrimaryTranslationTextView()
         case lexicalDescriptionTextView:
             finishEditingLexicalDescriptionTextView()
