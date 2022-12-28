@@ -15,8 +15,7 @@ import UIKit
 
 final class ListOfTranslationsView: CommonView {
     private let translationTextView = ResizableTextView(maximumHeight: 90)
-    private let stackViewOfTranslations = UIStackView()
-    private var translations: [PartOfSpeech: [String]] = [:]
+    private let tableView = LexicalUnitCreationTableView()
 
     override func setUpUI() {
         addAllSubviews()
@@ -28,8 +27,8 @@ final class ListOfTranslationsView: CommonView {
         translationTextView.becomeFirstResponder()
     }
 
-    func getAllTranslations() -> [PartOfSpeech: [String]] {
-        return translations
+    func getAllTranslations() -> [ListOfTranslationsOfPartOfSpeech] {
+        return tableView.getListsOfTranslations()
     }
 }
 
@@ -37,12 +36,12 @@ final class ListOfTranslationsView: CommonView {
 extension ListOfTranslationsView {
     private func addAllSubviews() {
         self.addSubview(translationTextView)
-        self.addSubview(stackViewOfTranslations)
+        self.addSubview(tableView)
     }
 
     private func addAllConstraints() {
         setTranslationTextViewConstraints()
-        setStackViewOfTranslationsConstraints()
+        addTableViewTranslationConstraints()
     }
 
     private func setTranslationTextViewConstraints() {
@@ -51,26 +50,20 @@ extension ListOfTranslationsView {
         }
     }
 
-    private func setStackViewOfTranslationsConstraints() {
-        stackViewOfTranslations.snp.makeConstraints { make in
-            make.top.equalTo(translationTextView.snp.bottom).offset(20)
+    private func addTableViewTranslationConstraints() {
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(translationTextView.snp.bottom).offset(10)
+            make.left.right.bottom.equalToSuperview()
         }
     }
 
     private func configureAllSubviews() {
         configureTranslationTextView()
-        configureStackViewOfTranslations()
     }
 
     private func configureTranslationTextView() {
         translationTextView.backgroundColor = .blue
         translationTextView.addMainActionToolBarWithButton(button: "Add")
-    }
-
-    private func configureStackViewOfTranslations() {
-        stackViewOfTranslations.axis = .vertical
-        stackViewOfTranslations.alignment = .leading
-        stackViewOfTranslations.spacing = 10
     }
 }
 
@@ -87,10 +80,7 @@ extension ListOfTranslationsView: UITextViewToolBarButtonAction {
             return
         }
 
-        let translationTextField = UITextField()
-        translationTextField.text = enteredText
-        self.stackViewOfTranslations.addArrangedSubview(translationTextField)
-        translations[.notSet]?.append(enteredText)
+        tableView.addLexicalUnit(partOfSpeech: .notSet, translation: enteredText)
         self.translationTextView.text = ""
     }
 }

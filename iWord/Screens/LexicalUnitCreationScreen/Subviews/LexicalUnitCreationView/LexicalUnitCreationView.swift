@@ -80,7 +80,6 @@ extension LexicalUnitCreationView {
         listOfTranslations.snp.makeConstraints { make in
             make.top.equalTo(lexicalDescriptionTextView.snp.bottom).offset(20)
             make.left.right.equalToSuperview().inset(40)
-            make.height.greaterThanOrEqualTo(50)
         }
     }
 
