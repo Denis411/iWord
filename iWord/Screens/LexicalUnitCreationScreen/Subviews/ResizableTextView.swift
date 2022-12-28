@@ -26,12 +26,16 @@ final class ResizableTextView: UITextView {
     init(maximumHeight: CGFloat) {
         self.maximumHeight = maximumHeight
         super.init(frame: .zero, textContainer: nil)
-        self.translatesAutoresizingMaskIntoConstraints = false
-        heightConstraint = self.heightAnchor.constraint(equalToConstant: 0.0)
+        configureSelf()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func configureSelf() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        heightConstraint = self.heightAnchor.constraint(equalToConstant: 0.0)
     }
 
     private func reactionToContentSizeChanging() {
@@ -46,5 +50,37 @@ final class ResizableTextView: UITextView {
 
         heightConstraint?.isActive = true
         self.setNeedsLayout()
+    }
+}
+
+
+// MARK: - UIResponder chain settings for UITextView -
+typealias ButtonName = String
+
+@objc protocol UITextViewToolBarButtonAction {
+    /// Catches actions send from UITextView via UIResponder chain
+    /// - Parameter sender: a UITextView from which the message is sent
+    @objc func setOnToolBarButtonAction(sender: UITextView)
+}
+
+extension UITextView {
+    /// Adds a UIBarButton to keyboard with specified name
+    ///  action should be specified in a method of the protocol UITextViewToolBarButtonAction
+    /// - Parameter name: name of a UIBarButton above a keyboard
+    func addMainActionToolBarWithButton(button name: ButtonName) {
+        let toolBarFrame = CGRect(x: 0, y: 0, width: 200, height: 50)
+        let toolBar = UIToolbar(frame: toolBarFrame)
+        let spacer = UIBarButtonItem(systemItem: .flexibleSpace)
+        let barButtonItem = UIBarButtonItem(title: name, style: .done, target: nil, action: #selector(performDoneButtonAction))
+        toolBar.items = [spacer, barButtonItem]
+        self.inputAccessoryView = toolBar
+    }
+
+    @objc private func performDoneButtonAction() {
+        UIApplication.shared.sendAction(
+            #selector(UITextViewToolBarButtonAction.setOnToolBarButtonAction),
+            to: nil,
+            from: self,
+            for: nil)
     }
 }
