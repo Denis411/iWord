@@ -14,8 +14,9 @@
 import UIKit
 
 final class ListOfTranslationsView: CommonView {
-    let translationTextView = ResizableTextView(maximumHeight: 90)
-    let stackViewOfTranslations = UIStackView()
+    private let translationTextView = ResizableTextView(maximumHeight: 90)
+    private let stackViewOfTranslations = UIStackView()
+    private var translations: [PartOfSpeech: [String]] = [:]
 
     override func setUpUI() {
         addAllSubviews()
@@ -25,6 +26,10 @@ final class ListOfTranslationsView: CommonView {
 
     func makeTextViewFirstResponder() {
         translationTextView.becomeFirstResponder()
+    }
+
+    func getAllTranslations() -> [PartOfSpeech: [String]] {
+        return translations
     }
 }
 
@@ -78,9 +83,14 @@ extension ListOfTranslationsView: UITextViewToolBarButtonAction {
     }
 
     private func performOnToolBarButtonAddAction() {
+        guard let enteredText = self.translationTextView.text else {
+            return
+        }
+
         let translationTextField = UITextField()
-        translationTextField.text = self.translationTextView.text
+        translationTextField.text = enteredText
         self.stackViewOfTranslations.addArrangedSubview(translationTextField)
+        translations[.notSet]?.append(enteredText)
         self.translationTextView.text = ""
     }
 }
