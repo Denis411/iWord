@@ -32,6 +32,11 @@ final class LexicalUnitCreationTableView: UITableView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        heightConstraint?.constant = contentSize.height
+    }
+
     private func configureSelf() {
         self.register(LexicalUnitCreationTableViewCell.self, forCellReuseIdentifier: LexicalUnitCreationTableViewCell.reusableID)
         self.delegate = self
@@ -52,14 +57,12 @@ final class LexicalUnitCreationTableView: UITableView {
         for (key, value) in listOfTranslations.enumerated() where value.partOfSpeech == partOfSpeech {
             listOfTranslations[key].translations.append(translation)
             self.reloadData()
-            recalculateHeightConstraint()
             return
         }
 
         let newList = ListOfTranslationsOfPartOfSpeech(partOfSpeech: partOfSpeech, translations: [translation])
         listOfTranslations.append(newList)
         self.reloadData()
-        recalculateHeightConstraint()
     }
 
     func getListsOfTranslations() -> [ListOfTranslationsOfPartOfSpeech] {
@@ -104,18 +107,10 @@ extension LexicalUnitCreationTableView: UITableViewDelegate, UITableViewDataSour
             if listOfTranslations[indexPath.section].translations.isEmpty {
                 listOfTranslations.remove(at: indexPath.section)
                 self.reloadData()
-                recalculateHeightConstraint()
                 return
             }
 
             self.reloadSections([indexPath.section], with: .fade)
-            recalculateHeightConstraint()
         }
-    }
-
-    private func recalculateHeightConstraint() {
-        heightConstraint?.isActive = false
-        heightConstraint?.constant = self.contentSize.height
-        heightConstraint?.isActive = true
     }
 }

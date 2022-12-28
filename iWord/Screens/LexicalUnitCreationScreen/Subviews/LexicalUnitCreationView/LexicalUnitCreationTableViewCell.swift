@@ -17,7 +17,8 @@ final class LexicalUnitCreationTableViewCell: UITableViewCell {
     static let reusableID = "LexicalUnitTableViewCell"
     private var partOfSpeech: PartOfSpeech = .notSet
     private var translation: String = ""
-    private let translationTextView = ResizableTextView(maximumHeight: 1000)
+//  TODO: - Ask UI/UX whether you should make it UITextField
+    private let translationTextView = UILabel()
     private let removeButton = UIButton()
     private var onRemoveAction: EmptyClosure?
 
@@ -49,6 +50,7 @@ extension LexicalUnitCreationTableViewCell {
     }
 
     private func addAllSubviews() {
+        translationTextView.numberOfLines = 0
         contentView.addSubview(translationTextView)
         contentView.addSubview(removeButton)
     }
