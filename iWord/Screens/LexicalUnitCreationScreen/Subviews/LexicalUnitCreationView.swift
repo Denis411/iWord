@@ -14,11 +14,13 @@
 import UIKit
 
 final class LexicalUnitCreationView: CommonView {
+//  TODO: - rename resizableTextView
     private let resizableTextView = ResizableTextView(maximumHeight: 90)
     private let audioButtonsStackView = UIStackView()
     private let recordAudioButton = LexicalUnitCreationAudioButton()
     private let playAudioButton = LexicalUnitCreationAudioButton()
     private let lexicalDescriptionTextView = ResizableTextView(maximumHeight: 90)
+    private let listOfTranslations = ListOfTranslationsView()
 
     override func setUpUI() {
         addAllSubviews()
@@ -42,12 +44,14 @@ extension LexicalUnitCreationView {
         self.audioButtonsStackView.addArrangedSubview(recordAudioButton)
         self.audioButtonsStackView.addArrangedSubview(playAudioButton)
         self.addSubview(lexicalDescriptionTextView)
+        self.addSubview(listOfTranslations)
     }
 
     private func setAllConstraints() {
         setResizableTextViewConstraints()
         setAudioButtonsStackViewConstraints()
         setLexicalDescriptionConstraints()
+        setListOfTranslationsConstraints()
     }
 
     private func setResizableTextViewConstraints() {
@@ -73,15 +77,21 @@ extension LexicalUnitCreationView {
         }
     }
 
+    private func setListOfTranslationsConstraints() {
+        listOfTranslations.snp.makeConstraints { make in
+            make.top.equalTo(lexicalDescriptionTextView.snp.bottom).offset(20)
+            make.left.right.equalToSuperview().inset(40)
+            make.height.greaterThanOrEqualTo(50)
+        }
+    }
+
     private func configureAllSubviews() {
         configureAudioButtonsStackView()
         configureRecordAudioButton()
         configurePlayAudioButton()
         configureSelf()
-    }
-
-    private func configureResizableTextView() {
-
+        configurePrimaryTranslationTextView()
+        configureLexicalDescriptionConstraints()
     }
 
     private func configureAudioButtonsStackView() {
@@ -106,7 +116,32 @@ extension LexicalUnitCreationView {
         self.backgroundColor = .gray
     }
 
-    private func configureLexicalDescriptionConstraints() {
+    private func configurePrimaryTranslationTextView() {
+        resizableTextView.addMainActionToolBarWithButton(button: "Next")
+    }
 
+    private func configureLexicalDescriptionConstraints() {
+        lexicalDescriptionTextView.addMainActionToolBarWithButton(button: "Next")
+    }
+}
+
+extension LexicalUnitCreationView: UITextViewToolBarButtonAction {
+    func setOnToolBarButtonAction(sender: UITextView) {
+        switch sender {
+        case resizableTextView:
+            finishEditingPrimaryTranslationTextView()
+        case lexicalDescriptionTextView:
+            finishEditingLexicalDescriptionTextView()
+        default:
+            return
+        }
+    }
+
+    private func finishEditingPrimaryTranslationTextView() {
+        lexicalDescriptionTextView.becomeFirstResponder()
+    }
+
+    private func finishEditingLexicalDescriptionTextView() {
+        listOfTranslations.makeTextViewFirstResponder()
     }
 }
