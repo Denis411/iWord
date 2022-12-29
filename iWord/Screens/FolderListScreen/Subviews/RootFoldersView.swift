@@ -27,14 +27,6 @@ final class RootFolderView: CommonView {
         configureAllViews()
     }
 
-    func setFolderCellInfos(_ cellInfos: [Folder]) {
-        self.folderCellInfos = cellInfos
-        tableView.reloadData()
-    }
-}
-
-// MARK: - Action setting -
-extension RootFolderView {
     func setOnCellTapAction(_ action: @escaping (IndexPath) -> Void) {
         self.onCellTapAction = action
     }
@@ -46,6 +38,11 @@ extension RootFolderView {
     func setOnAddFolderButtonAction(_ action: @escaping EmptyClosure) {
         addFolderButton.setAction(action)
     }
+
+    func setFolderCellInfos(_ cellInfos: [Folder]) {
+        self.folderCellInfos = cellInfos
+        tableView.reloadData()
+    }
 }
 
 extension RootFolderView {
@@ -53,20 +50,22 @@ extension RootFolderView {
         self.addSubview(tableView)
         self.addSubview(addFolderButton)
     }
-    
+
     private func setAllConstraints() {
         setTableViewConstraints()
         addFolderButton.addConstraints()
     }
-    
+
+    private func configureAllViews() {
+        configureTableView()
+    }
+}
+
+extension RootFolderView {
     private func setTableViewConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-    }
-    
-    private func configureAllViews() {
-        configureTableView()
     }
     
     private func configureTableView() {

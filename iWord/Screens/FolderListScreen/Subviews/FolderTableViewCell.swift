@@ -48,14 +48,13 @@ final class FolderTableViewCell: UITableViewCell {
     }
 }
 
-// setSubviews
 extension FolderTableViewCell {
     private func setUpUI() {
         addSubviews()
         setAllConstraints()
         configureAllView()
     }
-    
+
     private func addSubviews() {
         contentView.addSubview(folderImageView)
         contentView.addSubview(progressView)
@@ -63,13 +62,24 @@ extension FolderTableViewCell {
         labelStackView.addArrangedSubview(folderNameLabel)
         labelStackView.addArrangedSubview(numberOfItemsLabel)
     }
-    
+
     private func setAllConstraints() {
         setFolderImageViewConstraints()
         setProgressViewConstraints()
         setLabelStackViewConstraints()
     }
+
+    private func configureAllView() {
+        configureFolderImageView()
+        configureLabelStackView()
+        configureFolderNameLabel()
+        configureNumberOfItemsLabel()
+    }
     
+}
+
+extension FolderTableViewCell {
+//  MARK: - Subview constraints -
     private func setFolderImageViewConstraints() {
         folderImageView.snp.makeConstraints { make in
             make.height.width.equalTo(IMAGE_VIEW_EDGE)
@@ -93,14 +103,8 @@ extension FolderTableViewCell {
             make.right.equalTo(progressView.snp.left).offset(-STACKVIEW_MERGIN)
         }
     }
-    
-    private func configureAllView() {
-        configureFolderImageView()
-        configureLabelStackView()
-        configureFolderNameLabel()
-        configureNumberOfItemsLabel()
-    }
-    
+
+//  MARK: - Subview configurations -
     private func configureFolderImageView() {
         let folderImage = UIImage(systemName: "folder")!
         folderImageView.contentMode = .center
