@@ -16,6 +16,7 @@ import UIKit
 final class ListOfTranslationsView: CommonView {
     private let translationTextView = ResizableTextView(maximumHeight: 90)
     private let tableView = LexicalUnitCreationTableView()
+    private var onAddTranslationForPartOfSpeech: ((ListOfTranslationsOfPartOfSpeech) -> Void)?
 
     override func setUpUI() {
         addAllSubviews()
@@ -29,6 +30,10 @@ final class ListOfTranslationsView: CommonView {
 
     func updateListOfTranslations(translations: [ListOfTranslationsOfPartOfSpeech]) {
         tableView.updateListOfTranslations(translations: translations)
+    }
+
+    func setonAddTranslationForPartOfSpeechAction(_ action: @escaping (ListOfTranslationsOfPartOfSpeech) -> Void) {
+        self.onAddTranslationForPartOfSpeech = action
     }
 }
 
@@ -72,11 +77,8 @@ extension ListOfTranslationsView {
 extension ListOfTranslationsView: UITextViewToolBarButtonAction {
     func setOnToolBarButtonAction(sender: UITextView) {
         if sender === translationTextView {
-            performOnToolBarButtonAddAction()
+            let translation = ListOfTranslationsOfPartOfSpeech(partOfSpeech: .notSet, listOfTranslations: [sender.text])
+            onAddTranslationForPartOfSpeech?(translation)
         }
-    }
-
-    private func performOnToolBarButtonAddAction() {
-
     }
 }

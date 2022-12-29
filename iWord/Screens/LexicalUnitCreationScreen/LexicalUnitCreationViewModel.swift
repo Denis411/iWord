@@ -31,6 +31,23 @@ extension LexicalUnitCreationViewModelImp {
         newLexicalUnitModel.value.description = description
     }
 
+    func addTranslationForPartOfSpeech(translations: ListOfTranslationsOfPartOfSpeech) {
+        guard let index = findIndexIfExists(for: translations.partOfSpeech) else {
+            newLexicalUnitModel.value.translationsForPartOfSpeech.append(translations)
+            return
+        }
+
+        newLexicalUnitModel.value.translationsForPartOfSpeech[index].listOfTranslations.append(contentsOf: translations.listOfTranslations)
+    }
+
+    private func findIndexIfExists(for partOfSpeech: PartOfSpeech) -> Int? {
+        for (index, element) in newLexicalUnitModel.value.translationsForPartOfSpeech.enumerated() where element.partOfSpeech == partOfSpeech {
+            return index
+        }
+
+        return nil
+    }
+
     func likeUnit() {
         newLexicalUnitModel.value.isFavorite = true
     }
@@ -65,7 +82,7 @@ extension LexicalUnit {
             originalLexicalUnit: "",
             primaryTranslation: emptyTranslation,
             description: "",
-            translations: [],
+            translationsForPartOfSpeech: [],
             isPinned: false,
             isFavorite: false,
             humanVoiceRecording: nil,

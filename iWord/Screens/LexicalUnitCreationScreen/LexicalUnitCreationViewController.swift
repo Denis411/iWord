@@ -19,6 +19,7 @@ protocol LexicalUnitCreationViewModel {
     func addOriginalLexicalUnit(text: String)
     func addPrimaryTranslation(translation: PrimaryTranslation)
     func addDescription(description: String)
+    func addTranslationForPartOfSpeech(translations: ListOfTranslationsOfPartOfSpeech)
     func likeUnit()
     func unlikeUnit()
     func recordHumanVoice()
@@ -61,7 +62,7 @@ extension LexicalUnitCreationViewController {
         viewModel.newLexicalUnitModel
             .receive(on: RunLoop.main)
             .sink { [unowned self] lexicalUnit in
-                let translations = lexicalUnit.translations
+                let translations = lexicalUnit.translationsForPartOfSpeech
                 self.mainView.updateListOfTranslations(translations: translations)
             }
             .store(in: &disposedBag)
@@ -73,6 +74,7 @@ extension LexicalUnitCreationViewController {
     private func setMainViewActions() {
         setActionForPlayingHumanVoice()
         setActionForRecordingHumanVoice()
+        setActionForAddingTranslationForPartOfSpeechAction()
     }
 
     private func setActionForPlayingHumanVoice() {
@@ -84,6 +86,12 @@ extension LexicalUnitCreationViewController {
     private func setActionForRecordingHumanVoice() {
         mainView.setActionForRecordAudioButton { [unowned self] in
             self.viewModel.recordHumanVoice()
+        }
+    }
+
+    private func setActionForAddingTranslationForPartOfSpeechAction() {
+        mainView.setOnAddTranslationForPartOfSpeechAction { [unowned self] listOfTranslations in
+            self.viewModel.addTranslationForPartOfSpeech(translations: listOfTranslations)
         }
     }
 }

@@ -15,7 +15,7 @@ import UIKit
 
 struct ListOfTranslationsOfPartOfSpeech {
     var partOfSpeech: PartOfSpeech
-    var translations: [String]
+    var listOfTranslations: [String]
 }
 
 final class LexicalUnitCreationTableView: UITableView {
@@ -38,6 +38,7 @@ final class LexicalUnitCreationTableView: UITableView {
 
     func updateListOfTranslations(translations: [ListOfTranslationsOfPartOfSpeech]) {
         self.listOfTranslations = translations
+        self.reloadData()
     }
 }
 
@@ -75,7 +76,7 @@ extension LexicalUnitCreationTableView: UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        listOfTranslations[section].translations.count
+        listOfTranslations[section].listOfTranslations.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -91,15 +92,15 @@ extension LexicalUnitCreationTableView: UITableViewDelegate, UITableViewDataSour
     private func setUp(cell: LexicalUnitCreationTableViewCell, with indexPath: IndexPath) {
         cell.setTranslation(
             partOfSpeech: listOfTranslations[indexPath.section].partOfSpeech,
-            translation: listOfTranslations[indexPath.section].translations[indexPath.row]
+            translation: listOfTranslations[indexPath.section].listOfTranslations[indexPath.row]
         )
     }
 
     private func setOnRemoveAction(for cell: LexicalUnitCreationTableViewCell, at indexPath: IndexPath) {
         cell.setOnRemoveAction { [unowned self] in
-            listOfTranslations[indexPath.section].translations.remove(at: indexPath.row)
+            listOfTranslations[indexPath.section].listOfTranslations.remove(at: indexPath.row)
 
-            if listOfTranslations[indexPath.section].translations.isEmpty {
+            if listOfTranslations[indexPath.section].listOfTranslations.isEmpty {
                 listOfTranslations.remove(at: indexPath.section)
                 self.reloadData()
                 return

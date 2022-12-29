@@ -48,13 +48,13 @@ extension LexicalUnitViewModelImp: LexicalUnitViewModel {
 
     func appendLexicalUnit() {
         let primaryTranslation = PrimaryTranslation(partOfSpeech: .noun, translation: "Primary translation")
-        let translation = [ListOfTranslationsOfPartOfSpeech(partOfSpeech: .notSet, translations: ["猫", "恶妇"])]
+        let translation = [ListOfTranslationsOfPartOfSpeech(partOfSpeech: .notSet, listOfTranslations: ["猫", "恶妇"])]
 
         let newLexicalUnit = LexicalUnit(
             originalLexicalUnit: "Original work",
             primaryTranslation: primaryTranslation,
             description: "Description",
-            translations: translation,
+            translationsForPartOfSpeech: translation,
             isPinned: false,
             isFavorite: false,
             humanVoiceRecording: nil,

@@ -85,7 +85,7 @@ fileprivate extension LexicalUnit {
             progressPercentage: self.progressPercentage,
             originalLexicalUnit: self.originalLexicalUnit,
             primaryTranslation: self.primaryTranslation,
-            translations: self.translations,
+            translations: self.translationsForPartOfSpeech,
             isPinned: self.isPinned)
     }
 }
