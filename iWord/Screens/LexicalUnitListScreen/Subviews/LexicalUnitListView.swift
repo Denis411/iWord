@@ -34,10 +34,7 @@ final class LexicalUnitListView: CommonView {
         addAllConstraints()
         configureAllSubviews()
     }
-}
 
-// set actions
-extension LexicalUnitListView {
     func setOnDeleteUnitAction(_ action: @escaping (IndexPath) -> Void) {
         self.onDeleteUnitAction = action
     }
@@ -46,7 +43,6 @@ extension LexicalUnitListView {
         self.onAddLexicalUnitAction = action
     }
 }
-
 
 extension LexicalUnitListView {
     private func addAllSubviews() {
@@ -59,16 +55,18 @@ extension LexicalUnitListView {
         addLexicalUnitButton.addConstraints()
     }
 
-    private func addTableViewConstraints() {
-        tableView.snp.makeConstraints { make in
-            make.left.right.top.bottom.equalToSuperview()
-        }
-    }
-
     private func configureAllSubviews() {
         configureTableView()
         configureInitialDiffableSnapshot()
         confitureAddLexicalUnitButton()
+    }
+}
+
+extension LexicalUnitListView {
+    private func addTableViewConstraints() {
+        tableView.snp.makeConstraints { make in
+            make.left.right.top.bottom.equalToSuperview()
+        }
     }
 
     private func configureTableView() {
