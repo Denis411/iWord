@@ -68,7 +68,7 @@ extension LexicalUnitCreationView {
 // MARK: - Constraints -
     private func setResizableTextViewConstraints() {
         primaryTranslationTextView.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(40)
+            make.left.right.equalToSuperview()
             make.top.equalToSuperview().inset(100)
         }
     }
@@ -76,8 +76,7 @@ extension LexicalUnitCreationView {
     private func setAudioButtonsStackViewConstraints() {
         audioButtonsStackView.snp.makeConstraints { make in
             make.top.equalTo(primaryTranslationTextView.snp.bottom).offset(20)
-            make.left.equalTo(primaryTranslationTextView.snp.left)
-            make.right.equalTo(primaryTranslationTextView.snp.right)
+            make.left.right.equalToSuperview()
             make.height.equalTo(50)
         }
     }
@@ -85,14 +84,14 @@ extension LexicalUnitCreationView {
     private func setLexicalDescriptionConstraints() {
         lexicalDescriptionTextView.snp.makeConstraints { make in
             make.top.equalTo(audioButtonsStackView.snp.bottom).offset(20)
-            make.left.right.equalToSuperview().inset(40)
+            make.left.right.equalToSuperview()
         }
     }
 
     private func setListOfTranslationsConstraints() {
         listOfTranslations.snp.makeConstraints { make in
             make.top.equalTo(lexicalDescriptionTextView.snp.bottom).offset(20)
-            make.left.right.equalToSuperview().inset(40)
+            make.left.right.equalToSuperview()
         }
     }
 
@@ -117,6 +116,7 @@ extension LexicalUnitCreationView {
 
     private func configureSelf() {
         self.backgroundColor = .gray
+        self.insetsLayoutMarginsFromSafeArea = true
     }
 
     private func configurePrimaryTranslationTextView() {
