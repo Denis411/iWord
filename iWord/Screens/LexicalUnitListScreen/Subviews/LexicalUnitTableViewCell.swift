@@ -61,7 +61,7 @@ class LexicalUnitTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func setUpCellData(with model: LexicalUnitCellInfo) {
+    func setUpCellData(with model: LexicalUnitCellInfo) {
         self.unitImageView.image = model.image
         self.progressView.text = String(model.progressPercentage)
         self.unitPrimaryTranslation.text = model.primaryTranslation.translation
@@ -69,7 +69,6 @@ class LexicalUnitTableViewCell: UITableViewCell {
     }
 }
 
-// set subviews
 extension LexicalUnitTableViewCell {
     private func setUpUI() {
         addSubviews()
@@ -91,6 +90,15 @@ extension LexicalUnitTableViewCell {
         setLabelStackViewConstraints()
     }
 
+    private func configureAllView() {
+        configureStackView()
+        configureUnitOriginalValue()
+        configureUnitPrimaryTranslation()
+    }
+}
+
+extension LexicalUnitTableViewCell {
+// MARK: - Constraints -
     private func setUnitImageViewConstraints() {
         unitImageView.snp.makeConstraints { make in
             make.height.width.equalTo(UNIT_IMAGE_VIEW_EDGES)
@@ -114,13 +122,8 @@ extension LexicalUnitTableViewCell {
             make.top.bottom.equalToSuperview().inset(STACK_VIEW_MERGIN)
         }
     }
-
-    private func configureAllView() {
-        configureStackView()
-        configureUnitOriginalValue()
-        configureUnitPrimaryTranslation()
-    }
-
+    
+// MARK: - Subview configurations -
     private func configureStackView() {
         labelStackView.axis = .vertical
         labelStackView.spacing = SPACING_BETWEEN_LABELS
