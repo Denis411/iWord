@@ -48,6 +48,21 @@ extension LexicalUnitCreationViewModelImp {
         return nil
     }
 
+    func removeTranslationForPartOfSpeech(at indexPath: IndexPath) {
+        let translationsForPartOfSpeechIndex = indexPath.section
+        let concreteTranslationIndex = indexPath.row
+
+        newLexicalUnitModel.value.translationsForPartOfSpeech[translationsForPartOfSpeechIndex].listOfTranslations.remove(at: concreteTranslationIndex)
+
+        removeTranslationForPartOfSpeechIfNeeded(at: translationsForPartOfSpeechIndex)
+    }
+
+    private func removeTranslationForPartOfSpeechIfNeeded(at index: Int) {
+        if newLexicalUnitModel.value.translationsForPartOfSpeech[index].listOfTranslations.isEmpty {
+            newLexicalUnitModel.value.translationsForPartOfSpeech.remove(at: index)
+        }
+    }
+
     func likeUnit() {
         newLexicalUnitModel.value.isFavorite = true
     }

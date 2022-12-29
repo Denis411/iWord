@@ -21,6 +21,7 @@ struct ListOfTranslationsOfPartOfSpeech {
 final class LexicalUnitCreationTableView: UITableView {
     private var listOfTranslations: [ListOfTranslationsOfPartOfSpeech] = []
     private var heightConstraint: NSLayoutConstraint?
+    private var onRemoveTranslationForPartOfSpeech: ((IndexPath) -> Void)?
 
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -39,6 +40,10 @@ final class LexicalUnitCreationTableView: UITableView {
     func updateListOfTranslations(translations: [ListOfTranslationsOfPartOfSpeech]) {
         self.listOfTranslations = translations
         self.reloadData()
+    }
+
+    func setOnRemoveTranslationForPartOfSpeech(_ action: @escaping (IndexPath) -> Void) {
+        self.onRemoveTranslationForPartOfSpeech = action
     }
 }
 
@@ -98,15 +103,7 @@ extension LexicalUnitCreationTableView: UITableViewDelegate, UITableViewDataSour
 
     private func setOnRemoveAction(for cell: LexicalUnitCreationTableViewCell, at indexPath: IndexPath) {
         cell.setOnRemoveAction { [unowned self] in
-            listOfTranslations[indexPath.section].listOfTranslations.remove(at: indexPath.row)
-
-            if listOfTranslations[indexPath.section].listOfTranslations.isEmpty {
-                listOfTranslations.remove(at: indexPath.section)
-                self.reloadData()
-                return
-            }
-
-            self.reloadSections([indexPath.section], with: .fade)
+            self.onRemoveTranslationForPartOfSpeech?(indexPath)
         }
     }
 }

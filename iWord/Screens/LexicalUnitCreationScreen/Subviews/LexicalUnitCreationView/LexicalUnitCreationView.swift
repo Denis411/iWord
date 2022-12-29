@@ -42,6 +42,10 @@ final class LexicalUnitCreationView: CommonView {
     func setOnAddTranslationForPartOfSpeechAction(action: @escaping (ListOfTranslationsOfPartOfSpeech) -> Void) {
         listOfTranslations.setonAddTranslationForPartOfSpeechAction(action)
     }
+
+    func removeTranslationForPartOfSpeech(action: @escaping (IndexPath) -> Void) {
+        listOfTranslations.setOnRemoveTranslationForPartOfSpeech(action)
+    }
 }
 
 extension LexicalUnitCreationView {
