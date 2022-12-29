@@ -24,8 +24,7 @@ final class LexicalUnitCreationTableView: UITableView {
 
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
-        configureSelf()
-        configureHeightConstraint()
+        configureAllSubviews()
     }
 
     required init?(coder: NSCoder) {
@@ -35,22 +34,6 @@ final class LexicalUnitCreationTableView: UITableView {
     override func layoutSubviews() {
         super.layoutSubviews()
         heightConstraint?.constant = contentSize.height
-    }
-
-    private func configureSelf() {
-        self.register(LexicalUnitCreationTableViewCell.self, forCellReuseIdentifier: LexicalUnitCreationTableViewCell.reusableID)
-        self.delegate = self
-        self.dataSource = self
-        self.isScrollEnabled = false
-        self.estimatedRowHeight = 100
-        self.rowHeight = UITableView.automaticDimension
-    }
-
-    private func configureHeightConstraint() {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        heightConstraint = heightAnchor.constraint(equalToConstant: self.contentSize.height)
-        heightConstraint?.priority = UILayoutPriority(1000)
-        heightConstraint?.isActive = true
     }
 
     func addLexicalUnit(partOfSpeech: PartOfSpeech, translation: String) {
@@ -67,6 +50,30 @@ final class LexicalUnitCreationTableView: UITableView {
 
     func getListsOfTranslations() -> [ListOfTranslationsOfPartOfSpeech] {
         self.listOfTranslations
+    }
+}
+
+// MARK: - Subview configurations -
+extension LexicalUnitCreationTableView {
+    private func configureAllSubviews() {
+        configureSelf()
+        configureHeightConstraint()
+    }
+
+    private func configureSelf() {
+        self.register(LexicalUnitCreationTableViewCell.self, forCellReuseIdentifier: LexicalUnitCreationTableViewCell.reusableID)
+        self.delegate = self
+        self.dataSource = self
+        self.isScrollEnabled = false
+        self.estimatedRowHeight = 100
+        self.rowHeight = UITableView.automaticDimension
+    }
+
+    private func configureHeightConstraint() {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        heightConstraint = heightAnchor.constraint(equalToConstant: self.contentSize.height)
+        heightConstraint?.priority = UILayoutPriority(1000)
+        heightConstraint?.isActive = true
     }
 }
 

@@ -32,7 +32,6 @@ final class ListOfTranslationsView: CommonView {
     }
 }
 
-// MARK: - Set up subviews -
 extension ListOfTranslationsView {
     private func addAllSubviews() {
         self.addSubview(translationTextView)
@@ -44,6 +43,12 @@ extension ListOfTranslationsView {
         addTableViewTranslationConstraints()
     }
 
+    private func configureAllSubviews() {
+        configureTranslationTextView()
+    }
+}
+
+extension ListOfTranslationsView {
     private func setTranslationTextViewConstraints() {
         translationTextView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
@@ -55,10 +60,6 @@ extension ListOfTranslationsView {
             make.top.equalTo(translationTextView.snp.bottom).offset(10)
             make.left.right.bottom.equalToSuperview()
         }
-    }
-
-    private func configureAllSubviews() {
-        configureTranslationTextView()
     }
 
     private func configureTranslationTextView() {

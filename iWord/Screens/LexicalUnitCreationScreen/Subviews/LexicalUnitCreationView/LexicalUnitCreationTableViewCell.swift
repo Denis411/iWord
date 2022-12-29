@@ -60,6 +60,13 @@ extension LexicalUnitCreationTableViewCell {
         setRemoveButtonConstraints()
     }
 
+    private func configureAllSubviews() {
+        configureRemoveButton()
+    }
+}
+
+extension LexicalUnitCreationTableViewCell {
+// MARK: - Subview constraints -
     private func setTranslationTextFieldConstraints() {
         translationTextView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(20)
@@ -73,10 +80,7 @@ extension LexicalUnitCreationTableViewCell {
         }
     }
 
-    private func configureAllSubviews() {
-        configureRemoveButton()
-    }
-
+// MARK: - Subview configurations -
     private func configureRemoveButton() {
         removeButton.backgroundColor = .red
         let image = UIImage(systemName: "xmark")

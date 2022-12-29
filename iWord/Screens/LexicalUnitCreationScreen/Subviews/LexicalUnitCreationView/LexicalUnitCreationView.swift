@@ -53,6 +53,19 @@ extension LexicalUnitCreationView {
         setListOfTranslationsConstraints()
     }
 
+    private func configureAllSubviews() {
+        configureAudioButtonsStackView()
+        configureRecordAudioButton()
+        configurePlayAudioButton()
+        configureSelf()
+        configurePrimaryTranslationTextView()
+        configureLexicalDescriptionConstraints()
+    }
+}
+
+
+extension LexicalUnitCreationView {
+// MARK: - Constraints -
     private func setResizableTextViewConstraints() {
         primaryTranslationTextView.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(40)
@@ -83,15 +96,7 @@ extension LexicalUnitCreationView {
         }
     }
 
-    private func configureAllSubviews() {
-        configureAudioButtonsStackView()
-        configureRecordAudioButton()
-        configurePlayAudioButton()
-        configureSelf()
-        configurePrimaryTranslationTextView()
-        configureLexicalDescriptionConstraints()
-    }
-
+// MARK: - Subview configurations -
     private func configureAudioButtonsStackView() {
         audioButtonsStackView.axis = .horizontal
         audioButtonsStackView.spacing = 20
