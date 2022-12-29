@@ -35,6 +35,7 @@
 		8D965B1C295B4C8200F84C61 /* ListOfTranslationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D965B1B295B4C8200F84C61 /* ListOfTranslationsView.swift */; };
 		8D965B1E295C891600F84C61 /* LexicalUnitCreationTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D965B1D295C891600F84C61 /* LexicalUnitCreationTableView.swift */; };
 		8D965B20295C89A100F84C61 /* LexicalUnitCreationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D965B1F295C89A100F84C61 /* LexicalUnitCreationTableViewCell.swift */; };
+		8D965B25295D786400F84C61 /* LexicalUnitCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D965B24295D786400F84C61 /* LexicalUnitCreationViewModel.swift */; };
 		8DA550B52936468A00490835 /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA550B42936468A00490835 /* RootComponent.swift */; };
 		8DA550BB29364A7000490835 /* Needle.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA550BA29364A7000490835 /* Needle.generated.swift */; };
 		8DAF4EA22950A41500C066AA /* CommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAF4EA12950A41500C066AA /* CommonView.swift */; };
@@ -73,6 +74,7 @@
 		8D965B1B295B4C8200F84C61 /* ListOfTranslationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfTranslationsView.swift; sourceTree = "<group>"; };
 		8D965B1D295C891600F84C61 /* LexicalUnitCreationTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationTableView.swift; sourceTree = "<group>"; };
 		8D965B1F295C89A100F84C61 /* LexicalUnitCreationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationTableViewCell.swift; sourceTree = "<group>"; };
+		8D965B24295D786400F84C61 /* LexicalUnitCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationViewModel.swift; sourceTree = "<group>"; };
 		8DA550B42936468A00490835 /* RootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootComponent.swift; sourceTree = "<group>"; };
 		8DA550BA29364A7000490835 /* Needle.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Needle.generated.swift; sourceTree = "<group>"; };
 		8DAF4EA12950A41500C066AA /* CommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonView.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 			children = (
 				8D7BC5CD295AF94600F7D825 /* Subviews */,
 				8D7BC5CB295AF92900F7D825 /* LexicalUnitCreationViewController.swift */,
+				8D965B24295D786400F84C61 /* LexicalUnitCreationViewModel.swift */,
 				8D7BC5D0295AFB8200F7D825 /* LexicalUnitCreationComponent.swift */,
 			);
 			path = LexicalUnitCreationScreen;
@@ -433,6 +436,7 @@
 				8DB22C2229422DD900F629E4 /* RootFoldersView.swift in Sources */,
 				8D5DD2F82934FA0100C7A114 /* RootFoldersViewControllerImp.swift in Sources */,
 				8D965B1E295C891600F84C61 /* LexicalUnitCreationTableView.swift in Sources */,
+				8D965B25295D786400F84C61 /* LexicalUnitCreationViewModel.swift in Sources */,
 				8D29A98329597D4100EBF0F1 /* LexicalUnitListViewController.swift in Sources */,
 				8D7BC5CC295AF92900F7D825 /* LexicalUnitCreationViewController.swift in Sources */,
 				8D29A98729597DF000EBF0F1 /* LexicalUnitTableViewCell.swift in Sources */,

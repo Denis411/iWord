@@ -77,17 +77,17 @@ extension LexicalUnitContainerImp {
 }
 
 struct LexicalUnit: Equatable, Hashable {
-    let originalLexicalUnit: String
-    let primaryTranslation: PrimaryTranslation
-    let description: String
-    let translations: [PartOfSpeech: [String]]
-    let isPinned: Bool
-    let isFavorite: Bool
-    let humanVoiceRecording: Data?
-    let images: [Data]?
-    let progressPercentage: UInt8
-    let dateOfAdding: Date
-    let tries: [Exercise: TryResults]
+    var originalLexicalUnit: String
+    var primaryTranslation: PrimaryTranslation
+    var description: String
+    var translations: [PartOfSpeech: [String]]
+    var isPinned: Bool
+    var isFavorite: Bool
+    var humanVoiceRecording: Data?
+    var images: [Data]?
+    var progressPercentage: UInt8
+    var dateOfAdding: Date
+    var tries: [Exercise: TryResults]
 
     static func == (lhs: LexicalUnit, rhs: LexicalUnit) -> Bool {
         lhs.originalLexicalUnit == rhs.originalLexicalUnit

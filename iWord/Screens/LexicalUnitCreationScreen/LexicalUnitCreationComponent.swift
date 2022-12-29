@@ -19,6 +19,10 @@ protocol LexicalUnitCreationDependency: Dependency {
 
 final class LexicalUnitCreationComponent: Component<LexicalUnitCreationDependency> {
     var lexicalUnitCreationViewController: LexicalUnitCreationViewController {
-        LexicalUnitCreationViewController()
+        LexicalUnitCreationViewController(viewModel: lexicalUnitCreationViewModel)
+    }
+
+    private var lexicalUnitCreationViewModel: LexicalUnitCreationViewModel {
+        LexicalUnitCreationViewModelImp()
     }
 }

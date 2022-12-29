@@ -12,9 +12,34 @@
 // frameworks are governed by their own individual licenses.
 
 import UIKit
+import Combine
+
+protocol LexicalUnitCreationViewModel {
+    var newLexicalUnitModel: CurrentValueSubject<LexicalUnit, Never> { get }
+    func addOriginalLexicalUnit(text: String)
+    func addPrimaryTranslation(translation: PrimaryTranslation)
+    func addDescription(description: String)
+    func likeUnit()
+    func unlikeUnit()
+    func recordHumanVoice()
+    func playHumanVoiceRecording()
+    func addImages(images: [Data])
+    func saveNewLexicalUnitModel(to folder: FolderName)
+}
 
 class LexicalUnitCreationViewController: UIViewController {
     var mainView: LexicalUnitCreationView { view as! LexicalUnitCreationView }
+    let viewModel: LexicalUnitCreationViewModel
+    private var disposedBag = Set<AnyCancellable>()
+
+    init(viewModel: LexicalUnitCreationViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func loadView() {
         view = LexicalUnitCreationView()
@@ -22,6 +47,26 @@ class LexicalUnitCreationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setMainViewActions()
+    }
+}
+
+// MARK: - MainView actions -
+extension LexicalUnitCreationViewController {
+    private func setMainViewActions() {
+        setActionForPlayingHumanVoice()
+        setActionForRecordingHumanVoice()
     }
 
+    private func setActionForPlayingHumanVoice() {
+        mainView.setActionForPlayAudioButton { [unowned self] in
+            self.viewModel.playHumanVoiceRecording()
+        }
+    }
+
+    private func setActionForRecordingHumanVoice() {
+        mainView.setActionForRecordAudioButton { [unowned self] in
+            self.viewModel.recordHumanVoice()
+        }
+    }
 }
