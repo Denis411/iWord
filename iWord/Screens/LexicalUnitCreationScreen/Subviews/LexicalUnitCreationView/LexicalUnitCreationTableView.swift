@@ -22,6 +22,7 @@ final class LexicalUnitCreationTableView: UITableView {
     private var listOfTranslations: [ListOfTranslationsOfPartOfSpeech] = []
     private var heightConstraint: NSLayoutConstraint?
     private var onRemoveTranslationForPartOfSpeech: ((IndexPath) -> Void)?
+    private var onChangePartOfSpeechForCellAction: ((IndexPath) -> Void)?
 
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -45,6 +46,11 @@ final class LexicalUnitCreationTableView: UITableView {
     func setOnRemoveTranslationForPartOfSpeech(_ action: @escaping (IndexPath) -> Void) {
         self.onRemoveTranslationForPartOfSpeech = action
     }
+
+    func setOnChangePartOfSpeechForCellAction(_ action: @escaping (IndexPath) -> Void) {
+        self.onChangePartOfSpeechForCellAction = action
+    }
+
 }
 
 // MARK: - Subview configurations -
@@ -90,7 +96,7 @@ extension LexicalUnitCreationTableView: UITableViewDelegate, UITableViewDataSour
 
         setUp(cell: cell, with: indexPath)
         setOnRemoveAction(for: cell, at: indexPath)
-
+        setOnChangePartOfSpeechAction(for: cell, at: indexPath)
         return cell
     }
 
@@ -104,6 +110,12 @@ extension LexicalUnitCreationTableView: UITableViewDelegate, UITableViewDataSour
     private func setOnRemoveAction(for cell: LexicalUnitCreationTableViewCell, at indexPath: IndexPath) {
         cell.setOnRemoveAction { [unowned self] in
             self.onRemoveTranslationForPartOfSpeech?(indexPath)
+        }
+    }
+
+    private func setOnChangePartOfSpeechAction(for cell: LexicalUnitCreationTableViewCell, at indexPath: IndexPath) {
+        cell.setChangePartOfSpeechAction { [unowned self] in
+            self.onChangePartOfSpeechForCellAction?(indexPath)
         }
     }
 }

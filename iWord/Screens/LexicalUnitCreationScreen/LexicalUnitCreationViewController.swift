@@ -21,6 +21,7 @@ protocol LexicalUnitCreationViewModel {
     func addDescription(description: String)
     func addTranslationForPartOfSpeech(translations: ListOfTranslationsOfPartOfSpeech)
     func removeTranslationForPartOfSpeech(at indexPath: IndexPath)
+    func changePartOfSpeechForTranslation(at indexPath: IndexPath)
     func likeUnit()
     func unlikeUnit()
     func recordHumanVoice()
@@ -77,6 +78,7 @@ extension LexicalUnitCreationViewController {
         setActionForRecordingHumanVoice()
         setActionForAddingTranslationForPartOfSpeechAction()
         setRemoveTranslationForPartOfSpeech()
+        setOnChangePartOfSpeechForCellAction()
     }
 
     private func setActionForPlayingHumanVoice() {
@@ -103,4 +105,9 @@ extension LexicalUnitCreationViewController {
         }
     }
 
+    private func setOnChangePartOfSpeechForCellAction() {
+        mainView.setOnChangePartOfSpeechForCellAction { [unowned self] indexPath in
+            self.viewModel.changePartOfSpeechForTranslation(at: indexPath)
+        }
+    }
 }

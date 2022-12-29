@@ -20,7 +20,9 @@ final class LexicalUnitCreationTableViewCell: UITableViewCell {
 //  TODO: - Ask UI/UX whether you should make it UITextField
     private let translationTextView = UILabel()
     private let removeButton = UIButton()
+    private let partOfSpeechButton = UIButton()
     private var onRemoveAction: EmptyClosure?
+    private var onChangePartOfSpeechAction: EmptyClosure?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -40,6 +42,10 @@ final class LexicalUnitCreationTableViewCell: UITableViewCell {
     func setOnRemoveAction(_ action: @escaping EmptyClosure) {
         onRemoveAction = action
     }
+
+    func setChangePartOfSpeechAction(_ action: @escaping EmptyClosure) {
+        self.onChangePartOfSpeechAction = action
+    }
 }
 
 extension LexicalUnitCreationTableViewCell {
@@ -53,15 +59,18 @@ extension LexicalUnitCreationTableViewCell {
         translationTextView.numberOfLines = 0
         contentView.addSubview(translationTextView)
         contentView.addSubview(removeButton)
+        contentView.addSubview(partOfSpeechButton)
     }
 
     private func setAllConstraints() {
         setTranslationTextFieldConstraints()
         setRemoveButtonConstraints()
+        addPartOfSpeechButtonConstraints()
     }
 
     private func configureAllSubviews() {
         configureRemoveButton()
+        configurePartOfSpeechButton()
     }
 }
 
@@ -80,6 +89,14 @@ extension LexicalUnitCreationTableViewCell {
         }
     }
 
+    private func addPartOfSpeechButtonConstraints() {
+        partOfSpeechButton.snp.makeConstraints { make in
+            make.top.equalTo(removeButton.snp.bottom).offset(10)
+            make.right.equalToSuperview().inset(10)
+            make.height.width.equalTo(20)
+        }
+    }
+
 // MARK: - Subview configurations -
     private func configureRemoveButton() {
         removeButton.backgroundColor = .red
@@ -88,11 +105,23 @@ extension LexicalUnitCreationTableViewCell {
         removeButton.addTarget(self, action: #selector(performRemoveButtonAction), for: .touchUpInside)
         removeButton.layer.cornerRadius = 5
     }
+
+    private func configurePartOfSpeechButton() {
+        partOfSpeechButton.backgroundColor = .orange
+        let image = UIImage(systemName: "plus.fill")
+        partOfSpeechButton.setImage(image, for: .normal)
+        partOfSpeechButton.addTarget(self, action: #selector(performChangePartOfSpeechAction), for: .touchUpInside)
+        partOfSpeechButton.layer.cornerRadius = 5
+    }
 }
 
 extension LexicalUnitCreationTableViewCell {
     @objc private func performRemoveButtonAction() {
         onRemoveAction?()
         self.removeFromSuperview()
+    }
+
+    @objc private func performChangePartOfSpeechAction() {
+        onChangePartOfSpeechAction?()
     }
 }

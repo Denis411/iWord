@@ -40,6 +40,10 @@ final class ListOfTranslationsView: CommonView {
     func setOnRemoveTranslationForPartOfSpeech(_ action: @escaping (IndexPath) -> Void) {
         self.tableView.setOnRemoveTranslationForPartOfSpeech(action)
     }
+
+    func setOnChangePartOfSpeechForCellAction(_ action: @escaping (IndexPath) -> Void) {
+        self.tableView.setOnChangePartOfSpeechForCellAction(action)
+    }
 }
 
 extension ListOfTranslationsView {
