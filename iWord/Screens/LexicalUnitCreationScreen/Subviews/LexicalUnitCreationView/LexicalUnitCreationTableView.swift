@@ -102,7 +102,6 @@ extension LexicalUnitCreationTableView: UITableViewDelegate, UITableViewDataSour
 
     private func setUp(cell: LexicalUnitCreationTableViewCell, with indexPath: IndexPath) {
         cell.setTranslation(
-            partOfSpeech: listOfTranslations[indexPath.section].partOfSpeech,
             translation: listOfTranslations[indexPath.section].listOfTranslations[indexPath.row]
         )
     }

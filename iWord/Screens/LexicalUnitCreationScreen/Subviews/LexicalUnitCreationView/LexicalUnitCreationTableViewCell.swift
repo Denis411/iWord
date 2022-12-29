@@ -15,7 +15,6 @@ import UIKit
 
 final class LexicalUnitCreationTableViewCell: UITableViewCell {
     static let reusableID = "LexicalUnitTableViewCell"
-    private var partOfSpeech: PartOfSpeech = .notSet
     private var translation: String = ""
 //  TODO: - Ask UI/UX whether you should make it UITextField
     private let translationTextView = UILabel()
@@ -33,8 +32,7 @@ final class LexicalUnitCreationTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setTranslation(partOfSpeech: PartOfSpeech, translation: String) {
-        self.partOfSpeech = partOfSpeech
+    func setTranslation(translation: String) {
         self.translation = translation
         self.translationTextView.text = translation
     }
