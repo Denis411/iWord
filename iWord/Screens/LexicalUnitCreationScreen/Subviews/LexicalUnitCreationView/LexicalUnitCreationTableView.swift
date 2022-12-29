@@ -83,7 +83,7 @@ extension LexicalUnitCreationTableView: UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        "Some"
+        listOfTranslations[section].partOfSpeech.rawValue.capitalized
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

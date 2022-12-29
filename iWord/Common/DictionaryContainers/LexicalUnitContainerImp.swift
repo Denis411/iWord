@@ -98,7 +98,7 @@ struct LexicalUnit: Equatable, Hashable {
     }
 }
 
-enum PartOfSpeech {
+enum PartOfSpeech: String {
     case pronoun
     case preposition
     case conjunction
@@ -109,7 +109,7 @@ enum PartOfSpeech {
     case collocation
     case idiom
     case justSentence
-    case notSet
+    case notSet = "Part of speech is not set"
 }
 
 enum Exercise: Hashable {
