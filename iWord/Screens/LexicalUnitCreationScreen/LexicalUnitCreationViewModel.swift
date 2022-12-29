@@ -65,7 +65,7 @@ extension LexicalUnit {
             originalLexicalUnit: "",
             primaryTranslation: emptyTranslation,
             description: "",
-            translations: [:],
+            translations: [],
             isPinned: false,
             isFavorite: false,
             humanVoiceRecording: nil,

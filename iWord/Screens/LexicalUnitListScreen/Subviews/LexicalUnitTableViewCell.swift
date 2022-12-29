@@ -24,7 +24,7 @@ struct LexicalUnitCellInfo: Hashable {
     let progressPercentage: UInt8
     let originalLexicalUnit: String
     let primaryTranslation: PrimaryTranslation
-    let translations: [PartOfSpeech: [String]]
+    let translations: [ListOfTranslationsOfPartOfSpeech]
     let isPinned: Bool
 
     static func == (lhs: LexicalUnitCellInfo, rhs: LexicalUnitCellInfo) -> Bool {

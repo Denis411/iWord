@@ -80,7 +80,7 @@ struct LexicalUnit: Equatable, Hashable {
     var originalLexicalUnit: String
     var primaryTranslation: PrimaryTranslation
     var description: String
-    var translations: [PartOfSpeech: [String]]
+    var translations: [ListOfTranslationsOfPartOfSpeech]
     var isPinned: Bool
     var isFavorite: Bool
     var humanVoiceRecording: Data?
@@ -128,7 +128,7 @@ enum TryResults {
 
 fileprivate func getFakeLexicalUnitModels() -> [LexicalUnit] {
     let primaryTranslation = PrimaryTranslation(partOfSpeech: .noun, translation: "猫")
-    let translations: [PartOfSpeech : [String]] = [ .noun : ["猫", "恶妇"]]
+    let translations: [ListOfTranslationsOfPartOfSpeech] = [ListOfTranslationsOfPartOfSpeech(partOfSpeech: .noun, translations: ["猫", "恶妇"])]
     let tries: [Exercise : TryResults] = [.reading : .success(times: 5)]
     
     let singleLexicalUnitModel = LexicalUnit(

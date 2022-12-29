@@ -27,8 +27,8 @@ final class ListOfTranslationsView: CommonView {
         translationTextView.becomeFirstResponder()
     }
 
-    func getAllTranslations() -> [ListOfTranslationsOfPartOfSpeech] {
-        return tableView.getListsOfTranslations()
+    func updateListOfTranslations(translations: [ListOfTranslationsOfPartOfSpeech]) {
+        tableView.updateListOfTranslations(translations: translations)
     }
 }
 
@@ -77,11 +77,6 @@ extension ListOfTranslationsView: UITextViewToolBarButtonAction {
     }
 
     private func performOnToolBarButtonAddAction() {
-        guard let enteredText = self.translationTextView.text else {
-            return
-        }
 
-        tableView.addLexicalUnit(partOfSpeech: .notSet, translation: enteredText)
-        self.translationTextView.text = ""
     }
 }

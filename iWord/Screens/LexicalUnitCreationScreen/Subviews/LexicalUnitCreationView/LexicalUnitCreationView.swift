@@ -34,6 +34,10 @@ final class LexicalUnitCreationView: CommonView {
     func setActionForPlayAudioButton(_ action: @escaping EmptyClosure) {
         playAudioButton.setAction(action)
     }
+
+    func updateListOfTranslations(translations: [ListOfTranslationsOfPartOfSpeech]) {
+        listOfTranslations.updateListOfTranslations(translations: translations)
+    }
 }
 
 extension LexicalUnitCreationView {

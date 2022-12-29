@@ -48,6 +48,23 @@ class LexicalUnitCreationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setMainViewActions()
+        bind()
+    }
+}
+
+extension LexicalUnitCreationViewController {
+    private func bind() {
+        bindListOfTranslations()
+    }
+
+    private func bindListOfTranslations() {
+        viewModel.newLexicalUnitModel
+            .receive(on: RunLoop.main)
+            .sink { [unowned self] lexicalUnit in
+                let translations = lexicalUnit.translations
+                self.mainView.updateListOfTranslations(translations: translations)
+            }
+            .store(in: &disposedBag)
     }
 }
 

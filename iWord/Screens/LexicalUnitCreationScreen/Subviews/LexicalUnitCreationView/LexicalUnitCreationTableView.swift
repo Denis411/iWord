@@ -36,20 +36,8 @@ final class LexicalUnitCreationTableView: UITableView {
         heightConstraint?.constant = contentSize.height
     }
 
-    func addLexicalUnit(partOfSpeech: PartOfSpeech, translation: String) {
-        for (key, value) in listOfTranslations.enumerated() where value.partOfSpeech == partOfSpeech {
-            listOfTranslations[key].translations.append(translation)
-            self.reloadData()
-            return
-        }
-
-        let newList = ListOfTranslationsOfPartOfSpeech(partOfSpeech: partOfSpeech, translations: [translation])
-        listOfTranslations.append(newList)
-        self.reloadData()
-    }
-
-    func getListsOfTranslations() -> [ListOfTranslationsOfPartOfSpeech] {
-        self.listOfTranslations
+    func updateListOfTranslations(translations: [ListOfTranslationsOfPartOfSpeech]) {
+        self.listOfTranslations = translations
     }
 }
 

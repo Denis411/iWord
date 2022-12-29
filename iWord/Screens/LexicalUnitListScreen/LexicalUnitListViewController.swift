@@ -80,7 +80,7 @@ extension LexicalUnitListViewController {
 
 fileprivate extension LexicalUnit {
     func toLexicalUnitCellInfo() -> LexicalUnitCellInfo {
-        LexicalUnitCellInfo(
+        return LexicalUnitCellInfo(
             image: nil,
             progressPercentage: self.progressPercentage,
             originalLexicalUnit: self.originalLexicalUnit,
