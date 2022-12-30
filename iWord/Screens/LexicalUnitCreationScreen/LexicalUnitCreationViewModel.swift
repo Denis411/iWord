@@ -49,14 +49,12 @@ extension LexicalUnitCreationViewModelImp {
         removeTranslationForPartOfSpeechIfNeeded(at: translationsForPartOfSpeechIndex)
     }
 
-    func changePartOfSpeechForTranslation(at indexPath: IndexPath) {
-//       user router to open a screen where you can choose a new part of speech, after that update value of subject
-        let newPartOfSpeech = PartOfSpeech.noun
+    func changePartOfSpeechForTranslation(at indexPath: IndexPath, newPartOfSpeech: PartOfSpeech) {
         let translationsForPartOfSpeechIndex = indexPath.section
         let indexOfTranslationToChange = indexPath.row
 
         let translationToRelocate = newLexicalUnitModel.value.translationsForPartOfSpeech[translationsForPartOfSpeechIndex].listOfTranslations[indexOfTranslationToChange]
-//      remove from old place
+
         newLexicalUnitModel.value.translationsForPartOfSpeech[translationsForPartOfSpeechIndex].listOfTranslations.remove(at: indexOfTranslationToChange)
 
         guard let index = findIndexIfExists(for: newPartOfSpeech) else {

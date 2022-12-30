@@ -21,7 +21,7 @@ final class LexicalUnitCreationTableViewCell: UITableViewCell {
     private let removeButton = UIButton()
     private let partOfSpeechButton = UIButton()
     private var onRemoveAction: EmptyClosure?
-    private var onChangePartOfSpeechAction: EmptyClosure?
+    private var onChangePartOfSpeechAction: ((PartOfSpeech) -> Void)?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -41,7 +41,7 @@ final class LexicalUnitCreationTableViewCell: UITableViewCell {
         onRemoveAction = action
     }
 
-    func setChangePartOfSpeechAction(_ action: @escaping EmptyClosure) {
+    func setChangePartOfSpeechAction(_ action: @escaping (PartOfSpeech) -> Void) {
         self.onChangePartOfSpeechAction = action
     }
 }
@@ -108,8 +108,21 @@ extension LexicalUnitCreationTableViewCell {
         partOfSpeechButton.backgroundColor = .orange
         let image = UIImage(systemName: "plus.fill")
         partOfSpeechButton.setImage(image, for: .normal)
-        partOfSpeechButton.addTarget(self, action: #selector(performChangePartOfSpeechAction), for: .touchUpInside)
         partOfSpeechButton.layer.cornerRadius = 5
+
+        let actions = createActionsForChangePartOfSpeechMenu()
+        partOfSpeechButton.menu = UIMenu(title: "Parts of speech", options: .displayInline, children: actions)
+        partOfSpeechButton.showsMenuAsPrimaryAction = true
+    }
+
+    private func createActionsForChangePartOfSpeechMenu() -> [UIAction] {
+        let actions = PartOfSpeech.allCases.map { partOfSpeech in
+            UIAction(title: partOfSpeech.rawValue.capitalized) { [unowned self] _ in
+                self.onChangePartOfSpeechAction?(partOfSpeech)
+            }
+        }
+
+        return actions
     }
 }
 
@@ -117,9 +130,5 @@ extension LexicalUnitCreationTableViewCell {
     @objc private func performRemoveButtonAction() {
         onRemoveAction?()
         self.removeFromSuperview()
-    }
-
-    @objc private func performChangePartOfSpeechAction() {
-        onChangePartOfSpeechAction?()
     }
 }
