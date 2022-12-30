@@ -43,16 +43,18 @@ private class LexicalUnitScreenDependenciesfecbfdfd5a0d1bb2a628Provider: Lexical
     }
 }
 private class LexicalUnitCreationDependency7e421c941884b7104910BaseProvider: LexicalUnitCreationDependency {
-
-
-    init() {
-
+    var errorAlert: ErrorAlert {
+        return rootComponent.errorAlert
+    }
+    private let rootComponent: RootComponent
+    init(rootComponent: RootComponent) {
+        self.rootComponent = rootComponent
     }
 }
 /// ^->RootComponent->LexicalUnitCreationComponent
 private class LexicalUnitCreationDependency7e421c941884b7104910Provider: LexicalUnitCreationDependency7e421c941884b7104910BaseProvider {
     init(component: NeedleFoundation.Scope) {
-        super.init()
+        super.init(rootComponent: component.parent as! RootComponent)
     }
 }
 private class RootScreenDependenciesac0a88b3c4e283ae5de9BaseProvider: RootScreenDependencies {

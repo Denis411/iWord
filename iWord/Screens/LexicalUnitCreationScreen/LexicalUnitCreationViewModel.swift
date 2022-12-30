@@ -15,7 +15,12 @@ import Foundation
 import Combine
 
 final class LexicalUnitCreationViewModelImp: LexicalUnitCreationViewModel {
+    private let errorAlert: ErrorAlert
     private(set) var newLexicalUnitModel = CurrentValueSubject<LexicalUnit, Never>(.createEmptyLexicalUnit())
+
+    init(errorAlert: ErrorAlert) {
+        self.errorAlert = errorAlert
+    }
 }
 
 extension LexicalUnitCreationViewModelImp {
