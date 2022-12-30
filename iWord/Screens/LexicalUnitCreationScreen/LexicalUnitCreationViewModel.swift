@@ -32,43 +32,53 @@ extension LexicalUnitCreationViewModelImp {
     }
 
     func addTranslationForPartOfSpeech(translations: ListOfTranslationsOfPartOfSpeech) {
-        guard let index = findIndexIfExists(for: translations.partOfSpeech) else {
-            newLexicalUnitModel.value.translationsForPartOfSpeech.append(translations)
-            return
-        }
+        let translationsToAdd = translations.listOfTranslations
+        let partOfSpeech = translations.partOfSpeech
 
-        newLexicalUnitModel.value.translationsForPartOfSpeech[index].listOfTranslations.append(contentsOf: translations.listOfTranslations)
+        addTranslations(translations: translationsToAdd, for: partOfSpeech)
     }
 
     func removeTranslationForPartOfSpeech(at indexPath: IndexPath) {
-        let translationsForPartOfSpeechIndex = indexPath.section
-        let concreteTranslationIndex = indexPath.row
+        let indexOfPartOfSpeech = indexPath.section
+        let indexOfTranslation = indexPath.row
 
-        newLexicalUnitModel.value.translationsForPartOfSpeech[translationsForPartOfSpeechIndex].listOfTranslations.remove(at: concreteTranslationIndex)
+        newLexicalUnitModel.value.translationsForPartOfSpeech[indexOfPartOfSpeech].listOfTranslations.remove(at: indexOfTranslation)
 
-        removeTranslationForPartOfSpeechIfNeeded(at: translationsForPartOfSpeechIndex)
+        removePartOfSpeechIfEmpty(at: indexOfPartOfSpeech)
     }
 
     func changePartOfSpeechForTranslation(at indexPath: IndexPath, newPartOfSpeech: PartOfSpeech) {
-        let translationsForPartOfSpeechIndex = indexPath.section
-        let indexOfTranslationToChange = indexPath.row
-
-        let translationToRelocate = newLexicalUnitModel.value.translationsForPartOfSpeech[translationsForPartOfSpeechIndex].listOfTranslations[indexOfTranslationToChange]
-
-        newLexicalUnitModel.value.translationsForPartOfSpeech[translationsForPartOfSpeechIndex].listOfTranslations.remove(at: indexOfTranslationToChange)
-
-        guard let index = findIndexIfExists(for: newPartOfSpeech) else {
-            let newElement = ListOfTranslationsOfPartOfSpeech(
-                partOfSpeech: newPartOfSpeech, listOfTranslations: [translationToRelocate]
-            )
-
-            newLexicalUnitModel.value.translationsForPartOfSpeech.append(newElement)
-            removeTranslationForPartOfSpeechIfNeeded(at: translationsForPartOfSpeechIndex)
-            return
+        defer {
+            let indexOfPartOfSpeech = indexPath.section
+            //      remove translation from old place
+            self.removeTranslationForPartOfSpeech(at: indexPath)
+            //      remove part of speech if it has no translation
+            self.removePartOfSpeechIfEmpty(at: indexOfPartOfSpeech)
         }
 
-        newLexicalUnitModel.value.translationsForPartOfSpeech[index].listOfTranslations.append(translationToRelocate)
-        removeTranslationForPartOfSpeechIfNeeded(at: translationsForPartOfSpeechIndex)
+        //      cash translation
+        let translationToRelocate = getTranslationForPartOfSpeech(at: indexPath)
+        addTranslations(translations: [translationToRelocate], for: newPartOfSpeech)
+    }
+
+    private func getTranslationForPartOfSpeech(at index: IndexPath) -> String {
+        let indexOfPartOfSpeech = index.section
+        let indexOfTranslation = index.row
+        let translation = newLexicalUnitModel.value.translationsForPartOfSpeech[indexOfPartOfSpeech].listOfTranslations[indexOfTranslation]
+        return translation
+    }
+
+    private func addTranslations(translations: [String], for partOfSpeech: PartOfSpeech) {
+        if let index = findIndexIfExists(for: partOfSpeech) {
+            newLexicalUnitModel.value.translationsForPartOfSpeech[index].listOfTranslations.append(contentsOf: translations)
+
+        } else {
+            let newPartOfSpeech = ListOfTranslationsOfPartOfSpeech(
+                partOfSpeech: partOfSpeech, listOfTranslations: translations
+            )
+
+            newLexicalUnitModel.value.translationsForPartOfSpeech.append(newPartOfSpeech)
+        }
     }
 
     private func findIndexIfExists(for partOfSpeech: PartOfSpeech) -> Int? {
@@ -79,7 +89,7 @@ extension LexicalUnitCreationViewModelImp {
         return nil
     }
 
-    private func removeTranslationForPartOfSpeechIfNeeded(at index: Int) {
+    private func removePartOfSpeechIfEmpty(at index: Int) {
         if newLexicalUnitModel.value.translationsForPartOfSpeech[index].listOfTranslations.isEmpty {
             newLexicalUnitModel.value.translationsForPartOfSpeech.remove(at: index)
         }
