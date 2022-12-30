@@ -19,7 +19,7 @@ protocol LexicalUnitCreationViewModel {
     func addOriginalLexicalUnit(text: String)
     func addPrimaryTranslation(translation: PrimaryTranslation)
     func addDescription(description: String)
-    func addTranslationForPartOfSpeech(translations: ListOfTranslationsOfPartOfSpeech)
+    func addTranslationForPartOfSpeech(translation: String, for partOfSpeech: PartOfSpeech)
     func removeTranslationForPartOfSpeech(at indexPath: IndexPath)
     func changePartOfSpeechForTranslation(at indexPath: IndexPath, newPartOfSpeech: PartOfSpeech)
     func likeUnit()
@@ -94,8 +94,8 @@ extension LexicalUnitCreationViewController {
     }
 
     private func setActionForAddingTranslationForPartOfSpeechAction() {
-        mainView.setOnAddTranslationForPartOfSpeechAction { [unowned self] listOfTranslations in
-            self.viewModel.addTranslationForPartOfSpeech(translations: listOfTranslations)
+        mainView.setOnAddTranslationForPartOfSpeechAction { [unowned self] translation, partOfSpeech in
+            self.viewModel.addTranslationForPartOfSpeech(translation: translation, for: partOfSpeech)
         }
     }
 

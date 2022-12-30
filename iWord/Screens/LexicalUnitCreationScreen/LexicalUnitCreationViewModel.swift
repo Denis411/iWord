@@ -36,11 +36,15 @@ extension LexicalUnitCreationViewModelImp {
         newLexicalUnitModel.value.description = description
     }
 
-    func addTranslationForPartOfSpeech(translations: ListOfTranslationsOfPartOfSpeech) {
-        let translationsToAdd = translations.listOfTranslations
-        let partOfSpeech = translations.partOfSpeech
+    func addTranslationForPartOfSpeech(translation: String, for partOfSpeech: PartOfSpeech) {
+        if translation.isEmpty {
+            let errorDescription = "This text field cannot be empty"
+            errorAlert.presentAlert(with: errorDescription)
+//            Log.warning(errorDescription)
+            return
+        }
 
-        addTranslations(translations: translationsToAdd, for: partOfSpeech)
+        addTranslations(translations: [translation], for: partOfSpeech)
     }
 
     func removeTranslationForPartOfSpeech(at indexPath: IndexPath) {
@@ -73,6 +77,12 @@ extension LexicalUnitCreationViewModelImp {
         return translation
     }
 
+
+    /// Adds [Strings] to a given PartOfSpeech
+    /// Creates a new part of speech if does not already exist
+    /// - Parameters:
+    ///   - translations: translations to add to a partOfSpeech
+    ///   - partOfSpeech: partOfSpeech to which translations add added
     private func addTranslations(translations: [String], for partOfSpeech: PartOfSpeech) {
         if let index = findIndexIfExists(for: partOfSpeech) {
             newLexicalUnitModel.value.translationsForPartOfSpeech[index].listOfTranslations.append(contentsOf: translations)

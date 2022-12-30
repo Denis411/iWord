@@ -13,10 +13,12 @@
 
 import UIKit
 
+typealias SecondaryTranslationClosure = (String, PartOfSpeech) -> Void
+
 final class ListOfTranslationsView: CommonView {
     private let translationTextView = ResizableTextView(maximumHeight: 90)
     private let tableView = LexicalUnitCreationTableView()
-    private var onAddTranslationForPartOfSpeech: ((ListOfTranslationsOfPartOfSpeech) -> Void)?
+    private var onAddSecondaryTranslation: SecondaryTranslationClosure?
     private var onRemoveTranslationForPartOfSpeech: ((IndexPath) -> Void)?
 
     override func setUpUI() {
@@ -33,8 +35,8 @@ final class ListOfTranslationsView: CommonView {
         tableView.updateListOfTranslations(translations: translations)
     }
 
-    func setonAddTranslationForPartOfSpeechAction(_ action: @escaping (ListOfTranslationsOfPartOfSpeech) -> Void) {
-        self.onAddTranslationForPartOfSpeech = action
+    func setonAddTranslationForPartOfSpeechAction(_ action: @escaping SecondaryTranslationClosure) {
+        self.onAddSecondaryTranslation = action
     }
 
     func setOnRemoveTranslationForPartOfSpeech(_ action: @escaping (IndexPath) -> Void) {
@@ -86,8 +88,8 @@ extension ListOfTranslationsView {
 extension ListOfTranslationsView: UITextViewToolBarButtonAction {
     func setOnToolBarButtonAction(sender: UITextView) {
         if sender === translationTextView {
-            let translation = ListOfTranslationsOfPartOfSpeech(partOfSpeech: .notSet, listOfTranslations: [sender.text])
-            onAddTranslationForPartOfSpeech?(translation)
+            let enteredTranslation = sender.text ?? ""
+            onAddSecondaryTranslation?(enteredTranslation, .notSet)
         }
     }
 }

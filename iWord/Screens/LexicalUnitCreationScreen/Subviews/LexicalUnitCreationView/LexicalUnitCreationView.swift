@@ -39,7 +39,7 @@ final class LexicalUnitCreationView: CommonView {
         listOfTranslations.updateListOfTranslations(translations: translations)
     }
 
-    func setOnAddTranslationForPartOfSpeechAction(action: @escaping (ListOfTranslationsOfPartOfSpeech) -> Void) {
+    func setOnAddTranslationForPartOfSpeechAction(action: @escaping SecondaryTranslationClosure) {
         listOfTranslations.setonAddTranslationForPartOfSpeechAction(action)
     }
 
