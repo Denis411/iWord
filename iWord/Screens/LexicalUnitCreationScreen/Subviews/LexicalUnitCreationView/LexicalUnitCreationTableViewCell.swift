@@ -19,9 +19,8 @@ final class LexicalUnitCreationTableViewCell: UITableViewCell {
 //  TODO: - Ask UI/UX whether you should make it UITextField
     private let translationTextView = UILabel()
     private let removeButton = UIButton()
-    private let partOfSpeechButton = UIButton()
+    private let partOfSpeechButton = ButtonWithPartOfSpeechMenu()
     private var onRemoveAction: EmptyClosure?
-    private var onChangePartOfSpeechAction: ((PartOfSpeech) -> Void)?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -42,7 +41,7 @@ final class LexicalUnitCreationTableViewCell: UITableViewCell {
     }
 
     func setChangePartOfSpeechAction(_ action: @escaping (PartOfSpeech) -> Void) {
-        self.onChangePartOfSpeechAction = action
+        partOfSpeechButton.setOnChoosePartOfSpeechAction(action)
     }
 }
 
@@ -109,20 +108,6 @@ extension LexicalUnitCreationTableViewCell {
         let image = UIImage(systemName: "plus.fill")
         partOfSpeechButton.setImage(image, for: .normal)
         partOfSpeechButton.layer.cornerRadius = 5
-
-        let actions = createActionsForChangePartOfSpeechMenu()
-        partOfSpeechButton.menu = UIMenu(title: "Parts of speech", options: .displayInline, children: actions)
-        partOfSpeechButton.showsMenuAsPrimaryAction = true
-    }
-
-    private func createActionsForChangePartOfSpeechMenu() -> [UIAction] {
-        let actions = PartOfSpeech.allCases.map { partOfSpeech in
-            UIAction(title: partOfSpeech.rawValue.capitalized) { [unowned self] _ in
-                self.onChangePartOfSpeechAction?(partOfSpeech)
-            }
-        }
-
-        return actions
     }
 }
 
