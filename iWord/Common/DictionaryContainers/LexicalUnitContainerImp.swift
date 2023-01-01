@@ -76,63 +76,6 @@ extension LexicalUnitContainerImp {
     }
 }
 
-struct LexicalUnit: Equatable, Hashable {
-    var originalLexicalUnit: String
-    var primaryTranslation: PrimaryTranslation
-    var description: String
-    var translationsForPartOfSpeech: [ListOfTranslationsOfPartOfSpeech]
-    var examples: [Example]
-    var isPinned: Bool
-    var isFavorite: Bool
-    var humanVoiceRecording: Data?
-    var images: [Data]?
-    var progressPercentage: UInt8
-    var dateOfAdding: Date
-    var tries: [Exercise: TryResults]
-
-    static func == (lhs: LexicalUnit, rhs: LexicalUnit) -> Bool {
-        lhs.originalLexicalUnit == rhs.originalLexicalUnit
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(originalLexicalUnit)
-    }
-}
-
-
-struct Example {
-    var origin: String
-    var translation: String
-}
-
-enum PartOfSpeech: String, CaseIterable {
-    case pronoun
-    case preposition
-    case conjunction
-    case noun
-    case verb
-    case adverb
-    case adjective
-    case collocation
-    case idiom
-    case justSentence = "Just sentence"
-    case notSet = "Part of speech is not set"
-}
-
-enum Exercise: Hashable {
-    case reading
-    case typing
-    case listening
-    case speaking
-    case crossword
-}
-
-// TODO: - Add dates to times before publishing to AppStore -
-enum TryResults {
-    case success(times: Int)
-    case failure(times: Int)
-}
-
 fileprivate func getFakeLexicalUnitModels() -> [LexicalUnit] {
     let primaryTranslation = PrimaryTranslation(partOfSpeech: .noun, translation: "猫")
     let translations: [ListOfTranslationsOfPartOfSpeech] = [ListOfTranslationsOfPartOfSpeech(partOfSpeech: .noun, listOfTranslations: ["猫", "恶妇"])]

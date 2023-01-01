@@ -13,11 +13,6 @@
 
 import UIKit
 
-struct ListOfTranslationsOfPartOfSpeech {
-    var partOfSpeech: PartOfSpeech
-    var listOfTranslations: [String]
-}
-
 final class LexicalUnitCreationTableView: UITableView {
     private var listOfTranslations: [ListOfTranslationsOfPartOfSpeech] = []
     private var heightConstraint: NSLayoutConstraint?

@@ -14,11 +14,6 @@
 import UIKit
 import SnapKit
 
-struct PrimaryTranslation {
-    let partOfSpeech: PartOfSpeech
-    let translation: String
-}
-
 struct LexicalUnitCellInfo: Hashable {
     let image: UIImage?
     let progressPercentage: UInt8
