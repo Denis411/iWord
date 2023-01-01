@@ -19,7 +19,7 @@ final class ListOfTranslationsView: CommonView {
     private let translationTextView = ResizableTextView(maximumHeight: 90)
     private let tableView = LexicalUnitCreationTableView()
     private var onAddSecondaryTranslation: SecondaryTranslationClosure?
-    private var onRemoveTranslationForPartOfSpeech: ((IndexPath) -> Void)?
+    private var onRemoveTranslationForPartOfSpeech: ClosureWithIndexPath?
 
     override func setUpUI() {
         addAllSubviews()
@@ -39,7 +39,7 @@ final class ListOfTranslationsView: CommonView {
         self.onAddSecondaryTranslation = action
     }
 
-    func setOnRemoveTranslationForPartOfSpeech(_ action: @escaping (IndexPath) -> Void) {
+    func setOnRemoveTranslationForPartOfSpeech(_ action: @escaping ClosureWithIndexPath) {
         self.tableView.setOnRemoveTranslationForPartOfSpeech(action)
     }
 

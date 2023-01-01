@@ -18,8 +18,8 @@ final class RootFolderView: CommonView {
     private var folderCellInfos: [Folder] = []
     private var addFolderButton = AddItemButton()
 
-    private var onCellTapAction: ((IndexPath) -> Void)?
-    private var onCellDeletionAction: ((IndexPath) -> Void)?
+    private var onCellTapAction: ClosureWithIndexPath?
+    private var onCellDeletionAction: ClosureWithIndexPath?
 
     override func setUpUI() {
         addSubviews()
@@ -27,11 +27,11 @@ final class RootFolderView: CommonView {
         configureAllViews()
     }
 
-    func setOnCellTapAction(_ action: @escaping (IndexPath) -> Void) {
+    func setOnCellTapAction(_ action: @escaping ClosureWithIndexPath) {
         self.onCellTapAction = action
     }
 
-    func setOnCellDeletionAction(_ action: @escaping (IndexPath) -> Void) {
+    func setOnCellDeletionAction(_ action: @escaping ClosureWithIndexPath) {
         self.onCellDeletionAction = action
     }
 

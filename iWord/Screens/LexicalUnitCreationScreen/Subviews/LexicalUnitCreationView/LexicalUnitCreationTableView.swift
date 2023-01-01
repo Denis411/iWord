@@ -16,7 +16,7 @@ import UIKit
 final class LexicalUnitCreationTableView: UITableView {
     private var listOfTranslations: [ListOfTranslationsOfPartOfSpeech] = []
     private var heightConstraint: NSLayoutConstraint?
-    private var onRemoveTranslationForPartOfSpeech: ((IndexPath) -> Void)?
+    private var onRemoveTranslationForPartOfSpeech: ClosureWithIndexPath?
     private var onChangePartOfSpeechForCellAction: ((IndexPath, PartOfSpeech) -> Void)?
 
     override init(frame: CGRect, style: UITableView.Style) {
@@ -38,7 +38,7 @@ final class LexicalUnitCreationTableView: UITableView {
         self.reloadData()
     }
 
-    func setOnRemoveTranslationForPartOfSpeech(_ action: @escaping (IndexPath) -> Void) {
+    func setOnRemoveTranslationForPartOfSpeech(_ action: @escaping ClosureWithIndexPath) {
         self.onRemoveTranslationForPartOfSpeech = action
     }
 

@@ -26,7 +26,7 @@ final class LexicalUnitListView: CommonView {
         createDiffableDataSource()
     }()
 
-    private var onDeleteUnitAction: ((IndexPath) -> Void)?
+    private var onDeleteUnitAction: ClosureWithIndexPath?
     private var onAddLexicalUnitAction: EmptyClosure?
 
     override func setUpUI() {
@@ -35,7 +35,7 @@ final class LexicalUnitListView: CommonView {
         configureAllSubviews()
     }
 
-    func setOnDeleteUnitAction(_ action: @escaping (IndexPath) -> Void) {
+    func setOnDeleteUnitAction(_ action: @escaping ClosureWithIndexPath) {
         self.onDeleteUnitAction = action
     }
 
