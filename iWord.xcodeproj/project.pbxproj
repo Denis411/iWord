@@ -39,6 +39,7 @@
 		8D965B25295D786400F84C61 /* LexicalUnitCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D965B24295D786400F84C61 /* LexicalUnitCreationViewModel.swift */; };
 		8DA550B52936468A00490835 /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA550B42936468A00490835 /* RootComponent.swift */; };
 		8DA550BB29364A7000490835 /* Needle.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA550BA29364A7000490835 /* Needle.generated.swift */; };
+		8DACC88E2961A7F400EC4CA5 /* LexicalUnitCreationExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DACC88D2961A7F400EC4CA5 /* LexicalUnitCreationExampleView.swift */; };
 		8DAF4EA22950A41500C066AA /* CommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAF4EA12950A41500C066AA /* CommonView.swift */; };
 		8DAF4EA52950AC9D00C066AA /* FolderContainerImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAF4EA42950AC9D00C066AA /* FolderContainerImp.swift */; };
 		8DB22C2229422DD900F629E4 /* RootFoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB22C2129422DD900F629E4 /* RootFoldersView.swift */; };
@@ -79,6 +80,7 @@
 		8D965B24295D786400F84C61 /* LexicalUnitCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationViewModel.swift; sourceTree = "<group>"; };
 		8DA550B42936468A00490835 /* RootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootComponent.swift; sourceTree = "<group>"; };
 		8DA550BA29364A7000490835 /* Needle.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Needle.generated.swift; sourceTree = "<group>"; };
+		8DACC88D2961A7F400EC4CA5 /* LexicalUnitCreationExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationExampleView.swift; sourceTree = "<group>"; };
 		8DAF4EA12950A41500C066AA /* CommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonView.swift; sourceTree = "<group>"; };
 		8DAF4EA42950AC9D00C066AA /* FolderContainerImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderContainerImp.swift; sourceTree = "<group>"; };
 		8DB22C2129422DD900F629E4 /* RootFoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootFoldersView.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				8D965B1D295C891600F84C61 /* LexicalUnitCreationTableView.swift */,
 				8D965B1F295C89A100F84C61 /* LexicalUnitCreationTableViewCell.swift */,
 				8D965B19295B17EC00F84C61 /* LexicalUnitCreationAudioButton.swift */,
+				8DACC88D2961A7F400EC4CA5 /* LexicalUnitCreationExampleView.swift */,
 			);
 			path = LexicalUnitCreationView;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				8D10D051293F82E30097916B /* Logger.swift in Sources */,
 				8D29A98B295AA0E700EBF0F1 /* LexicalUnitViewModeImp.swift in Sources */,
 				8D29A9712953593500EBF0F1 /* ErrorAlert.swift in Sources */,
+				8DACC88E2961A7F400EC4CA5 /* LexicalUnitCreationExampleView.swift in Sources */,
 				8D2E005A2940E3B2001EF42C /* AlertWithTextClosure.swift in Sources */,
 				8D10D054293F91A30097916B /* FolderTableViewCell.swift in Sources */,
 				8D48C58F295F1449005021E8 /* ButtonWithPartOfSpeechMenu.swift in Sources */,
