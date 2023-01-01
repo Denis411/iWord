@@ -13,8 +13,6 @@
 
 import UIKit
 
-typealias ClosureWithIndexPath = (IndexPath) -> Void
-
 final class LexicalUnitCreationView: CommonView {
     private let primaryTranslationTextView = ResizableTextView(maximumHeight: 90)
     private let audioButtonsStackView = UIStackView()

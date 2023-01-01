@@ -13,8 +13,6 @@
 
 import UIKit
 
-typealias EmptyClosure = () -> Void
-
 final class AddItemButton: UIButton {
     var onTapAction: EmptyClosure?
 
