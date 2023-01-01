@@ -15,7 +15,6 @@ import UIKit
 
 final class LexicalUnitCreationTableViewCell: UITableViewCell {
     static let reusableID = "LexicalUnitTableViewCell"
-    private var translation: String = ""
 //  TODO: - Ask UI/UX whether you should make it UITextField
     private let translationTextView = UILabel()
     private let removeButton = UIButton()
@@ -32,7 +31,6 @@ final class LexicalUnitCreationTableViewCell: UITableViewCell {
     }
 
     func setTranslation(translation: String) {
-        self.translation = translation
         self.translationTextView.text = translation
     }
 
