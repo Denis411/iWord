@@ -73,6 +73,13 @@ extension LexicalUnitCreationExampleView {
         addHeightConstraint()
     }
 
+    private func configureAllSubviews() {
+        configureAddExampleButton()
+        configureTitle()
+        configureTableView()
+    }
+
+// MARK: - Constraints -
     private func addExampleButtonConstraints() {
         addExampleButton.snp.makeConstraints { make in
             make.top.right.equalToSuperview()
@@ -102,12 +109,7 @@ extension LexicalUnitCreationExampleView {
         self.heightConstraint?.isActive = true
     }
 
-    private func configureAllSubviews() {
-        configureAddExampleButton()
-        configureTitle()
-        configureTableView()
-    }
-
+// MARK: - Configuration -
     private func configureAddExampleButton() {
         addExampleButton.backgroundColor = .blue
         addExampleButton.addTarget(self, action: #selector(performOnAddExampleAction), for: .touchUpInside)
@@ -143,4 +145,3 @@ extension LexicalUnitCreationExampleView: UITableViewDataSource, UITableViewDele
         return cell
     }
 }
-
