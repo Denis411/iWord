@@ -13,6 +13,8 @@
 
 import UIKit
 
+typealias ClosureWithIndexPath = (IndexPath) -> Void
+
 final class LexicalUnitCreationView: CommonView {
     private let primaryTranslationTextView = ResizableTextView(maximumHeight: 90)
     private let audioButtonsStackView = UIStackView()
@@ -20,6 +22,7 @@ final class LexicalUnitCreationView: CommonView {
     private let playAudioButton = LexicalUnitCreationAudioButton()
     private let lexicalDescriptionTextView = ResizableTextView(maximumHeight: 90)
     private let listOfTranslations = ListOfTranslationsView()
+    private let exampleView = LexicalUnitCreationExampleView()
 
     override func setUpUI() {
         addAllSubviews()
@@ -50,6 +53,20 @@ final class LexicalUnitCreationView: CommonView {
     func setOnChangePartOfSpeechForCellAction(action: @escaping (IndexPath, PartOfSpeech) -> Void) {
         listOfTranslations.setOnChangePartOfSpeechForCellAction(action)
     }
+
+// MARK: - ExampleView actions
+
+    func setOnAddExampleActions(action: @escaping EmptyClosure) {
+        exampleView.setOnAddExampleActions(action)
+    }
+
+    func updateArrayOfExamples(examples: [Example]) {
+        exampleView.updateArrayOfExamples(examples)
+    }
+
+    func removeExampleAction(action: @escaping ClosureWithIndexPath) {
+        exampleView.setOnRemoveExampleAction(action: action)
+    }
 }
 
 extension LexicalUnitCreationView {
@@ -60,6 +77,7 @@ extension LexicalUnitCreationView {
         self.audioButtonsStackView.addArrangedSubview(playAudioButton)
         self.addSubview(lexicalDescriptionTextView)
         self.addSubview(listOfTranslations)
+        self.addSubview(exampleView)
     }
 
     private func setAllConstraints() {
@@ -67,6 +85,7 @@ extension LexicalUnitCreationView {
         setAudioButtonsStackViewConstraints()
         setLexicalDescriptionConstraints()
         setListOfTranslationsConstraints()
+        setExampleView()
     }
 
     private func configureAllSubviews() {
@@ -108,6 +127,14 @@ extension LexicalUnitCreationView {
         listOfTranslations.snp.makeConstraints { make in
             make.top.equalTo(lexicalDescriptionTextView.snp.bottom).offset(20)
             make.left.right.equalToSuperview()
+        }
+    }
+
+    private func setExampleView() {
+        exampleView.snp.makeConstraints { make in
+            make.top.equalTo(listOfTranslations.snp.bottom).offset(20)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(1000)
         }
     }
 

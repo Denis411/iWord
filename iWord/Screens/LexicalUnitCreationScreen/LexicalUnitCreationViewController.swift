@@ -30,12 +30,17 @@ protocol LexicalUnitCreationViewModel {
     func saveNewLexicalUnitModel(to folder: FolderName)
 }
 
+protocol CreationViewActions {
+    func addExampleAction()
+    func removeExample(at indexPath: IndexPath)
+}
+
 class LexicalUnitCreationViewController: UIViewController {
     var mainView: LexicalUnitCreationView { view as! LexicalUnitCreationView }
-    let viewModel: LexicalUnitCreationViewModel
+    let viewModel: LexicalUnitCreationViewModel & CreationViewActions
     private var disposedBag = Set<AnyCancellable>()
 
-    init(viewModel: LexicalUnitCreationViewModel) {
+    init(viewModel: LexicalUnitCreationViewModel & CreationViewActions) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -58,6 +63,7 @@ class LexicalUnitCreationViewController: UIViewController {
 extension LexicalUnitCreationViewController {
     private func bind() {
         bindListOfTranslations()
+        bindExamples()
     }
 
     private func bindListOfTranslations() {
@@ -66,6 +72,15 @@ extension LexicalUnitCreationViewController {
             .sink { [unowned self] lexicalUnit in
                 let translations = lexicalUnit.translationsForPartOfSpeech
                 self.mainView.updateListOfTranslations(translations: translations)
+            }
+            .store(in: &disposedBag)
+    }
+
+    private func bindExamples() {
+        viewModel.newLexicalUnitModel
+            .receive(on: RunLoop.main)
+            .sink { [unowned self] lexicalUnit in
+                self.mainView.updateArrayOfExamples(examples: lexicalUnit.examples)
             }
             .store(in: &disposedBag)
     }
@@ -79,6 +94,8 @@ extension LexicalUnitCreationViewController {
         setActionForAddingTranslationForPartOfSpeechAction()
         setRemoveTranslationForPartOfSpeech()
         setOnChangePartOfSpeechForCellAction()
+
+        setExampleView()
     }
 
     private func setActionForPlayingHumanVoice() {
@@ -108,6 +125,23 @@ extension LexicalUnitCreationViewController {
     private func setOnChangePartOfSpeechForCellAction() {
         mainView.setOnChangePartOfSpeechForCellAction { [unowned self] indexPath, partOfSpeech in
             self.viewModel.changePartOfSpeechForTranslation(at: indexPath, newPartOfSpeech: partOfSpeech)
+        }
+    }
+
+    private func setExampleView() {
+        setOnAddExampleActions()
+        setRemoveExampleAtIndex()
+    }
+
+    private func setOnAddExampleActions() {
+        mainView.setOnAddExampleActions { [unowned self] in
+            self.viewModel.addExampleAction()
+        }
+    }
+
+    private func setRemoveExampleAtIndex() {
+        mainView.removeExampleAction { [unowned self] indexPath in
+            self.viewModel.removeExample(at: indexPath)
         }
     }
 }

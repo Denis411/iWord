@@ -13,8 +13,6 @@
 
 import UIKit
 
-typealias LexicalUnitExample = (original: String, translation: String)
-
 let GAP_BETWEEN_TITLE_AND_TABLEVIEW: CGFloat = 10.0
 
 final class LexicalUnitCreationExampleView: CommonView {
@@ -23,13 +21,16 @@ final class LexicalUnitCreationExampleView: CommonView {
     private let tableView = UITableView()
     private var heightConstraint: NSLayoutConstraint?
 
-    private var examples: [LexicalUnitExample] = [] {
+    private var examples: [Example] = [] {
         didSet {
+            setNeedsLayout()
             tableView.reloadData()
+            layoutIfNeeded()
         }
     }
 
     private var onAddExampleAction: EmptyClosure?
+    private var onRemoveExampleAction: ClosureWithIndexPath?
 
     override func setUpUI() {
         addAllSubviews()
@@ -46,16 +47,12 @@ final class LexicalUnitCreationExampleView: CommonView {
         self.onAddExampleAction = action
     }
 
-    func addArrayOfExamples(_ examples: [LexicalUnitExample]) {
-        self.examples.append(contentsOf: examples)
+    func updateArrayOfExamples(_ examples: [Example]) {
+        self.examples = examples
     }
 
-    func addExample(_ example: LexicalUnitExample) {
-        self.examples.append(example)
-    }
-
-    func removeExample(at index: Int) {
-        self.examples.remove(at: index)
+    func setOnRemoveExampleAction(action: @escaping ClosureWithIndexPath) {
+        self.onRemoveExampleAction = action
     }
 }
 
@@ -97,7 +94,8 @@ extension LexicalUnitCreationExampleView {
     private func addTableViewConstraints() {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(GAP_BETWEEN_TITLE_AND_TABLEVIEW)
-            make.left.right.bottom.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.height.equalTo(200)
         }
     }
 
@@ -143,5 +141,9 @@ extension LexicalUnitCreationExampleView: UITableViewDataSource, UITableViewDele
         let cell = LexicalUnitExampleTableViewCell()
         cell.setCellData(with: examples[indexPath.row])
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        onRemoveExampleAction?(indexPath)
     }
 }

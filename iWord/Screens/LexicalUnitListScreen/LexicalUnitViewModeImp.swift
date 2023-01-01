@@ -55,6 +55,7 @@ extension LexicalUnitViewModelImp: LexicalUnitViewModel {
             primaryTranslation: primaryTranslation,
             description: "Description",
             translationsForPartOfSpeech: translation,
+            examples: [],
             isPinned: false,
             isFavorite: false,
             humanVoiceRecording: nil,

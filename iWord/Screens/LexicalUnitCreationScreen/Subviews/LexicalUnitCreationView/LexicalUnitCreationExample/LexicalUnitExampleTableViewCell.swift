@@ -18,8 +18,8 @@ final class LexicalUnitExampleTableViewCell: UITableViewCell {
     let originTile = UILabel()
     let translationTitle = UILabel()
     
-    func setCellData(with example: LexicalUnitExample) {
-        self.originTile.text = example.original
+    func setCellData(with example: Example) {
+        self.originTile.text = example.origin
         self.translationTitle.text = example.translation
     }
     

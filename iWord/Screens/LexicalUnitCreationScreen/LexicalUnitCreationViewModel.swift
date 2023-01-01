@@ -136,6 +136,17 @@ extension LexicalUnitCreationViewModelImp {
     }
 }
 
+extension LexicalUnitCreationViewModelImp: CreationViewActions {
+    func addExampleAction() {
+        let fakeExample = Example(origin: "New example", translation: "Translation")
+        newLexicalUnitModel.value.examples.append(fakeExample)
+    }
+
+    func removeExample(at indexPath: IndexPath) {
+        newLexicalUnitModel.value.examples.remove(at: indexPath.row)
+    }
+}
+
 extension LexicalUnit {
     static func createEmptyLexicalUnit() -> Self {
         let emptyTranslation = PrimaryTranslation(partOfSpeech: .notSet, translation: "")
@@ -145,6 +156,7 @@ extension LexicalUnit {
             primaryTranslation: emptyTranslation,
             description: "",
             translationsForPartOfSpeech: [],
+            examples: [Example(origin: "Origin", translation: "Translation")],
             isPinned: false,
             isFavorite: false,
             humanVoiceRecording: nil,

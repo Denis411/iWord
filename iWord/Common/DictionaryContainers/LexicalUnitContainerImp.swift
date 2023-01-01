@@ -81,6 +81,7 @@ struct LexicalUnit: Equatable, Hashable {
     var primaryTranslation: PrimaryTranslation
     var description: String
     var translationsForPartOfSpeech: [ListOfTranslationsOfPartOfSpeech]
+    var examples: [Example]
     var isPinned: Bool
     var isFavorite: Bool
     var humanVoiceRecording: Data?
@@ -96,6 +97,12 @@ struct LexicalUnit: Equatable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(originalLexicalUnit)
     }
+}
+
+
+struct Example {
+    var origin: String
+    var translation: String
 }
 
 enum PartOfSpeech: String, CaseIterable {
@@ -136,6 +143,7 @@ fileprivate func getFakeLexicalUnitModels() -> [LexicalUnit] {
         primaryTranslation: primaryTranslation,
         description: "Description",
         translationsForPartOfSpeech: translations,
+        examples: [],
         isPinned: Bool.random(),
         isFavorite: Bool.random(),
         humanVoiceRecording: nil,
