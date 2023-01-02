@@ -138,7 +138,13 @@ extension LexicalUnitCreationViewModelImp {
 
 extension LexicalUnitCreationViewModelImp: CreationViewActions {
     func addExampleAction() {
-        let fakeExample = Example(origin: "New example", translation: "Translation")
+//      random length array to check self resizing cell
+        var origin = "Beginning: "
+        (0...Int.random(in: 2...20)).forEach { _ in
+            origin.append("on long word")
+        }
+
+        let fakeExample = Example(origin: origin, translation: "Translation")
         newLexicalUnitModel.value.examples.append(fakeExample)
     }
 

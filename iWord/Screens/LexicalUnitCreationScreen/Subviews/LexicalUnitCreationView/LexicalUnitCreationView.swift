@@ -132,7 +132,6 @@ extension LexicalUnitCreationView {
         exampleView.snp.makeConstraints { make in
             make.top.equalTo(listOfTranslations.snp.bottom).offset(20)
             make.left.right.equalToSuperview()
-            make.height.equalTo(1000)
         }
     }
 

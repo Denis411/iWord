@@ -37,6 +37,7 @@ extension LexicalUnitExampleTableViewCell {
     private func setUpUI() {
         addAllSubviews()
         addAllConstraints()
+        configureAllSubviews()
     }
     
     private func addAllSubviews() {
@@ -73,7 +74,7 @@ extension LexicalUnitExampleTableViewCell {
     }
     
     private func configureTranslationTitle() {
-        translationTitle.backgroundColor = .gray
+        translationTitle.backgroundColor = .yellow
         translationTitle.numberOfLines = 0
     }
 }

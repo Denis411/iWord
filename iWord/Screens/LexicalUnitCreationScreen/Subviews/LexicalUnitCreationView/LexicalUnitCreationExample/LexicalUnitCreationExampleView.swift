@@ -94,8 +94,7 @@ extension LexicalUnitCreationExampleView {
     private func addTableViewConstraints() {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(GAP_BETWEEN_TITLE_AND_TABLEVIEW)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(200)
+            make.left.right.bottom.equalToSuperview()
         }
     }
 
@@ -122,6 +121,7 @@ extension LexicalUnitCreationExampleView {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(LexicalUnitExampleTableViewCell.self, forCellReuseIdentifier: LexicalUnitExampleTableViewCell.reusableID)
+        tableView.isScrollEnabled = false
     }
 }
 
