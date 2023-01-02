@@ -13,7 +13,7 @@
 
 import UIKit
 
-final class LexicalUnitCreationView: CommonView {
+final class LexicalUnitCreationView: UIScrollView {
     private let containerView = UIView()
     private let primaryTranslationTextView = ResizableTextView(maximumHeight: 90)
     private let audioButtonsStackView = UIStackView()
@@ -23,7 +23,16 @@ final class LexicalUnitCreationView: CommonView {
     private let listOfTranslations = ListOfTranslationsView()
     private let exampleView = LexicalUnitCreationExampleView()
 
-    override func setUpUI() {
+    init() {
+        super.init(frame: .zero)
+        setUpUI()
+    }
+
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func setUpUI() {
         addAllSubviews()
         setAllConstraints()
         configureAllSubviews()
@@ -81,7 +90,7 @@ extension LexicalUnitCreationView {
     }
 
     private func setAllConstraints() {
-        addStackViewContainerConstraints()
+        addContainerViewConstraints()
         setResizableTextViewConstraints()
         setAudioButtonsStackViewConstraints()
         setLexicalDescriptionConstraints()
@@ -102,16 +111,19 @@ extension LexicalUnitCreationView {
 
 extension LexicalUnitCreationView {
 // MARK: - Constraints -
-    private func addStackViewContainerConstraints() {
+    private func addContainerViewConstraints() {
         containerView.snp.makeConstraints { make in
-            make.left.right.bottom.top.equalToSuperview()
+            make.left.bottom.top.equalToSuperview()
+            make.width.equalTo(self.snp.width)
         }
+
+        containerView.backgroundColor = .orange
     }
 
     private func setResizableTextViewConstraints() {
         primaryTranslationTextView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
-            make.top.equalToSuperview().inset(100)
+            make.top.equalToSuperview()
         }
     }
 
@@ -140,7 +152,7 @@ extension LexicalUnitCreationView {
     private func setExampleView() {
         exampleView.snp.makeConstraints { make in
             make.top.equalTo(listOfTranslations.snp.bottom).offset(20)
-            make.left.right.equalToSuperview()
+            make.left.right.bottom.equalToSuperview()
         }
     }
 
