@@ -16,7 +16,7 @@ import UIKit
 typealias SecondaryTranslationClosure = (String, PartOfSpeech) -> Void
 
 final class ListOfTranslationsView: CommonView {
-    private let translationTextView = ResizableTextView(maximumHeight: 90)
+    private let translationTextViewWithTitle = ResizableTexFieldWithTitle(title: "Additional translation")
     private let tableView = LexicalUnitCreationTableView()
     private var onAddSecondaryTranslation: SecondaryTranslationClosure?
     private var onRemoveTranslationForPartOfSpeech: ClosureWithIndexPath?
@@ -28,7 +28,7 @@ final class ListOfTranslationsView: CommonView {
     }
 
     func makeTextViewFirstResponder() {
-        translationTextView.becomeFirstResponder()
+        translationTextViewWithTitle.resizableTextView.becomeFirstResponder()
     }
 
     func updateListOfTranslations(translations: [ListOfTranslationsOfPartOfSpeech]) {
@@ -50,7 +50,7 @@ final class ListOfTranslationsView: CommonView {
 
 extension ListOfTranslationsView {
     private func addAllSubviews() {
-        self.addSubview(translationTextView)
+        self.addSubview(translationTextViewWithTitle)
         self.addSubview(tableView)
     }
 
@@ -66,28 +66,27 @@ extension ListOfTranslationsView {
 
 extension ListOfTranslationsView {
     private func setTranslationTextViewConstraints() {
-        translationTextView.snp.makeConstraints { make in
+        translationTextViewWithTitle.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
         }
     }
 
     private func addTableViewTranslationConstraints() {
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(translationTextView.snp.bottom).offset(10)
+            make.top.equalTo(translationTextViewWithTitle.snp.bottom).offset(10)
             make.left.right.bottom.equalToSuperview()
         }
     }
 
     private func configureTranslationTextView() {
-        translationTextView.backgroundColor = .blue
-        translationTextView.addMainActionToolBarWithButton(button: "Add")
+        translationTextViewWithTitle.addMainActionToolBarWithButton(button: "Add")
     }
 }
 
 // MARK: - Action on UIToolBar add button tap -
 extension ListOfTranslationsView: UITextViewToolBarButtonAction {
     func setOnToolBarButtonAction(sender: UITextView) {
-        if sender === translationTextView {
+        if sender === translationTextViewWithTitle.resizableTextView {
             let enteredTranslation = sender.text ?? ""
             onAddSecondaryTranslation?(enteredTranslation, .notSet)
         }

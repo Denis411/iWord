@@ -43,6 +43,7 @@
 		8DACC8912961B8BF00EC4CA5 /* LexicalUnitExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DACC8902961B8BF00EC4CA5 /* LexicalUnitExampleTableViewCell.swift */; };
 		8DACC8942961D3C900EC4CA5 /* LexicalUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DACC8932961D3C900EC4CA5 /* LexicalUnit.swift */; };
 		8DACC8962961D50200EC4CA5 /* CommonTypealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DACC8952961D50200EC4CA5 /* CommonTypealiases.swift */; };
+		8DACC8982962D57900EC4CA5 /* ResizableTexFieldWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DACC8972962D57900EC4CA5 /* ResizableTexFieldWithTitle.swift */; };
 		8DAF4EA22950A41500C066AA /* CommonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAF4EA12950A41500C066AA /* CommonView.swift */; };
 		8DAF4EA52950AC9D00C066AA /* FolderContainerImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAF4EA42950AC9D00C066AA /* FolderContainerImp.swift */; };
 		8DB22C2229422DD900F629E4 /* RootFoldersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB22C2129422DD900F629E4 /* RootFoldersView.swift */; };
@@ -87,6 +88,7 @@
 		8DACC8902961B8BF00EC4CA5 /* LexicalUnitExampleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitExampleTableViewCell.swift; sourceTree = "<group>"; };
 		8DACC8932961D3C900EC4CA5 /* LexicalUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnit.swift; sourceTree = "<group>"; };
 		8DACC8952961D50200EC4CA5 /* CommonTypealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTypealiases.swift; sourceTree = "<group>"; };
+		8DACC8972962D57900EC4CA5 /* ResizableTexFieldWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableTexFieldWithTitle.swift; sourceTree = "<group>"; };
 		8DAF4EA12950A41500C066AA /* CommonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonView.swift; sourceTree = "<group>"; };
 		8DAF4EA42950AC9D00C066AA /* FolderContainerImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderContainerImp.swift; sourceTree = "<group>"; };
 		8DB22C2129422DD900F629E4 /* RootFoldersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootFoldersView.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				8D965B1D295C891600F84C61 /* LexicalUnitCreationTableView.swift */,
 				8D965B1F295C89A100F84C61 /* LexicalUnitCreationTableViewCell.swift */,
 				8D965B19295B17EC00F84C61 /* LexicalUnitCreationAudioButton.swift */,
+				8DACC8972962D57900EC4CA5 /* ResizableTexFieldWithTitle.swift */,
 			);
 			path = LexicalUnitCreationView;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				8D10D051293F82E30097916B /* Logger.swift in Sources */,
 				8D29A98B295AA0E700EBF0F1 /* LexicalUnitViewModeImp.swift in Sources */,
 				8D29A9712953593500EBF0F1 /* ErrorAlert.swift in Sources */,
+				8DACC8982962D57900EC4CA5 /* ResizableTexFieldWithTitle.swift in Sources */,
 				8DACC88E2961A7F400EC4CA5 /* LexicalUnitCreationExampleView.swift in Sources */,
 				8D2E005A2940E3B2001EF42C /* AlertWithTextClosure.swift in Sources */,
 				8D10D054293F91A30097916B /* FolderTableViewCell.swift in Sources */,
