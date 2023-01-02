@@ -80,7 +80,7 @@ extension LexicalUnitCreationExampleView {
     private func addExampleButtonConstraints() {
         addExampleButton.snp.makeConstraints { make in
             make.top.right.equalToSuperview()
-            make.edges.equalTo(40)
+            make.height.width.equalTo(title.snp.height)
         }
     }
 
@@ -114,6 +114,7 @@ extension LexicalUnitCreationExampleView {
     }
 
     private func configureTitle() {
+        title.text = "Examples"
         title.font = .systemFont(ofSize: 20)
     }
 
