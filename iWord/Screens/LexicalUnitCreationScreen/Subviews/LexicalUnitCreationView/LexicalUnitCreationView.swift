@@ -14,6 +14,7 @@
 import UIKit
 
 final class LexicalUnitCreationView: CommonView {
+    private let containerView = UIView()
     private let primaryTranslationTextView = ResizableTextView(maximumHeight: 90)
     private let audioButtonsStackView = UIStackView()
     private let recordAudioButton = LexicalUnitCreationAudioButton()
@@ -69,16 +70,18 @@ final class LexicalUnitCreationView: CommonView {
 
 extension LexicalUnitCreationView {
     private func addAllSubviews() {
-        self.addSubview(primaryTranslationTextView)
-        self.addSubview(audioButtonsStackView)
-        self.audioButtonsStackView.addArrangedSubview(recordAudioButton)
-        self.audioButtonsStackView.addArrangedSubview(playAudioButton)
-        self.addSubview(lexicalDescriptionTextView)
-        self.addSubview(listOfTranslations)
-        self.addSubview(exampleView)
+        self.addSubview(containerView)
+        containerView.addSubview(primaryTranslationTextView)
+        containerView.addSubview(audioButtonsStackView)
+        audioButtonsStackView.addArrangedSubview(recordAudioButton)
+        audioButtonsStackView.addArrangedSubview(playAudioButton)
+        containerView.addSubview(lexicalDescriptionTextView)
+        containerView.addSubview(listOfTranslations)
+        containerView.addSubview(exampleView)
     }
 
     private func setAllConstraints() {
+        addStackViewContainerConstraints()
         setResizableTextViewConstraints()
         setAudioButtonsStackViewConstraints()
         setLexicalDescriptionConstraints()
@@ -87,10 +90,10 @@ extension LexicalUnitCreationView {
     }
 
     private func configureAllSubviews() {
+        configureSelf()
         configureAudioButtonsStackView()
         configureRecordAudioButton()
         configurePlayAudioButton()
-        configureSelf()
         configurePrimaryTranslationTextView()
         configureLexicalDescriptionConstraints()
     }
@@ -99,6 +102,12 @@ extension LexicalUnitCreationView {
 
 extension LexicalUnitCreationView {
 // MARK: - Constraints -
+    private func addStackViewContainerConstraints() {
+        containerView.snp.makeConstraints { make in
+            make.left.right.bottom.top.equalToSuperview()
+        }
+    }
+
     private func setResizableTextViewConstraints() {
         primaryTranslationTextView.snp.makeConstraints { make in
             make.left.right.equalToSuperview()
@@ -141,6 +150,7 @@ extension LexicalUnitCreationView {
         audioButtonsStackView.spacing = 20
         audioButtonsStackView.distribution = .fillEqually
     }
+
 
     private func configureRecordAudioButton() {
         let image = UIImage(systemName: "circle.fill")?.withRenderingMode(.alwaysTemplate)
