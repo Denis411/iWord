@@ -31,7 +31,7 @@ protocol LexicalUnitCreationViewModel {
 }
 
 protocol CreationViewActions {
-    func addExampleAction()
+    func addExample(example: Example)
     func removeExample(at indexPath: IndexPath)
 }
 
@@ -80,7 +80,7 @@ extension LexicalUnitCreationViewController {
         viewModel.newLexicalUnitModel
             .receive(on: RunLoop.main)
             .sink { [unowned self] lexicalUnit in
-                self.mainView.updateArrayOfExamples(examples: lexicalUnit.examples)
+                self.mainView.updateArrayOfExamples(lexicalUnit.examples)
             }
             .store(in: &disposedBag)
     }
@@ -134,8 +134,8 @@ extension LexicalUnitCreationViewController {
     }
 
     private func setOnAddExampleActions() {
-        mainView.setOnAddExampleActions { [unowned self] in
-            self.viewModel.addExampleAction()
+        mainView.setOnAddExampleActions { [unowned self] example in
+            self.viewModel.addExample(example: example)
         }
     }
 
@@ -145,3 +145,15 @@ extension LexicalUnitCreationViewController {
         }
     }
 }
+
+//    func setOnAddExampleActions(_ action: @escaping (Example) -> Void) {
+//        optionalExampleView.setOnAddExampleActions(action)
+//    }
+//
+//    func updateArrayOfExamples(_ examples: [Example]) {
+//        optionalExampleView.updateArrayOfExamples(examples)
+//    }
+//
+//    func removeExampleAction(_ action: @escaping ClosureWithIndexPath) {
+//        optionalExampleView.setOnRemoveExampleAction(action)
+//    }

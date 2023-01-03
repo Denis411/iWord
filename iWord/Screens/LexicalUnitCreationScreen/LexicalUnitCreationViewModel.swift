@@ -137,15 +137,13 @@ extension LexicalUnitCreationViewModelImp {
 }
 
 extension LexicalUnitCreationViewModelImp: CreationViewActions {
-    func addExampleAction() {
-//      random length array to check self resizing cell
-        var origin = "Beginning: "
-        (0...Int.random(in: 2...20)).forEach { _ in
-            origin.append("on long word")
+    func addExample(example: Example) {
+        if example.origin.isEmpty || example.translation.isEmpty {
+            errorAlert.presentAlert(with: "Every text field should be filled")
+            return
         }
 
-        let fakeExample = Example(origin: origin, translation: "Translation")
-        newLexicalUnitModel.value.examples.append(fakeExample)
+        newLexicalUnitModel.value.examples.append(example)
     }
 
     func removeExample(at indexPath: IndexPath) {

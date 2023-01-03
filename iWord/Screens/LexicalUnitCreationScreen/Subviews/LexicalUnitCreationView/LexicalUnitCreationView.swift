@@ -21,7 +21,7 @@ final class LexicalUnitCreationView: UIScrollView {
     private let playAudioButton = LexicalUnitCreationAudioButton()
     private let lexicalDescriptionTextViewWithTitle = ResizableTexFieldWithTitle(title: "Description")
     private let listOfTranslations = ListOfTranslationsView()
-    private let exampleView = OptionalLexicalUnitCreationExampleView()
+    private let optionalExampleView = OptionalLexicalUnitCreationExampleView()
 
     init() {
         super.init(frame: .zero)
@@ -64,16 +64,16 @@ final class LexicalUnitCreationView: UIScrollView {
 
 // MARK: - ExampleView actions
 
-    func setOnAddExampleActions(action: @escaping EmptyClosure) {
-
+    func setOnAddExampleActions(_ action: @escaping (Example) -> Void) {
+        optionalExampleView.setOnAddExampleActions(action)
     }
 
-    func updateArrayOfExamples(examples: [Example]) {
-        exampleView.updateArrayOfExamples(examples)
+    func updateArrayOfExamples(_ examples: [Example]) {
+        optionalExampleView.updateArrayOfExamples(examples)
     }
 
-    func removeExampleAction(action: @escaping ClosureWithIndexPath) {
-        exampleView.setOnRemoveExampleAction(action)
+    func removeExampleAction(_ action: @escaping ClosureWithIndexPath) {
+        optionalExampleView.setOnRemoveExampleAction(action)
     }
 }
 
@@ -86,7 +86,7 @@ extension LexicalUnitCreationView {
         audioButtonsStackView.addArrangedSubview(playAudioButton)
         containerView.addSubview(lexicalDescriptionTextViewWithTitle)
         containerView.addSubview(listOfTranslations)
-        containerView.addSubview(exampleView)
+        containerView.addSubview(optionalExampleView)
     }
 
     private func setAllConstraints() {
@@ -150,7 +150,7 @@ extension LexicalUnitCreationView {
     }
 
     private func setExampleView() {
-        exampleView.snp.makeConstraints { make in
+        optionalExampleView.snp.makeConstraints { make in
             make.top.equalTo(listOfTranslations.snp.bottom).offset(20)
             make.left.right.bottom.equalToSuperview()
         }
