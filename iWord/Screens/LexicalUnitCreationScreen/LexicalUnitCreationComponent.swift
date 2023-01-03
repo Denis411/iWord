@@ -22,7 +22,7 @@ final class LexicalUnitCreationComponent: Component<LexicalUnitCreationDependenc
         LexicalUnitCreationViewController(viewModel: lexicalUnitCreationViewModel)
     }
 
-    private var lexicalUnitCreationViewModel: LexicalUnitCreationViewModel & CreationViewActions {
+    private var lexicalUnitCreationViewModel: LexicalUnitCreationViewModel & ExampleActions {
         LexicalUnitCreationViewModelImp(errorAlert: dependency.errorAlert)
     }
 }

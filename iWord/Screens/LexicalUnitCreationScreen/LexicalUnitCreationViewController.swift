@@ -30,17 +30,17 @@ protocol LexicalUnitCreationViewModel {
     func saveNewLexicalUnitModel(to folder: FolderName)
 }
 
-protocol CreationViewActions {
+protocol ExampleActions {
     func addExample(example: Example)
     func removeExample(at indexPath: IndexPath)
 }
 
 class LexicalUnitCreationViewController: UIViewController {
     var mainView: LexicalUnitCreationView { view as! LexicalUnitCreationView }
-    let viewModel: LexicalUnitCreationViewModel & CreationViewActions
+    let viewModel: LexicalUnitCreationViewModel & ExampleActions
     private var disposedBag = Set<AnyCancellable>()
 
-    init(viewModel: LexicalUnitCreationViewModel & CreationViewActions) {
+    init(viewModel: LexicalUnitCreationViewModel & ExampleActions) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
