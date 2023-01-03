@@ -14,16 +14,14 @@
 import Foundation
 import Combine
 
-final class LexicalUnitCreationViewModelImp: LexicalUnitCreationViewModel {
+final class LexicalUnitCreationViewModelImp: LexicalUnitBaseFunctionality {
     private let errorAlert: ErrorAlert
     private(set) var newLexicalUnitModel = CurrentValueSubject<LexicalUnit, Never>(.createEmptyLexicalUnit())
 
     init(errorAlert: ErrorAlert) {
         self.errorAlert = errorAlert
     }
-}
 
-extension LexicalUnitCreationViewModelImp {
     func addOriginalLexicalUnit(text: String) {
         newLexicalUnitModel.value.originalLexicalUnit = text
     }
@@ -32,15 +30,44 @@ extension LexicalUnitCreationViewModelImp {
         newLexicalUnitModel.value.primaryTranslation = translation
     }
 
+    func saveNewLexicalUnitModel(to folder: FolderName) {
+        //       save using a data base
+    }
+}
+
+extension LexicalUnitCreationViewModelImp: LexicalUnitPlayerActions {
+    func recordHumanVoice() {
+        //       open a manager for recording and return data
+        //       newLexicalUnitModel.value.humanVoiceRecording = recording
+    }
+
+    func playHumanVoiceRecording() {
+        //       use a manager for playing
+    }
+}
+
+extension LexicalUnitCreationViewModelImp: LexicalUnitDescription {
     func addDescription(description: String) {
         newLexicalUnitModel.value.description = description
     }
+}
 
+extension LexicalUnitCreationViewModelImp: LexicalUnitLikeActions {
+    func likeUnit() {
+        newLexicalUnitModel.value.isFavorite = true
+    }
+
+    func unlikeUnit() {
+        newLexicalUnitModel.value.isFavorite = false
+    }
+}
+
+extension LexicalUnitCreationViewModelImp: TranslationForPartOfSpeechActions {
     func addTranslationForPartOfSpeech(translation: String, for partOfSpeech: PartOfSpeech) {
         if translation.isEmpty {
             let errorDescription = "This text field cannot be empty"
             errorAlert.presentAlert(with: errorDescription)
-//            Log.warning(errorDescription)
+            //            Log.warning(errorDescription)
             return
         }
 
@@ -70,14 +97,6 @@ extension LexicalUnitCreationViewModelImp {
         addTranslations(translations: [translationToRelocate], for: newPartOfSpeech)
     }
 
-    private func getTranslationForPartOfSpeech(at index: IndexPath) -> String {
-        let indexOfPartOfSpeech = index.section
-        let indexOfTranslation = index.row
-        let translation = newLexicalUnitModel.value.translationsForPartOfSpeech[indexOfPartOfSpeech].listOfTranslations[indexOfTranslation]
-        return translation
-    }
-
-
     /// Adds [Strings] to a given PartOfSpeech
     /// Creates a new part of speech if does not already exist
     /// - Parameters:
@@ -96,6 +115,13 @@ extension LexicalUnitCreationViewModelImp {
         }
     }
 
+    private func getTranslationForPartOfSpeech(at index: IndexPath) -> String {
+        let indexOfPartOfSpeech = index.section
+        let indexOfTranslation = index.row
+        let translation = newLexicalUnitModel.value.translationsForPartOfSpeech[indexOfPartOfSpeech].listOfTranslations[indexOfTranslation]
+        return translation
+    }
+
     private func findIndexIfExists(for partOfSpeech: PartOfSpeech) -> Int? {
         for (index, element) in newLexicalUnitModel.value.translationsForPartOfSpeech.enumerated() where element.partOfSpeech == partOfSpeech {
             return index
@@ -109,34 +135,15 @@ extension LexicalUnitCreationViewModelImp {
             newLexicalUnitModel.value.translationsForPartOfSpeech.remove(at: index)
         }
     }
+}
 
-    func likeUnit() {
-        newLexicalUnitModel.value.isFavorite = true
-    }
-
-    func unlikeUnit() {
-        newLexicalUnitModel.value.isFavorite = false
-    }
-
-    func recordHumanVoice() {
-//       open a manager for recording and return data
-//       newLexicalUnitModel.value.humanVoiceRecording = recording
-    }
-
-    func playHumanVoiceRecording() {
-//       use a manager for playing
-    }
-
+extension LexicalUnitCreationViewModelImp: LexicalUnitImageActions {
     func addImages(images: [Data]) {
         newLexicalUnitModel.value.images?.append(contentsOf: images)
     }
-
-    func saveNewLexicalUnitModel(to folder: FolderName) {
-//       save using a data base
-    }
 }
 
-extension LexicalUnitCreationViewModelImp {
+extension LexicalUnitCreationViewModelImp: ExampleActions {
     func addExample(example: Example) {
         if example.origin.isEmpty || example.translation.isEmpty {
             errorAlert.presentAlert(with: "Every text field should be filled")
@@ -151,6 +158,7 @@ extension LexicalUnitCreationViewModelImp {
     }
 }
 
+// MARK: - LexicalUnit extension -
 extension LexicalUnit {
     static func createEmptyLexicalUnit() -> Self {
         let emptyTranslation = PrimaryTranslation(partOfSpeech: .notSet, translation: "")

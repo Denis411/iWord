@@ -14,8 +14,6 @@
 import UIKit
 import Combine
 
-typealias LexicalUnitCreationViewModel = LexicalUnitBaseFunctionality & LexicalUnitPlayerActions & LexicalUnitDescription & LexicalUnitLikeActions & TranslationForPartOfSpeechActions & ExampleActions & LexicalUnitImageActions
-
 protocol LexicalUnitBaseFunctionality {
     var newLexicalUnitModel: CurrentValueSubject<LexicalUnit, Never> { get }
     func addOriginalLexicalUnit(text: String)
@@ -51,6 +49,8 @@ protocol ExampleActions {
 protocol LexicalUnitImageActions {
     func addImages(images: [Data])
 }
+
+typealias LexicalUnitCreationViewModel = LexicalUnitBaseFunctionality & LexicalUnitPlayerActions & LexicalUnitDescription & LexicalUnitLikeActions & TranslationForPartOfSpeechActions & ExampleActions & LexicalUnitImageActions
 
 class LexicalUnitCreationViewController: UIViewController {
     var mainView: LexicalUnitCreationView { view as! LexicalUnitCreationView }
