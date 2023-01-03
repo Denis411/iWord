@@ -136,7 +136,7 @@ extension LexicalUnitCreationViewModelImp {
     }
 }
 
-extension LexicalUnitCreationViewModelImp: ExampleActions {
+extension LexicalUnitCreationViewModelImp {
     func addExample(example: Example) {
         if example.origin.isEmpty || example.translation.isEmpty {
             errorAlert.presentAlert(with: "Every text field should be filled")

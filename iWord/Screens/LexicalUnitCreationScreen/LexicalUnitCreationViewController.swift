@@ -14,25 +14,42 @@
 import UIKit
 import Combine
 
-protocol LexicalUnitCreationViewModel {
+typealias LexicalUnitCreationViewModel = LexicalUnitBaseFunctionality & LexicalUnitPlayerActions & LexicalUnitDescription & LexicalUnitLikeActions & TranslationForPartOfSpeechActions & ExampleActions & LexicalUnitImageActions
+
+protocol LexicalUnitBaseFunctionality {
     var newLexicalUnitModel: CurrentValueSubject<LexicalUnit, Never> { get }
     func addOriginalLexicalUnit(text: String)
     func addPrimaryTranslation(translation: PrimaryTranslation)
+    func saveNewLexicalUnitModel(to folder: FolderName)
+}
+
+protocol LexicalUnitPlayerActions {
+    func recordHumanVoice()
+    func playHumanVoiceRecording()
+}
+
+protocol LexicalUnitDescription {
     func addDescription(description: String)
+}
+
+protocol LexicalUnitLikeActions {
+    func likeUnit()
+    func unlikeUnit()
+}
+
+protocol TranslationForPartOfSpeechActions {
     func addTranslationForPartOfSpeech(translation: String, for partOfSpeech: PartOfSpeech)
     func removeTranslationForPartOfSpeech(at indexPath: IndexPath)
     func changePartOfSpeechForTranslation(at indexPath: IndexPath, newPartOfSpeech: PartOfSpeech)
-    func likeUnit()
-    func unlikeUnit()
-    func recordHumanVoice()
-    func playHumanVoiceRecording()
-    func addImages(images: [Data])
-    func saveNewLexicalUnitModel(to folder: FolderName)
 }
 
 protocol ExampleActions {
     func addExample(example: Example)
     func removeExample(at indexPath: IndexPath)
+}
+
+protocol LexicalUnitImageActions {
+    func addImages(images: [Data])
 }
 
 class LexicalUnitCreationViewController: UIViewController {
@@ -145,15 +162,3 @@ extension LexicalUnitCreationViewController {
         }
     }
 }
-
-//    func setOnAddExampleActions(_ action: @escaping (Example) -> Void) {
-//        optionalExampleView.setOnAddExampleActions(action)
-//    }
-//
-//    func updateArrayOfExamples(_ examples: [Example]) {
-//        optionalExampleView.updateArrayOfExamples(examples)
-//    }
-//
-//    func removeExampleAction(_ action: @escaping ClosureWithIndexPath) {
-//        optionalExampleView.setOnRemoveExampleAction(action)
-//    }
