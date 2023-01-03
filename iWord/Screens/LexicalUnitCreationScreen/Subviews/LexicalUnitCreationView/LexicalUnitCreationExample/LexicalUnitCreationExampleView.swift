@@ -13,11 +13,7 @@
 
 import UIKit
 
-let GAP_BETWEEN_TITLE_AND_TABLEVIEW: CGFloat = 10.0
-
 final class LexicalUnitCreationExampleView: CommonView {
-    private let title = UILabel()
-    private let addExampleButton = UIButton()
     private let tableView = UITableView()
     private var heightConstraint: NSLayoutConstraint?
 
@@ -29,7 +25,6 @@ final class LexicalUnitCreationExampleView: CommonView {
         }
     }
 
-    private var onAddExampleAction: EmptyClosure?
     private var onRemoveExampleAction: ClosureWithIndexPath?
 
     override func setUpUI() {
@@ -40,66 +35,42 @@ final class LexicalUnitCreationExampleView: CommonView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.heightConstraint?.constant = title.bounds.height + GAP_BETWEEN_TITLE_AND_TABLEVIEW + tableView.contentSize.height
-    }
-
-    func setOnAddExampleActions(_ action: @escaping EmptyClosure) {
-        self.onAddExampleAction = action
+        self.heightConstraint?.constant = tableView.contentSize.height
     }
 
     func updateArrayOfExamples(_ examples: [Example]) {
         self.examples = examples
     }
 
-    func setOnRemoveExampleAction(action: @escaping ClosureWithIndexPath) {
+    func setOnRemoveExampleAction(_ action: @escaping ClosureWithIndexPath) {
         self.onRemoveExampleAction = action
     }
 }
 
 extension LexicalUnitCreationExampleView {
     private func addAllSubviews() {
-        self.addSubview(addExampleButton)
-        self.addSubview(title)
         self.addSubview(tableView)
     }
 
     private func addAllConstraints() {
-        addExampleButtonConstraints()
-        addTitleConstraints()
         addTableViewConstraints()
         addHeightConstraint()
     }
 
     private func configureAllSubviews() {
-        configureAddExampleButton()
-        configureTitle()
         configureTableView()
     }
 
 // MARK: - Constraints -
-    private func addExampleButtonConstraints() {
-        addExampleButton.snp.makeConstraints { make in
-            make.top.right.equalToSuperview()
-            make.height.width.equalTo(title.snp.height)
-        }
-    }
-
-    private func addTitleConstraints() {
-        title.snp.makeConstraints { make in
-            make.top.left.equalToSuperview()
-            make.right.equalTo(addExampleButton.snp.left)
-        }
-    }
 
     private func addTableViewConstraints() {
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).offset(GAP_BETWEEN_TITLE_AND_TABLEVIEW)
-            make.left.right.bottom.equalToSuperview()
+            make.top.left.right.bottom.equalToSuperview()
         }
     }
 
     private func addHeightConstraint() {
-        let selfHeight = title.bounds.height + GAP_BETWEEN_TITLE_AND_TABLEVIEW + tableView.contentSize.height
+        let selfHeight = tableView.contentSize.height
         self.heightConstraint = self.heightAnchor.constraint(equalToConstant: selfHeight)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.heightConstraint?.priority = UILayoutPriority(1000)
@@ -107,28 +78,12 @@ extension LexicalUnitCreationExampleView {
     }
 
 // MARK: - Configuration -
-    private func configureAddExampleButton() {
-        addExampleButton.backgroundColor = .blue
-        addExampleButton.addTarget(self, action: #selector(performOnAddExampleAction), for: .touchUpInside)
-    }
-
-    private func configureTitle() {
-        title.text = "Examples"
-        title.font = .systemFont(ofSize: 20)
-    }
 
     private func configureTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(LexicalUnitExampleTableViewCell.self, forCellReuseIdentifier: LexicalUnitExampleTableViewCell.reusableID)
         tableView.isScrollEnabled = false
-    }
-}
-
-// MARK: - Selectors -
-extension LexicalUnitCreationExampleView {
-    @objc private func performOnAddExampleAction() {
-        onAddExampleAction?()
     }
 }
 

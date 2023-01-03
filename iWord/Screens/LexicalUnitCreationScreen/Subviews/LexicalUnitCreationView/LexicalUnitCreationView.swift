@@ -65,7 +65,7 @@ final class LexicalUnitCreationView: UIScrollView {
 // MARK: - ExampleView actions
 
     func setOnAddExampleActions(action: @escaping EmptyClosure) {
-        exampleView.setOnAddExampleActions(action)
+
     }
 
     func updateArrayOfExamples(examples: [Example]) {
@@ -73,7 +73,7 @@ final class LexicalUnitCreationView: UIScrollView {
     }
 
     func removeExampleAction(action: @escaping ClosureWithIndexPath) {
-        exampleView.setOnRemoveExampleAction(action: action)
+        exampleView.setOnRemoveExampleAction(action)
     }
 }
 
