@@ -76,6 +76,7 @@ extension UITextView {
         self.inputAccessoryView = toolBar
     }
 
+//    TODO: - rename done
     @objc private func performDoneButtonAction() {
         UIApplication.shared.sendAction(
             #selector(UITextViewToolBarButtonAction.setOnToolBarButtonAction),
