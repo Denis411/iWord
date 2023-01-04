@@ -16,9 +16,7 @@ import UIKit
 final class LexicalUnitCreationView: UIScrollView {
     private let containerView = UIView()
     private let primaryTranslationTextViewWithTitle = ResizableTexFieldWithTitle(title: "Primary translation")
-    private let audioButtonsStackView = UIStackView()
-    private let recordAudioButton = LexicalUnitCreationAudioButton()
-    private let playAudioButton = LexicalUnitCreationAudioButton()
+    private let optionalAudioView = OptionalLexicalUnitAudioView()
     private let lexicalDescriptionTextViewWithTitle = ResizableTexFieldWithTitle(title: "Description")
     private let optionalListOfTranslations = OptionalTranslationForPartOfSpeechView()
     private let optionalExampleView = OptionalLexicalUnitCreationExampleView()
@@ -39,11 +37,11 @@ final class LexicalUnitCreationView: UIScrollView {
     }
 
     func setActionForRecordAudioButton(_ action: @escaping EmptyClosure) {
-        recordAudioButton.setAction(action)
+        optionalAudioView.setActionForRecordAudioButton(action)
     }
 
     func setActionForPlayAudioButton(_ action: @escaping EmptyClosure) {
-        playAudioButton.setAction(action)
+        optionalAudioView.setActionForPlayAudioButton(action)
     }
 
     func updateListOfTranslations(translations: [ListOfTranslationsOfPartOfSpeech]) {
@@ -81,9 +79,7 @@ extension LexicalUnitCreationView {
     private func addAllSubviews() {
         self.addSubview(containerView)
         containerView.addSubview(primaryTranslationTextViewWithTitle)
-        containerView.addSubview(audioButtonsStackView)
-        audioButtonsStackView.addArrangedSubview(recordAudioButton)
-        audioButtonsStackView.addArrangedSubview(playAudioButton)
+        containerView.addSubview(optionalAudioView)
         containerView.addSubview(lexicalDescriptionTextViewWithTitle)
         containerView.addSubview(optionalListOfTranslations)
         containerView.addSubview(optionalExampleView)
@@ -92,7 +88,7 @@ extension LexicalUnitCreationView {
     private func setAllConstraints() {
         addContainerViewConstraints()
         setResizableTextViewConstraints()
-        setAudioButtonsStackViewConstraints()
+        setOptionalAudioViewConstraints()
         setLexicalDescriptionConstraints()
         setListOfTranslationsConstraints()
         setExampleView()
@@ -100,14 +96,10 @@ extension LexicalUnitCreationView {
 
     private func configureAllSubviews() {
         configureSelf()
-        configureAudioButtonsStackView()
-        configureRecordAudioButton()
-        configurePlayAudioButton()
         configurePrimaryTranslationTextView()
         configureLexicalDescriptionConstraints()
     }
 }
-
 
 extension LexicalUnitCreationView {
 // MARK: - Constraints -
@@ -127,17 +119,16 @@ extension LexicalUnitCreationView {
         }
     }
 
-    private func setAudioButtonsStackViewConstraints() {
-        audioButtonsStackView.snp.makeConstraints { make in
-            make.top.equalTo(primaryTranslationTextViewWithTitle.snp.bottom).offset(20)
+    private func setOptionalAudioViewConstraints() {
+        optionalAudioView.snp.makeConstraints { make in
+            make.top.equalTo(primaryTranslationTextViewWithTitle.snp.bottom)
             make.left.right.equalToSuperview()
-            make.height.equalTo(50)
         }
     }
 
     private func setLexicalDescriptionConstraints() {
         lexicalDescriptionTextViewWithTitle.snp.makeConstraints { make in
-            make.top.equalTo(audioButtonsStackView.snp.bottom).offset(20)
+            make.top.equalTo(optionalAudioView.snp.bottom).offset(20)
             make.left.right.equalToSuperview()
         }
     }
@@ -157,25 +148,6 @@ extension LexicalUnitCreationView {
     }
 
 // MARK: - Subview configurations -
-    private func configureAudioButtonsStackView() {
-        audioButtonsStackView.axis = .horizontal
-        audioButtonsStackView.spacing = 20
-        audioButtonsStackView.distribution = .fillEqually
-    }
-
-
-    private func configureRecordAudioButton() {
-        let image = UIImage(systemName: "circle.fill")?.withRenderingMode(.alwaysTemplate)
-        recordAudioButton.imageView?.tintColor = .red
-        recordAudioButton.setImage(image, for: .normal)
-    }
-
-    private func configurePlayAudioButton() {
-        let image = UIImage(systemName: "play.fill")?.withRenderingMode(.alwaysTemplate)
-        playAudioButton.imageView?.tintColor = .green
-        playAudioButton.setImage(image, for: .normal)
-    }
-
     private func configureSelf() {
         self.backgroundColor = .gray
         self.insetsLayoutMarginsFromSafeArea = true
