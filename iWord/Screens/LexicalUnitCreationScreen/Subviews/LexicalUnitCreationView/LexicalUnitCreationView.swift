@@ -20,7 +20,7 @@ final class LexicalUnitCreationView: UIScrollView {
     private let recordAudioButton = LexicalUnitCreationAudioButton()
     private let playAudioButton = LexicalUnitCreationAudioButton()
     private let lexicalDescriptionTextViewWithTitle = ResizableTexFieldWithTitle(title: "Description")
-    private let listOfTranslations = OptionalListOfTranslationsView()
+    private let optionalListOfTranslations = OptionalListOfTranslationsView()
     private let optionalExampleView = OptionalLexicalUnitCreationExampleView()
 
     init() {
@@ -47,19 +47,19 @@ final class LexicalUnitCreationView: UIScrollView {
     }
 
     func updateListOfTranslations(translations: [ListOfTranslationsOfPartOfSpeech]) {
-        listOfTranslations.updateListOfTranslations(translations: translations)
+        optionalListOfTranslations.updateListOfTranslations(translations: translations)
     }
 
     func setOnAddTranslationForPartOfSpeechAction(action: @escaping SecondaryTranslationClosure) {
-        listOfTranslations.setonAddTranslationForPartOfSpeechAction(action)
+        optionalListOfTranslations.setonAddTranslationForPartOfSpeechAction(action)
     }
 
     func removeTranslationForPartOfSpeech(action: @escaping ClosureWithIndexPath) {
-        listOfTranslations.setOnRemoveTranslationForPartOfSpeech(action)
+        optionalListOfTranslations.setOnRemoveTranslationForPartOfSpeech(action)
     }
 
     func setOnChangePartOfSpeechForCellAction(action: @escaping (IndexPath, PartOfSpeech) -> Void) {
-        listOfTranslations.setOnChangePartOfSpeechForCellAction(action)
+        optionalListOfTranslations.setOnChangePartOfSpeechForCellAction(action)
     }
 
 // MARK: - ExampleView actions
@@ -85,7 +85,7 @@ extension LexicalUnitCreationView {
         audioButtonsStackView.addArrangedSubview(recordAudioButton)
         audioButtonsStackView.addArrangedSubview(playAudioButton)
         containerView.addSubview(lexicalDescriptionTextViewWithTitle)
-        containerView.addSubview(listOfTranslations)
+        containerView.addSubview(optionalListOfTranslations)
         containerView.addSubview(optionalExampleView)
     }
 
@@ -143,7 +143,7 @@ extension LexicalUnitCreationView {
     }
 
     private func setListOfTranslationsConstraints() {
-        listOfTranslations.snp.makeConstraints { make in
+        optionalListOfTranslations.snp.makeConstraints { make in
             make.top.equalTo(lexicalDescriptionTextViewWithTitle.snp.bottom).offset(20)
             make.left.right.equalToSuperview()
         }
@@ -151,7 +151,7 @@ extension LexicalUnitCreationView {
 
     private func setExampleView() {
         optionalExampleView.snp.makeConstraints { make in
-            make.top.equalTo(listOfTranslations.snp.bottom).offset(20)
+            make.top.equalTo(optionalListOfTranslations.snp.bottom).offset(20)
             make.left.right.bottom.equalToSuperview()
         }
     }
@@ -207,6 +207,6 @@ extension LexicalUnitCreationView: UITextViewToolBarButtonAction {
     }
 
     private func finishEditingLexicalDescriptionTextView() {
-        listOfTranslations.makeTextViewFirstResponder()
+        optionalListOfTranslations.makeTextViewFirstResponder()
     }
 }
