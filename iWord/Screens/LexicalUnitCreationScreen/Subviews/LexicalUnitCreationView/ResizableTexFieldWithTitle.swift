@@ -15,7 +15,7 @@ import UIKit
 
 final class ResizableTexFieldWithTitle: UIView {
     private let titleLabel = UILabel()
-    let resizableTextView = ResizableTextView(maximumHeight: 90)
+    private let resizableTextView = ResizableTextView(maximumHeight: 90)
 
     init(title: String) {
         self.titleLabel.text = title
@@ -29,6 +29,14 @@ final class ResizableTexFieldWithTitle: UIView {
 
     func addMainActionToolBarWithButton(button: ButtonName) {
         resizableTextView.addMainActionToolBarWithButton(button: button)
+    }
+
+    func makeTextViewFirstResponder() {
+        resizableTextView.becomeFirstResponder()
+    }
+
+    func getTextFieldReference() -> UITextView {
+        resizableTextView
     }
 }
 

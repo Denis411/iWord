@@ -179,11 +179,11 @@ extension LexicalUnitCreationView {
 extension LexicalUnitCreationView: UITextViewToolBarButtonAction {
     func setOnToolBarButtonAction(sender: UITextView) {
         switch sender {
-        case originalLexicalUnitTextViewWithTitle.resizableTextView:
+        case originalLexicalUnitTextViewWithTitle.getTextFieldReference():
             return
-        case primaryTranslationTextViewWithTitle.resizableTextView:
+        case primaryTranslationTextViewWithTitle.getTextFieldReference():
             finishEditingPrimaryTranslation()
-        case lexicalDescriptionTextViewWithTitle.resizableTextView:
+        case lexicalDescriptionTextViewWithTitle.getTextFieldReference():
             finishEditingLexicalDescription()
         default:
             return
@@ -191,12 +191,11 @@ extension LexicalUnitCreationView: UITextViewToolBarButtonAction {
     }
 
     private func finishEditingOriginalLexicalUnit() {
-//      TODO: - encapsulation in resizableTextView -
-        primaryTranslationTextViewWithTitle.resizableTextView.becomeFirstResponder()
+        primaryTranslationTextViewWithTitle.makeTextViewFirstResponder()
     }
 
     private func finishEditingPrimaryTranslation() {
-        lexicalDescriptionTextViewWithTitle.resizableTextView.becomeFirstResponder()
+        lexicalDescriptionTextViewWithTitle.makeTextViewFirstResponder()
     }
 
     private func finishEditingLexicalDescription() {
