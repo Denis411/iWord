@@ -300,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				8DACC8992963E38600EC4CA5 /* LabelWithOptionalSubview.swift */,
+				8DACC8972962D57900EC4CA5 /* ResizableTexFieldWithTitle.swift */,
 				8D965B21295C89FD00F84C61 /* LexicalUnitCreationView */,
 			);
 			path = Subviews;
@@ -312,7 +313,6 @@
 				8D5BE28629653810001DB928 /* OptionalTranslationForPartOfSpeechView */,
 				8DACC88F2961B8A200EC4CA5 /* LexicalUnitCreationExample */,
 				8D5BE28E29655C51001DB928 /* OptionalLexicalUnitDescriptionView */,
-				8DACC8972962D57900EC4CA5 /* ResizableTexFieldWithTitle.swift */,
 				8D7BC5CE295AF96800F7D825 /* LexicalUnitCreationView.swift */,
 			);
 			path = LexicalUnitCreationView;
