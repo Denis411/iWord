@@ -90,7 +90,7 @@ extension LexicalUnitCreationView {
     private func setAllConstraints() {
         addContainerViewConstraints()
         setOriginalLexicalUnitTextViewWithTitleConstraints()
-        setResizableTextViewConstraints()
+        setPrimaryTranslationTextViewWithTitleConstraints()
         setOptionalAudioViewConstraints()
         setLexicalDescriptionConstraints()
         setListOfTranslationsConstraints()
@@ -122,7 +122,7 @@ extension LexicalUnitCreationView {
     }
 
 //  TODO: - rename to setPrimaryTranslationTextViewWithTitleConstraints -
-    private func setResizableTextViewConstraints() {
+    private func setPrimaryTranslationTextViewWithTitleConstraints() {
         primaryTranslationTextViewWithTitle.snp.makeConstraints { make in
             make.top.equalTo(originalLexicalUnitTextViewWithTitle.snp.bottom)
             make.left.right.equalToSuperview()
