@@ -14,9 +14,9 @@
 import UIKit
 
 final class OptionalLexicalUnitCreationExampleView: LabelWithOptionalSubview {
-    let verticalStackView = UIStackView()
-    let exampleInputView = ExampleInputView()
-    let exampleView = LexicalUnitCreationExampleView()
+    private let verticalStackView = UIStackView()
+    private let exampleInputView = ExampleInputView()
+    private let exampleView = LexicalUnitCreationExampleView()
 
     override init() {
         super.init()

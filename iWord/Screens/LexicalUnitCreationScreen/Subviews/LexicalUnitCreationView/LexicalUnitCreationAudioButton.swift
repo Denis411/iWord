@@ -15,7 +15,7 @@ import Foundation
 import UIKit
 
 final class LexicalUnitCreationAudioButton: UIButton {
-    var buttonAction: EmptyClosure?
+    private var buttonAction: EmptyClosure?
 
     init() {
         super.init(frame: .zero)

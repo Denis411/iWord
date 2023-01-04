@@ -15,8 +15,8 @@ import UIKit
 
 final class LexicalUnitExampleTableViewCell: UITableViewCell {
     static let reusableID = "LexicalUnitExampleTableViewCell"
-    let originTile = UILabel()
-    let translationTitle = UILabel()
+    private let originTile = UILabel()
+    private let translationTitle = UILabel()
     
     func setCellData(with example: Example) {
         self.originTile.text = example.origin
