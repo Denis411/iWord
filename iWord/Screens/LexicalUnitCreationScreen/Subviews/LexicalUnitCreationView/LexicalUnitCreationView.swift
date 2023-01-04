@@ -18,7 +18,7 @@ final class LexicalUnitCreationView: UIScrollView {
     private let originalLexicalUnitTextViewWithTitle = ResizableTexFieldWithTitle(title: "Original unit")
     private let primaryTranslationTextViewWithTitle = ResizableTexFieldWithTitle(title: "Primary translation")
     private let optionalAudioView = OptionalLexicalUnitAudioView()
-    private let lexicalDescriptionTextViewWithTitle = ResizableTexFieldWithTitle(title: "Description")
+    private let optionalDescriptionView = OptionalLexicalUnitDescriptionView()
     private let optionalListOfTranslations = OptionalTranslationForPartOfSpeechView()
     private let optionalExampleView = OptionalLexicalUnitCreationExampleView()
 
@@ -82,7 +82,7 @@ extension LexicalUnitCreationView {
         containerView.addSubview(originalLexicalUnitTextViewWithTitle)
         containerView.addSubview(primaryTranslationTextViewWithTitle)
         containerView.addSubview(optionalAudioView)
-        containerView.addSubview(lexicalDescriptionTextViewWithTitle)
+        containerView.addSubview(optionalDescriptionView)
         containerView.addSubview(optionalListOfTranslations)
         containerView.addSubview(optionalExampleView)
     }
@@ -101,7 +101,6 @@ extension LexicalUnitCreationView {
         configureSelf()
         configureOriginalLexicalUnitTextViewWithTitle()
         configurePrimaryTranslationTextView()
-        configureLexicalDescriptionConstraints()
     }
 }
 
@@ -138,7 +137,7 @@ extension LexicalUnitCreationView {
     }
 
     private func setLexicalDescriptionConstraints() {
-        lexicalDescriptionTextViewWithTitle.snp.makeConstraints { make in
+        optionalDescriptionView.snp.makeConstraints { make in
             make.top.equalTo(optionalAudioView.snp.bottom).offset(20)
             make.left.right.equalToSuperview()
         }
@@ -146,7 +145,7 @@ extension LexicalUnitCreationView {
 
     private func setListOfTranslationsConstraints() {
         optionalListOfTranslations.snp.makeConstraints { make in
-            make.top.equalTo(lexicalDescriptionTextViewWithTitle.snp.bottom).offset(20)
+            make.top.equalTo(optionalDescriptionView.snp.bottom).offset(20)
             make.left.right.equalToSuperview()
         }
     }
@@ -171,10 +170,6 @@ extension LexicalUnitCreationView {
     private func configurePrimaryTranslationTextView() {
         primaryTranslationTextViewWithTitle.addMainActionToolBarWithButton(button: "Next")
     }
-
-    private func configureLexicalDescriptionConstraints() {
-        lexicalDescriptionTextViewWithTitle.addMainActionToolBarWithButton(button: "Next")
-    }
 }
 
 extension LexicalUnitCreationView: UITextViewToolBarButtonAction {
@@ -184,7 +179,7 @@ extension LexicalUnitCreationView: UITextViewToolBarButtonAction {
             finishEditingOriginalLexicalUnit()
         case primaryTranslationTextViewWithTitle.getTextFieldReference():
             finishEditingPrimaryTranslation()
-        case lexicalDescriptionTextViewWithTitle.getTextFieldReference():
+        case optionalDescriptionView.getTextFieldReference():
             finishEditingLexicalDescription()
         default:
             return
@@ -196,7 +191,7 @@ extension LexicalUnitCreationView: UITextViewToolBarButtonAction {
     }
 
     private func finishEditingPrimaryTranslation() {
-        lexicalDescriptionTextViewWithTitle.makeTextViewFirstResponder()
+        optionalDescriptionView.makeTextViewFirstResponder()
     }
 
     private func finishEditingLexicalDescription() {
