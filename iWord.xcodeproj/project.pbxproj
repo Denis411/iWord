@@ -193,6 +193,14 @@
 			path = OptionalTranslationForPartOfSpeechView;
 			sourceTree = "<group>";
 		};
+		8D5BE28B2965408E001DB928 /* OptionalLexicalUnitAudioView */ = {
+			isa = PBXGroup;
+			children = (
+				8D965B19295B17EC00F84C61 /* LexicalUnitCreationAudioButton.swift */,
+			);
+			path = OptionalLexicalUnitAudioView;
+			sourceTree = "<group>";
+		};
 		8D5DD2E72934FA0100C7A114 = {
 			isa = PBXGroup;
 			children = (
@@ -287,10 +295,10 @@
 		8D965B21295C89FD00F84C61 /* LexicalUnitCreationView */ = {
 			isa = PBXGroup;
 			children = (
+				8D5BE28B2965408E001DB928 /* OptionalLexicalUnitAudioView */,
 				8D5BE28629653810001DB928 /* OptionalTranslationForPartOfSpeechView */,
 				8DACC88F2961B8A200EC4CA5 /* LexicalUnitCreationExample */,
 				8D7BC5CE295AF96800F7D825 /* LexicalUnitCreationView.swift */,
-				8D965B19295B17EC00F84C61 /* LexicalUnitCreationAudioButton.swift */,
 				8DACC8972962D57900EC4CA5 /* ResizableTexFieldWithTitle.swift */,
 			);
 			path = LexicalUnitCreationView;
