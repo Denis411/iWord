@@ -19,9 +19,7 @@ final class LexicalUnitCreationExampleView: CommonView {
 
     private var examples: [Example] = [] {
         didSet {
-            setNeedsLayout()
             tableView.reloadData()
-            layoutIfNeeded()
         }
     }
 
