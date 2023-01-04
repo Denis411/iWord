@@ -166,19 +166,19 @@ extension LexicalUnitCreationView: UITextViewToolBarButtonAction {
     func setOnToolBarButtonAction(sender: UITextView) {
         switch sender {
         case primaryTranslationTextViewWithTitle.resizableTextView:
-            finishEditingPrimaryTranslationTextView()
+            finishEditingPrimaryTranslation()
         case lexicalDescriptionTextViewWithTitle.resizableTextView:
-            finishEditingLexicalDescriptionTextView()
+            finishEditingLexicalDescription()
         default:
             return
         }
     }
 
-    private func finishEditingPrimaryTranslationTextView() {
+    private func finishEditingPrimaryTranslation() {
         lexicalDescriptionTextViewWithTitle.resizableTextView.becomeFirstResponder()
     }
 
-    private func finishEditingLexicalDescriptionTextView() {
+    private func finishEditingLexicalDescription() {
         optionalListOfTranslations.makeTextViewFirstResponder()
     }
 }
