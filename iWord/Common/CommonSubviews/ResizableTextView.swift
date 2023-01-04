@@ -71,13 +71,13 @@ extension UITextView {
         let toolBarFrame = CGRect(x: 0, y: 0, width: 200, height: 50)
         let toolBar = UIToolbar(frame: toolBarFrame)
         let spacer = UIBarButtonItem(systemItem: .flexibleSpace)
-        let barButtonItem = UIBarButtonItem(title: name, style: .done, target: nil, action: #selector(performDoneButtonAction))
+        let barButtonItem = UIBarButtonItem(title: name, style: .done, target: nil, action: #selector(performToolBarButtonAction))
         toolBar.items = [spacer, barButtonItem]
         self.inputAccessoryView = toolBar
     }
 
 //    TODO: - rename done
-    @objc private func performDoneButtonAction() {
+    @objc private func performToolBarButtonAction() {
         UIApplication.shared.sendAction(
             #selector(UITextViewToolBarButtonAction.setOnToolBarButtonAction),
             to: nil,
