@@ -21,6 +21,7 @@
 		8D2E005A2940E3B2001EF42C /* AlertWithTextClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2E00592940E3B2001EF42C /* AlertWithTextClosure.swift */; };
 		8D48C58F295F1449005021E8 /* ButtonWithPartOfSpeechMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48C58E295F1449005021E8 /* ButtonWithPartOfSpeechMenu.swift */; };
 		8D5BE28829653830001DB928 /* OptionalTranslationForPartOfSpeechView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BE28729653830001DB928 /* OptionalTranslationForPartOfSpeechView.swift */; };
+		8D5BE28D2965411C001DB928 /* OptionalLexicalUnitAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BE28C2965411C001DB928 /* OptionalLexicalUnitAudioView.swift */; };
 		8D5DD2F42934FA0100C7A114 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD2F32934FA0100C7A114 /* AppDelegate.swift */; };
 		8D5DD2F62934FA0100C7A114 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD2F52934FA0100C7A114 /* SceneDelegate.swift */; };
 		8D5DD2F82934FA0100C7A114 /* RootFoldersViewControllerImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD2F72934FA0100C7A114 /* RootFoldersViewControllerImp.swift */; };
@@ -67,6 +68,7 @@
 		8D2E00592940E3B2001EF42C /* AlertWithTextClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWithTextClosure.swift; sourceTree = "<group>"; };
 		8D48C58E295F1449005021E8 /* ButtonWithPartOfSpeechMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithPartOfSpeechMenu.swift; sourceTree = "<group>"; };
 		8D5BE28729653830001DB928 /* OptionalTranslationForPartOfSpeechView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalTranslationForPartOfSpeechView.swift; sourceTree = "<group>"; };
+		8D5BE28C2965411C001DB928 /* OptionalLexicalUnitAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalLexicalUnitAudioView.swift; sourceTree = "<group>"; };
 		8D5DD2F02934FA0100C7A114 /* iWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5DD2F32934FA0100C7A114 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D5DD2F52934FA0100C7A114 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				8D965B19295B17EC00F84C61 /* LexicalUnitCreationAudioButton.swift */,
+				8D5BE28C2965411C001DB928 /* OptionalLexicalUnitAudioView.swift */,
 			);
 			path = OptionalLexicalUnitAudioView;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				8D29A98B295AA0E700EBF0F1 /* LexicalUnitViewModeImp.swift in Sources */,
 				8DACC89A2963E38600EC4CA5 /* LabelWithOptionalSubview.swift in Sources */,
 				8D29A9712953593500EBF0F1 /* ErrorAlert.swift in Sources */,
+				8D5BE28D2965411C001DB928 /* OptionalLexicalUnitAudioView.swift in Sources */,
 				8DACC8982962D57900EC4CA5 /* ResizableTexFieldWithTitle.swift in Sources */,
 				8DACC88E2961A7F400EC4CA5 /* LexicalUnitCreationExampleView.swift in Sources */,
 				8D2E005A2940E3B2001EF42C /* AlertWithTextClosure.swift in Sources */,
