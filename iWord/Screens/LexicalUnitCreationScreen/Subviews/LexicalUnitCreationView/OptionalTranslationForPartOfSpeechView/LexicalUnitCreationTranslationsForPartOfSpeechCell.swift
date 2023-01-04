@@ -13,7 +13,7 @@
 
 import UIKit
 
-final class LexicalUnitCreationTableViewCell: UITableViewCell {
+final class LexicalUnitCreationTranslationsForPartOfSpeechCell: UITableViewCell {
     static let reusableID = "LexicalUnitTableViewCell"
 //  TODO: - Ask UI/UX whether you should make it UITextField
     private let translationTextView = UILabel()
@@ -43,7 +43,7 @@ final class LexicalUnitCreationTableViewCell: UITableViewCell {
     }
 }
 
-extension LexicalUnitCreationTableViewCell {
+extension LexicalUnitCreationTranslationsForPartOfSpeechCell {
     private func setUpUI() {
         addAllSubviews()
         setAllConstraints()
@@ -69,7 +69,7 @@ extension LexicalUnitCreationTableViewCell {
     }
 }
 
-extension LexicalUnitCreationTableViewCell {
+extension LexicalUnitCreationTranslationsForPartOfSpeechCell {
 // MARK: - Subview constraints -
     private func setTranslationTextFieldConstraints() {
         translationTextView.snp.makeConstraints { make in
@@ -109,7 +109,7 @@ extension LexicalUnitCreationTableViewCell {
     }
 }
 
-extension LexicalUnitCreationTableViewCell {
+extension LexicalUnitCreationTranslationsForPartOfSpeechCell {
     @objc private func performRemoveButtonAction() {
         onRemoveAction?()
         self.removeFromSuperview()

@@ -13,7 +13,7 @@
 
 import UIKit
 
-final class LexicalUnitCreationTableView: UITableView {
+final class LexicalUnitCreationTranslationForPartOfSpeechTableView: UITableView {
     private var listOfTranslations: [ListOfTranslationsOfPartOfSpeech] = []
     private var heightConstraint: NSLayoutConstraint?
     private var onRemoveTranslationForPartOfSpeech: ClosureWithIndexPath?
@@ -49,14 +49,14 @@ final class LexicalUnitCreationTableView: UITableView {
 }
 
 // MARK: - Subview configurations -
-extension LexicalUnitCreationTableView {
+extension LexicalUnitCreationTranslationForPartOfSpeechTableView {
     private func configureAllSubviews() {
         configureSelf()
         configureHeightConstraint()
     }
 
     private func configureSelf() {
-        self.register(LexicalUnitCreationTableViewCell.self, forCellReuseIdentifier: LexicalUnitCreationTableViewCell.reusableID)
+        self.register(LexicalUnitCreationTranslationsForPartOfSpeechCell.self, forCellReuseIdentifier: LexicalUnitCreationTranslationsForPartOfSpeechCell.reusableID)
         self.delegate = self
         self.dataSource = self
         self.isScrollEnabled = false
@@ -72,7 +72,7 @@ extension LexicalUnitCreationTableView {
     }
 }
 
-extension LexicalUnitCreationTableView: UITableViewDelegate, UITableViewDataSource {
+extension LexicalUnitCreationTranslationForPartOfSpeechTableView: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         listOfTranslations.count
     }
@@ -87,7 +87,7 @@ extension LexicalUnitCreationTableView: UITableViewDelegate, UITableViewDataSour
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //      TODO: - Make static -
-        let cell = tableView.dequeueReusableCell(withIdentifier: LexicalUnitCreationTableViewCell.reusableID, for: indexPath) as! LexicalUnitCreationTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: LexicalUnitCreationTranslationsForPartOfSpeechCell.reusableID, for: indexPath) as! LexicalUnitCreationTranslationsForPartOfSpeechCell
 
         setUp(cell: cell, with: indexPath)
         setOnRemoveAction(for: cell, at: indexPath)
@@ -95,19 +95,19 @@ extension LexicalUnitCreationTableView: UITableViewDelegate, UITableViewDataSour
         return cell
     }
 
-    private func setUp(cell: LexicalUnitCreationTableViewCell, with indexPath: IndexPath) {
+    private func setUp(cell: LexicalUnitCreationTranslationsForPartOfSpeechCell, with indexPath: IndexPath) {
         cell.setTranslation(
             translation: listOfTranslations[indexPath.section].listOfTranslations[indexPath.row]
         )
     }
 
-    private func setOnRemoveAction(for cell: LexicalUnitCreationTableViewCell, at indexPath: IndexPath) {
+    private func setOnRemoveAction(for cell: LexicalUnitCreationTranslationsForPartOfSpeechCell, at indexPath: IndexPath) {
         cell.setOnRemoveAction { [unowned self] in
             self.onRemoveTranslationForPartOfSpeech?(indexPath)
         }
     }
 
-    private func setOnChangePartOfSpeechAction(for cell: LexicalUnitCreationTableViewCell, at indexPath: IndexPath) {
+    private func setOnChangePartOfSpeechAction(for cell: LexicalUnitCreationTranslationsForPartOfSpeechCell, at indexPath: IndexPath) {
         cell.setChangePartOfSpeechAction { [unowned self] partOfSpeech in
             self.onChangePartOfSpeechForCellAction?(indexPath, partOfSpeech)
         }

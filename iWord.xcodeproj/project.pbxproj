@@ -20,7 +20,7 @@
 		8D29A98D295ADCF500EBF0F1 /* AddItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D29A98C295ADCF500EBF0F1 /* AddItemButton.swift */; };
 		8D2E005A2940E3B2001EF42C /* AlertWithTextClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2E00592940E3B2001EF42C /* AlertWithTextClosure.swift */; };
 		8D48C58F295F1449005021E8 /* ButtonWithPartOfSpeechMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D48C58E295F1449005021E8 /* ButtonWithPartOfSpeechMenu.swift */; };
-		8D5BE28829653830001DB928 /* OptionalListOfTranslationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BE28729653830001DB928 /* OptionalListOfTranslationsView.swift */; };
+		8D5BE28829653830001DB928 /* OptionalTranslationForPartOfSpeechView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BE28729653830001DB928 /* OptionalTranslationForPartOfSpeechView.swift */; };
 		8D5DD2F42934FA0100C7A114 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD2F32934FA0100C7A114 /* AppDelegate.swift */; };
 		8D5DD2F62934FA0100C7A114 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD2F52934FA0100C7A114 /* SceneDelegate.swift */; };
 		8D5DD2F82934FA0100C7A114 /* RootFoldersViewControllerImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DD2F72934FA0100C7A114 /* RootFoldersViewControllerImp.swift */; };
@@ -34,8 +34,8 @@
 		8D7BC5D1295AFB8200F7D825 /* LexicalUnitCreationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7BC5D0295AFB8200F7D825 /* LexicalUnitCreationComponent.swift */; };
 		8D965B16295B128C00F84C61 /* ResizableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D965B15295B128C00F84C61 /* ResizableTextView.swift */; };
 		8D965B1A295B17EC00F84C61 /* LexicalUnitCreationAudioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D965B19295B17EC00F84C61 /* LexicalUnitCreationAudioButton.swift */; };
-		8D965B1E295C891600F84C61 /* LexicalUnitCreationTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D965B1D295C891600F84C61 /* LexicalUnitCreationTableView.swift */; };
-		8D965B20295C89A100F84C61 /* LexicalUnitCreationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D965B1F295C89A100F84C61 /* LexicalUnitCreationTableViewCell.swift */; };
+		8D965B1E295C891600F84C61 /* LexicalUnitCreationTranslationForPartOfSpeechTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D965B1D295C891600F84C61 /* LexicalUnitCreationTranslationForPartOfSpeechTableView.swift */; };
+		8D965B20295C89A100F84C61 /* LexicalUnitCreationTranslationsForPartOfSpeechCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D965B1F295C89A100F84C61 /* LexicalUnitCreationTranslationsForPartOfSpeechCell.swift */; };
 		8D965B25295D786400F84C61 /* LexicalUnitCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D965B24295D786400F84C61 /* LexicalUnitCreationViewModel.swift */; };
 		8DA550B52936468A00490835 /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA550B42936468A00490835 /* RootComponent.swift */; };
 		8DA550BB29364A7000490835 /* Needle.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA550BA29364A7000490835 /* Needle.generated.swift */; };
@@ -66,7 +66,7 @@
 		8D29A98C295ADCF500EBF0F1 /* AddItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemButton.swift; sourceTree = "<group>"; };
 		8D2E00592940E3B2001EF42C /* AlertWithTextClosure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertWithTextClosure.swift; sourceTree = "<group>"; };
 		8D48C58E295F1449005021E8 /* ButtonWithPartOfSpeechMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithPartOfSpeechMenu.swift; sourceTree = "<group>"; };
-		8D5BE28729653830001DB928 /* OptionalListOfTranslationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalListOfTranslationsView.swift; sourceTree = "<group>"; };
+		8D5BE28729653830001DB928 /* OptionalTranslationForPartOfSpeechView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalTranslationForPartOfSpeechView.swift; sourceTree = "<group>"; };
 		8D5DD2F02934FA0100C7A114 /* iWord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5DD2F32934FA0100C7A114 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D5DD2F52934FA0100C7A114 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,8 +82,8 @@
 		8D7BC5D0295AFB8200F7D825 /* LexicalUnitCreationComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationComponent.swift; sourceTree = "<group>"; };
 		8D965B15295B128C00F84C61 /* ResizableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableTextView.swift; sourceTree = "<group>"; };
 		8D965B19295B17EC00F84C61 /* LexicalUnitCreationAudioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationAudioButton.swift; sourceTree = "<group>"; };
-		8D965B1D295C891600F84C61 /* LexicalUnitCreationTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationTableView.swift; sourceTree = "<group>"; };
-		8D965B1F295C89A100F84C61 /* LexicalUnitCreationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationTableViewCell.swift; sourceTree = "<group>"; };
+		8D965B1D295C891600F84C61 /* LexicalUnitCreationTranslationForPartOfSpeechTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationTranslationForPartOfSpeechTableView.swift; sourceTree = "<group>"; };
+		8D965B1F295C89A100F84C61 /* LexicalUnitCreationTranslationsForPartOfSpeechCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationTranslationsForPartOfSpeechCell.swift; sourceTree = "<group>"; };
 		8D965B24295D786400F84C61 /* LexicalUnitCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationViewModel.swift; sourceTree = "<group>"; };
 		8DA550B42936468A00490835 /* RootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootComponent.swift; sourceTree = "<group>"; };
 		8DA550BA29364A7000490835 /* Needle.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Needle.generated.swift; sourceTree = "<group>"; };
@@ -183,14 +183,14 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
-		8D5BE28629653810001DB928 /* OptionalListOfTranslationsView */ = {
+		8D5BE28629653810001DB928 /* OptionalTranslationForPartOfSpeechView */ = {
 			isa = PBXGroup;
 			children = (
-				8D965B1F295C89A100F84C61 /* LexicalUnitCreationTableViewCell.swift */,
-				8D965B1D295C891600F84C61 /* LexicalUnitCreationTableView.swift */,
-				8D5BE28729653830001DB928 /* OptionalListOfTranslationsView.swift */,
+				8D965B1F295C89A100F84C61 /* LexicalUnitCreationTranslationsForPartOfSpeechCell.swift */,
+				8D965B1D295C891600F84C61 /* LexicalUnitCreationTranslationForPartOfSpeechTableView.swift */,
+				8D5BE28729653830001DB928 /* OptionalTranslationForPartOfSpeechView.swift */,
 			);
-			path = OptionalListOfTranslationsView;
+			path = OptionalTranslationForPartOfSpeechView;
 			sourceTree = "<group>";
 		};
 		8D5DD2E72934FA0100C7A114 = {
@@ -287,7 +287,7 @@
 		8D965B21295C89FD00F84C61 /* LexicalUnitCreationView */ = {
 			isa = PBXGroup;
 			children = (
-				8D5BE28629653810001DB928 /* OptionalListOfTranslationsView */,
+				8D5BE28629653810001DB928 /* OptionalTranslationForPartOfSpeechView */,
 				8DACC88F2961B8A200EC4CA5 /* LexicalUnitCreationExample */,
 				8D7BC5CE295AF96800F7D825 /* LexicalUnitCreationView.swift */,
 				8D965B19295B17EC00F84C61 /* LexicalUnitCreationAudioButton.swift */,
@@ -488,7 +488,7 @@
 				8DB22C2229422DD900F629E4 /* RootFoldersView.swift in Sources */,
 				8D5DD2F82934FA0100C7A114 /* RootFoldersViewControllerImp.swift in Sources */,
 				8DACC89C2963F1D500EC4CA5 /* OptionalLexicalUnitCreationExampleView.swift in Sources */,
-				8D965B1E295C891600F84C61 /* LexicalUnitCreationTableView.swift in Sources */,
+				8D965B1E295C891600F84C61 /* LexicalUnitCreationTranslationForPartOfSpeechTableView.swift in Sources */,
 				8D965B25295D786400F84C61 /* LexicalUnitCreationViewModel.swift in Sources */,
 				8D29A98329597D4100EBF0F1 /* LexicalUnitListViewController.swift in Sources */,
 				8DACC8912961B8BF00EC4CA5 /* LexicalUnitExampleTableViewCell.swift in Sources */,
@@ -497,7 +497,7 @@
 				8D70A1BD293C62A9000AAC24 /* RootViewModel.swift in Sources */,
 				8D7BC5D1295AFB8200F7D825 /* LexicalUnitCreationComponent.swift in Sources */,
 				8DACC8942961D3C900EC4CA5 /* LexicalUnit.swift in Sources */,
-				8D965B20295C89A100F84C61 /* LexicalUnitCreationTableViewCell.swift in Sources */,
+				8D965B20295C89A100F84C61 /* LexicalUnitCreationTranslationsForPartOfSpeechCell.swift in Sources */,
 				8DA550B52936468A00490835 /* RootComponent.swift in Sources */,
 				8D70A1BF293C6382000AAC24 /* RootScreenComponent.swift in Sources */,
 				8D10D051293F82E30097916B /* Logger.swift in Sources */,
@@ -514,7 +514,7 @@
 				8DAF4EA22950A41500C066AA /* CommonView.swift in Sources */,
 				8D5DD2F42934FA0100C7A114 /* AppDelegate.swift in Sources */,
 				8D5DD2F62934FA0100C7A114 /* SceneDelegate.swift in Sources */,
-				8D5BE28829653830001DB928 /* OptionalListOfTranslationsView.swift in Sources */,
+				8D5BE28829653830001DB928 /* OptionalTranslationForPartOfSpeechView.swift in Sources */,
 				8D70A1BB293C610A000AAC24 /* MainRouter.swift in Sources */,
 				8DA550BB29364A7000490835 /* Needle.generated.swift in Sources */,
 				8D965B16295B128C00F84C61 /* ResizableTextView.swift in Sources */,

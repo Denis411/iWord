@@ -20,7 +20,7 @@ final class LexicalUnitCreationView: UIScrollView {
     private let recordAudioButton = LexicalUnitCreationAudioButton()
     private let playAudioButton = LexicalUnitCreationAudioButton()
     private let lexicalDescriptionTextViewWithTitle = ResizableTexFieldWithTitle(title: "Description")
-    private let optionalListOfTranslations = OptionalListOfTranslationsView()
+    private let optionalListOfTranslations = OptionalTranslationForPartOfSpeechView()
     private let optionalExampleView = OptionalLexicalUnitCreationExampleView()
 
     init() {

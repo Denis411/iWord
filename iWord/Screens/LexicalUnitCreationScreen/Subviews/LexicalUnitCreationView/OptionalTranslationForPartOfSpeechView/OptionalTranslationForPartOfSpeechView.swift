@@ -15,10 +15,10 @@ import UIKit
 
 typealias SecondaryTranslationClosure = (String, PartOfSpeech) -> Void
 
-final class OptionalListOfTranslationsView: LabelWithOptionalSubview {
+final class OptionalTranslationForPartOfSpeechView: LabelWithOptionalSubview {
     private let verticalStack = UIStackView()
     private let inputTextField = ResizableTextView(maximumHeight: 90)
-    private let tableView = LexicalUnitCreationTableView()
+    private let tableView = LexicalUnitCreationTranslationForPartOfSpeechTableView()
 
     // TODO: - Relocate all textfield actions to superview -
     private var onAddSecondaryTranslation: SecondaryTranslationClosure?
@@ -53,7 +53,7 @@ final class OptionalListOfTranslationsView: LabelWithOptionalSubview {
     }
 }
 
-extension OptionalListOfTranslationsView {
+extension OptionalTranslationForPartOfSpeechView {
     private func setUpUI() {
         addAllSubviews()
         configureAllSubviews()
@@ -87,7 +87,7 @@ extension OptionalListOfTranslationsView {
 }
 
 // MARK: - Action on UIToolBar add button tap -
-extension OptionalListOfTranslationsView: UITextViewToolBarButtonAction {
+extension OptionalTranslationForPartOfSpeechView: UITextViewToolBarButtonAction {
     func setOnToolBarButtonAction(sender: UITextView) {
         if sender === inputTextField {
             let enteredTranslation = sender.text ?? ""
