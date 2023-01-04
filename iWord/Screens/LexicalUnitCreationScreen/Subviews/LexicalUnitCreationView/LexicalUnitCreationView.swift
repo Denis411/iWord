@@ -99,6 +99,7 @@ extension LexicalUnitCreationView {
 
     private func configureAllSubviews() {
         configureSelf()
+        configureOriginalLexicalUnitTextViewWithTitle()
         configurePrimaryTranslationTextView()
         configureLexicalDescriptionConstraints()
     }
@@ -180,7 +181,7 @@ extension LexicalUnitCreationView: UITextViewToolBarButtonAction {
     func setOnToolBarButtonAction(sender: UITextView) {
         switch sender {
         case originalLexicalUnitTextViewWithTitle.getTextFieldReference():
-            return
+            finishEditingOriginalLexicalUnit()
         case primaryTranslationTextViewWithTitle.getTextFieldReference():
             finishEditingPrimaryTranslation()
         case lexicalDescriptionTextViewWithTitle.getTextFieldReference():
