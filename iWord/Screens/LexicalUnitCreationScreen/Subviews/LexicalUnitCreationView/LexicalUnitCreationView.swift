@@ -15,6 +15,7 @@ import UIKit
 
 final class LexicalUnitCreationView: UIScrollView {
     private let containerView = UIView()
+    private let originalLexicalUnitTextViewWithTitle = ResizableTexFieldWithTitle(title: "Original unit")
     private let primaryTranslationTextViewWithTitle = ResizableTexFieldWithTitle(title: "Primary translation")
     private let optionalAudioView = OptionalLexicalUnitAudioView()
     private let lexicalDescriptionTextViewWithTitle = ResizableTexFieldWithTitle(title: "Description")
@@ -78,6 +79,7 @@ final class LexicalUnitCreationView: UIScrollView {
 extension LexicalUnitCreationView {
     private func addAllSubviews() {
         self.addSubview(containerView)
+        containerView.addSubview(originalLexicalUnitTextViewWithTitle)
         containerView.addSubview(primaryTranslationTextViewWithTitle)
         containerView.addSubview(optionalAudioView)
         containerView.addSubview(lexicalDescriptionTextViewWithTitle)
@@ -87,6 +89,7 @@ extension LexicalUnitCreationView {
 
     private func setAllConstraints() {
         addContainerViewConstraints()
+        setOriginalLexicalUnitTextViewWithTitleConstraints()
         setResizableTextViewConstraints()
         setOptionalAudioViewConstraints()
         setLexicalDescriptionConstraints()
@@ -112,10 +115,17 @@ extension LexicalUnitCreationView {
         containerView.backgroundColor = .orange
     }
 
+    private func setOriginalLexicalUnitTextViewWithTitleConstraints() {
+        originalLexicalUnitTextViewWithTitle.snp.makeConstraints { make in
+            make.left.right.top.equalToSuperview()
+        }
+    }
+
+//  TODO: - rename to setPrimaryTranslationTextViewWithTitleConstraints -
     private func setResizableTextViewConstraints() {
         primaryTranslationTextViewWithTitle.snp.makeConstraints { make in
+            make.top.equalTo(originalLexicalUnitTextViewWithTitle.snp.bottom)
             make.left.right.equalToSuperview()
-            make.top.equalToSuperview()
         }
     }
 
@@ -153,6 +163,10 @@ extension LexicalUnitCreationView {
         self.insetsLayoutMarginsFromSafeArea = true
     }
 
+    private func configureOriginalLexicalUnitTextViewWithTitle() {
+        originalLexicalUnitTextViewWithTitle.addMainActionToolBarWithButton(button: "Next")
+    }
+
     private func configurePrimaryTranslationTextView() {
         primaryTranslationTextViewWithTitle.addMainActionToolBarWithButton(button: "Next")
     }
@@ -165,6 +179,8 @@ extension LexicalUnitCreationView {
 extension LexicalUnitCreationView: UITextViewToolBarButtonAction {
     func setOnToolBarButtonAction(sender: UITextView) {
         switch sender {
+        case originalLexicalUnitTextViewWithTitle.resizableTextView:
+            return
         case primaryTranslationTextViewWithTitle.resizableTextView:
             finishEditingPrimaryTranslation()
         case lexicalDescriptionTextViewWithTitle.resizableTextView:
@@ -172,6 +188,11 @@ extension LexicalUnitCreationView: UITextViewToolBarButtonAction {
         default:
             return
         }
+    }
+
+    private func finishEditingOriginalLexicalUnit() {
+//      TODO: - encapsulation in resizableTextView -
+        primaryTranslationTextViewWithTitle.resizableTextView.becomeFirstResponder()
     }
 
     private func finishEditingPrimaryTranslation() {
