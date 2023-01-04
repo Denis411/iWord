@@ -186,6 +186,8 @@
 		8D5BE28629653810001DB928 /* OptionalListOfTranslationsView */ = {
 			isa = PBXGroup;
 			children = (
+				8D965B1F295C89A100F84C61 /* LexicalUnitCreationTableViewCell.swift */,
+				8D965B1D295C891600F84C61 /* LexicalUnitCreationTableView.swift */,
 				8D5BE28729653830001DB928 /* OptionalListOfTranslationsView.swift */,
 			);
 			path = OptionalListOfTranslationsView;
@@ -288,7 +290,6 @@
 				8D5BE28629653810001DB928 /* OptionalListOfTranslationsView */,
 				8DACC88F2961B8A200EC4CA5 /* LexicalUnitCreationExample */,
 				8D7BC5CE295AF96800F7D825 /* LexicalUnitCreationView.swift */,
-				8D965B1F295C89A100F84C61 /* LexicalUnitCreationTableViewCell.swift */,
 				8D965B19295B17EC00F84C61 /* LexicalUnitCreationAudioButton.swift */,
 				8DACC8972962D57900EC4CA5 /* ResizableTexFieldWithTitle.swift */,
 			);
@@ -326,7 +327,6 @@
 			isa = PBXGroup;
 			children = (
 				8D965B15295B128C00F84C61 /* ResizableTextView.swift */,
-				8D965B1D295C891600F84C61 /* LexicalUnitCreationTableView.swift */,
 				8DAF4EA12950A41500C066AA /* CommonView.swift */,
 				8D29A98C295ADCF500EBF0F1 /* AddItemButton.swift */,
 				8D48C58E295F1449005021E8 /* ButtonWithPartOfSpeechMenu.swift */,
