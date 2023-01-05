@@ -23,6 +23,7 @@
 		8D53F0512966A45E001A5168 /* LexicalUnitPicturesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D53F0502966A45E001A5168 /* LexicalUnitPicturesCollectionView.swift */; };
 		8D53F0732966C437001A5168 /* AddPictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D53F0722966C437001A5168 /* AddPictureCollectionViewCell.swift */; };
 		8D53F0752966C450001A5168 /* LexicalUnitPictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D53F0742966C450001A5168 /* LexicalUnitPictureCollectionViewCell.swift */; };
+		8D53F0772966C49D001A5168 /* OptionalLexicalUnitPicturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D53F0762966C49D001A5168 /* OptionalLexicalUnitPicturesView.swift */; };
 		8D5BE28829653830001DB928 /* OptionalTranslationForPartOfSpeechView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BE28729653830001DB928 /* OptionalTranslationForPartOfSpeechView.swift */; };
 		8D5BE28D2965411C001DB928 /* OptionalLexicalUnitAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BE28C2965411C001DB928 /* OptionalLexicalUnitAudioView.swift */; };
 		8D5BE29029655C68001DB928 /* OptionalLexicalUnitDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BE28F29655C68001DB928 /* OptionalLexicalUnitDescriptionView.swift */; };
@@ -74,6 +75,7 @@
 		8D53F0502966A45E001A5168 /* LexicalUnitPicturesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitPicturesCollectionView.swift; sourceTree = "<group>"; };
 		8D53F0722966C437001A5168 /* AddPictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		8D53F0742966C450001A5168 /* LexicalUnitPictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitPictureCollectionViewCell.swift; sourceTree = "<group>"; };
+		8D53F0762966C49D001A5168 /* OptionalLexicalUnitPicturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalLexicalUnitPicturesView.swift; sourceTree = "<group>"; };
 		8D5BE28729653830001DB928 /* OptionalTranslationForPartOfSpeechView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalTranslationForPartOfSpeechView.swift; sourceTree = "<group>"; };
 		8D5BE28C2965411C001DB928 /* OptionalLexicalUnitAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalLexicalUnitAudioView.swift; sourceTree = "<group>"; };
 		8D5BE28F29655C68001DB928 /* OptionalLexicalUnitDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalLexicalUnitDescriptionView.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				8D53F0502966A45E001A5168 /* LexicalUnitPicturesCollectionView.swift */,
 				8D53F0722966C437001A5168 /* AddPictureCollectionViewCell.swift */,
 				8D53F0742966C450001A5168 /* LexicalUnitPictureCollectionViewCell.swift */,
+				8D53F0762966C49D001A5168 /* OptionalLexicalUnitPicturesView.swift */,
 			);
 			path = OptionalLexicalUnitPicturesView;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				8D53F0732966C437001A5168 /* AddPictureCollectionViewCell.swift in Sources */,
 				8D965B1A295B17EC00F84C61 /* LexicalUnitCreationAudioButton.swift in Sources */,
 				8D29A989295A9E5B00EBF0F1 /* LexcicalUnitScreenComponent.swift in Sources */,
+				8D53F0772966C49D001A5168 /* OptionalLexicalUnitPicturesView.swift in Sources */,
 				8D7BC5CF295AF96800F7D825 /* LexicalUnitCreationView.swift in Sources */,
 				8DAF4EA52950AC9D00C066AA /* FolderContainerImp.swift in Sources */,
 				8D53F0752966C450001A5168 /* LexicalUnitPictureCollectionViewCell.swift in Sources */,
