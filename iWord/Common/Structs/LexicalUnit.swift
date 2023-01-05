@@ -12,6 +12,7 @@
 // frameworks are governed by their own individual licenses.
 
 import Foundation
+import UIKit
 
 struct LexicalUnit: Equatable, Hashable {
     var originalLexicalUnit: String
@@ -22,7 +23,7 @@ struct LexicalUnit: Equatable, Hashable {
     var isPinned: Bool
     var isFavorite: Bool
     var humanVoiceRecording: Data?
-    var images: [Data]?
+    var images: [UIImage]?
     var progressPercentage: UInt8
     var dateOfAdding: Date
     var tries: [Exercise: TryResults]
