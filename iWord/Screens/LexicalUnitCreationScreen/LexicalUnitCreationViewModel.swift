@@ -19,9 +19,14 @@ import UIKit
 final class LexicalUnitCreationViewModelImp: LexicalUnitBaseFunctionality {
     private let errorAlert: ErrorAlert
     private(set) var newLexicalUnitModel = CurrentValueSubject<LexicalUnit, Never>(.createEmptyLexicalUnit())
+    private let router: LexicalUnitCreationRouter
 
-    init(errorAlert: ErrorAlert) {
+    init(
+        errorAlert: ErrorAlert,
+        router: LexicalUnitCreationRouter
+    ) {
         self.errorAlert = errorAlert
+        self.router = router
     }
 
     func addOriginalLexicalUnit(text: String) {
@@ -151,13 +156,14 @@ extension LexicalUnitCreationViewModelImp: LexicalUnitImageActions {
     }
 
     func addNewPicture() {
-//      present a UIPicturePickerController from router
-        if newLexicalUnitModel.value.images == nil {
-            newLexicalUnitModel.value.images = []
-        }
-
-        let fakeImage = UIImage(systemName: "person")!
-        newLexicalUnitModel.value.images?.append(fakeImage)
+        router.openAddImageOptionsSheet()
+//
+//        if newLexicalUnitModel.value.images == nil {
+//            newLexicalUnitModel.value.images = []
+//        }
+//
+//        let fakeImage = UIImage(systemName: "person")!
+//        newLexicalUnitModel.value.images?.append(fakeImage)
     }
 }
 

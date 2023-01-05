@@ -15,6 +15,7 @@ import NeedleFoundation
 
 protocol LexicalUnitCreationDependency: Dependency {
     var errorAlert: ErrorAlert { get }
+    var lexicalUnitRouter: LexicalUnitCreationRouter { get }
 }
 
 final class LexicalUnitCreationComponent: Component<LexicalUnitCreationDependency> {
@@ -23,6 +24,9 @@ final class LexicalUnitCreationComponent: Component<LexicalUnitCreationDependenc
     }
 
     private var lexicalUnitCreationViewModel: LexicalUnitCreationViewModel & ExampleActions {
-        LexicalUnitCreationViewModelImp(errorAlert: dependency.errorAlert)
+        LexicalUnitCreationViewModelImp(
+            errorAlert: dependency.errorAlert,
+            router: dependency.lexicalUnitRouter
+        )
     }
 }

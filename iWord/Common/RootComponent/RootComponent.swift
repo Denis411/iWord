@@ -32,6 +32,10 @@ final class RootComponent: BootstrapComponent {
                       secondVC: secondVC,
                       thirdVC: thirdVC)
     }
+
+    var lexicalUnitRouter: LexicalUnitCreationRouter {
+        LexicalUnitCreationRouterImp(navigationController: self.navigationController)
+    }
 }
 
 // MARK: - Alerts -

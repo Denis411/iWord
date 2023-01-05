@@ -46,6 +46,9 @@ private class LexicalUnitCreationDependency7e421c941884b7104910BaseProvider: Lex
     var errorAlert: ErrorAlert {
         return rootComponent.errorAlert
     }
+    var lexicalUnitRouter: LexicalUnitCreationRouter {
+        return rootComponent.lexicalUnitRouter
+    }
     private let rootComponent: RootComponent
     init(rootComponent: RootComponent) {
         self.rootComponent = rootComponent
