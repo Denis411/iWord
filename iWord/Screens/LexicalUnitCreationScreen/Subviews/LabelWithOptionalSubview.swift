@@ -34,14 +34,19 @@ class LabelWithOptionalSubview: UIStackView {
 
     func addInternalView(view: UIView) {
         self.internalView = view
+        setVisibilityOfInternalView()
     }
 
-    @objc private func changeVisibility(sender: UISwitch) {
+    @objc private func changeVisibility() {
+        setVisibilityOfInternalView()
+    }
+
+    private func setVisibilityOfInternalView() {
         guard let internalView = internalView else {
             return
         }
 
-        if sender.isOn {
+        if switchView.isOn {
             self.addArrangedSubview(internalView)
         } else {
             internalView.removeFromSuperview()
