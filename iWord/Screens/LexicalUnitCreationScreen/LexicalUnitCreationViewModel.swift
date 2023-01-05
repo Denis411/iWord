@@ -13,6 +13,8 @@
 
 import Foundation
 import Combine
+// UIKit because of UIImage, transfer to Data once you have a data container ready
+import UIKit
 
 final class LexicalUnitCreationViewModelImp: LexicalUnitBaseFunctionality {
     private let errorAlert: ErrorAlert
@@ -138,8 +140,24 @@ extension LexicalUnitCreationViewModelImp: TranslationForPartOfSpeechActions {
 }
 
 extension LexicalUnitCreationViewModelImp: LexicalUnitImageActions {
-    func addImages(images: [Data]) {
-        newLexicalUnitModel.value.images?.append(contentsOf: images)
+    func removeImage(at indexPath: IndexPath) {
+        guard let images = newLexicalUnitModel.value.images,
+              images.indices.contains(indexPath.row) else {
+            Log.error("Index is out of range")
+            return
+        }
+
+        newLexicalUnitModel.value.images!.remove(at: indexPath.row)
+    }
+
+    func addNewPicture() {
+//      present a UIPicturePickerController from router
+        if newLexicalUnitModel.value.images == nil {
+            newLexicalUnitModel.value.images = []
+        }
+
+        let fakeImage = UIImage(systemName: "person")!
+        newLexicalUnitModel.value.images?.append(fakeImage)
     }
 }
 

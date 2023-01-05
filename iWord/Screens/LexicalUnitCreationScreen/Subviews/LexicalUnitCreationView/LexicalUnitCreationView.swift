@@ -21,6 +21,7 @@ final class LexicalUnitCreationView: UIScrollView {
     private let optionalDescriptionView = OptionalLexicalUnitDescriptionView()
     private let optionalListOfTranslations = OptionalTranslationForPartOfSpeechView()
     private let optionalExampleView = OptionalLexicalUnitCreationExampleView()
+    private let optionalPictureCollectionView = OptionalLexicalUnitPicturesView()
 
     init() {
         super.init(frame: .zero)
@@ -61,7 +62,7 @@ final class LexicalUnitCreationView: UIScrollView {
         optionalListOfTranslations.setOnChangePartOfSpeechForCellAction(action)
     }
 
-// MARK: - ExampleView actions
+// MARK: - ExampleView actions -
 
     func setOnAddExampleActions(_ action: @escaping (Example) -> Void) {
         optionalExampleView.setOnAddExampleActions(action)
@@ -74,6 +75,19 @@ final class LexicalUnitCreationView: UIScrollView {
     func removeExampleAction(_ action: @escaping ClosureWithIndexPath) {
         optionalExampleView.setOnRemoveExampleAction(action)
     }
+
+// MARK: - Optional actions -
+    func setImages(_ images: [UIImage]) {
+        optionalPictureCollectionView.setImages(images)
+    }
+
+    func setOnRemoveImageActionAtIndexPath(_ action: @escaping ClosureWithIndexPath) {
+        optionalPictureCollectionView.setOnRemoveImageActionAtIndexPath(action)
+    }
+
+    func setOnAddNewPictureAction(_ action: @escaping EmptyClosure) {
+        optionalPictureCollectionView.setOnAddNewPictureAction(action)
+    }
 }
 
 extension LexicalUnitCreationView {
@@ -85,6 +99,7 @@ extension LexicalUnitCreationView {
         containerView.addSubview(optionalDescriptionView)
         containerView.addSubview(optionalListOfTranslations)
         containerView.addSubview(optionalExampleView)
+        containerView.addSubview(optionalPictureCollectionView)
     }
 
     private func setAllConstraints() {
@@ -95,6 +110,7 @@ extension LexicalUnitCreationView {
         setLexicalDescriptionConstraints()
         setListOfTranslationsConstraints()
         setExampleView()
+        setPictureCollectionViewConstraints()
     }
 
     private func configureAllSubviews() {
@@ -153,7 +169,15 @@ extension LexicalUnitCreationView {
     private func setExampleView() {
         optionalExampleView.snp.makeConstraints { make in
             make.top.equalTo(optionalListOfTranslations.snp.bottom).offset(20)
-            make.left.right.bottom.equalToSuperview()
+            make.left.right.equalToSuperview()
+        }
+    }
+
+    private func setPictureCollectionViewConstraints() {
+        optionalPictureCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(optionalExampleView.snp.bottom).offset(20)
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview().priority(1000)
         }
     }
 

@@ -47,7 +47,8 @@ protocol ExampleActions {
 }
 
 protocol LexicalUnitImageActions {
-    func addImages(images: [Data])
+    func removeImage(at indexPath: IndexPath)
+    func addNewPicture()
 }
 
 typealias LexicalUnitCreationViewModel = LexicalUnitBaseFunctionality & LexicalUnitPlayerActions & LexicalUnitDescription & LexicalUnitLikeActions & TranslationForPartOfSpeechActions & ExampleActions & LexicalUnitImageActions
@@ -81,6 +82,7 @@ extension LexicalUnitCreationViewController {
     private func bind() {
         bindListOfTranslations()
         bindExamples()
+        bindImages()
     }
 
     private func bindListOfTranslations() {
@@ -101,6 +103,16 @@ extension LexicalUnitCreationViewController {
             }
             .store(in: &disposedBag)
     }
+
+    private func bindImages() {
+        viewModel.newLexicalUnitModel
+            .receive(on: RunLoop.main)
+            .sink { [unowned self] lexicalUnit in
+                let images = lexicalUnit.images ?? []
+                self.mainView.setImages(images)
+            }
+            .store(in: &disposedBag)
+    }
 }
 
 // MARK: - MainView actions -
@@ -113,6 +125,7 @@ extension LexicalUnitCreationViewController {
         setOnChangePartOfSpeechForCellAction()
 
         setExampleView()
+        setPictureCollectionViewActions()
     }
 
     private func setActionForPlayingHumanVoice() {
@@ -159,6 +172,24 @@ extension LexicalUnitCreationViewController {
     private func setRemoveExampleAtIndex() {
         mainView.removeExampleAction { [unowned self] indexPath in
             self.viewModel.removeExample(at: indexPath)
+        }
+    }
+
+    private func setPictureCollectionViewActions() {
+        setOnRemoveImageActionAtIndexPath()
+        setOnAddNewPictureAction()
+    }
+
+    private func setOnRemoveImageActionAtIndexPath() {
+        mainView.setOnRemoveImageActionAtIndexPath { [unowned self] indexPath in
+            self.viewModel.removeImage(at: indexPath)
+
+        }
+    }
+
+    private func setOnAddNewPictureAction() {
+        mainView.setOnAddNewPictureAction { [unowned self] in
+            self.viewModel.addNewPicture()
         }
     }
 }

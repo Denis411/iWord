@@ -99,6 +99,8 @@ extension LexicalUnitPicturesCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == images.count {
             onAddNewPictureAction?()
+        } else {
+            onRemoveImageAction?(indexPath)
         }
     }
 }
