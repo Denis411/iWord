@@ -24,6 +24,8 @@
 		8D53F0732966C437001A5168 /* AddPictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D53F0722966C437001A5168 /* AddPictureCollectionViewCell.swift */; };
 		8D53F0752966C450001A5168 /* LexicalUnitPictureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D53F0742966C450001A5168 /* LexicalUnitPictureCollectionViewCell.swift */; };
 		8D53F0772966C49D001A5168 /* OptionalLexicalUnitPicturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D53F0762966C49D001A5168 /* OptionalLexicalUnitPicturesView.swift */; };
+		8D53F07929671C8A001A5168 /* LexicalUnitCreationRouterImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D53F07829671C8A001A5168 /* LexicalUnitCreationRouterImp.swift */; };
+		8D53F07C29671CCD001A5168 /* AddImageOptionsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D53F07B29671CCD001A5168 /* AddImageOptionsSheet.swift */; };
 		8D5BE28829653830001DB928 /* OptionalTranslationForPartOfSpeechView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BE28729653830001DB928 /* OptionalTranslationForPartOfSpeechView.swift */; };
 		8D5BE28D2965411C001DB928 /* OptionalLexicalUnitAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BE28C2965411C001DB928 /* OptionalLexicalUnitAudioView.swift */; };
 		8D5BE29029655C68001DB928 /* OptionalLexicalUnitDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5BE28F29655C68001DB928 /* OptionalLexicalUnitDescriptionView.swift */; };
@@ -76,6 +78,8 @@
 		8D53F0722966C437001A5168 /* AddPictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		8D53F0742966C450001A5168 /* LexicalUnitPictureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitPictureCollectionViewCell.swift; sourceTree = "<group>"; };
 		8D53F0762966C49D001A5168 /* OptionalLexicalUnitPicturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalLexicalUnitPicturesView.swift; sourceTree = "<group>"; };
+		8D53F07829671C8A001A5168 /* LexicalUnitCreationRouterImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalUnitCreationRouterImp.swift; sourceTree = "<group>"; };
+		8D53F07B29671CCD001A5168 /* AddImageOptionsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageOptionsSheet.swift; sourceTree = "<group>"; };
 		8D5BE28729653830001DB928 /* OptionalTranslationForPartOfSpeechView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalTranslationForPartOfSpeechView.swift; sourceTree = "<group>"; };
 		8D5BE28C2965411C001DB928 /* OptionalLexicalUnitAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalLexicalUnitAudioView.swift; sourceTree = "<group>"; };
 		8D5BE28F29655C68001DB928 /* OptionalLexicalUnitDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalLexicalUnitDescriptionView.swift; sourceTree = "<group>"; };
@@ -206,6 +210,14 @@
 			path = OptionalLexicalUnitPicturesView;
 			sourceTree = "<group>";
 		};
+		8D53F07A29671CBD001A5168 /* AddImageOptionsSheetScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8D53F07B29671CCD001A5168 /* AddImageOptionsSheet.swift */,
+			);
+			path = AddImageOptionsSheetScreen;
+			sourceTree = "<group>";
+		};
 		8D5BE28629653810001DB928 /* OptionalTranslationForPartOfSpeechView */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +289,7 @@
 		8D70A162293903BE000AAC24 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				8D53F07A29671CBD001A5168 /* AddImageOptionsSheetScreen */,
 				8D70A163293903D4000AAC24 /* FolderListScreen */,
 				8D29A97E29597A2900EBF0F1 /* LexicalUnitListScreen */,
 				8D7BC5CA295AF8C200F7D825 /* LexicalUnitCreationScreen */,
@@ -311,6 +324,7 @@
 				8D7BC5CB295AF92900F7D825 /* LexicalUnitCreationViewController.swift */,
 				8D965B24295D786400F84C61 /* LexicalUnitCreationViewModel.swift */,
 				8D7BC5D0295AFB8200F7D825 /* LexicalUnitCreationComponent.swift */,
+				8D53F07829671C8A001A5168 /* LexicalUnitCreationRouterImp.swift */,
 			);
 			path = LexicalUnitCreationScreen;
 			sourceTree = "<group>";
@@ -542,7 +556,9 @@
 				8D70A1BD293C62A9000AAC24 /* RootViewModel.swift in Sources */,
 				8D7BC5D1295AFB8200F7D825 /* LexicalUnitCreationComponent.swift in Sources */,
 				8DACC8942961D3C900EC4CA5 /* LexicalUnit.swift in Sources */,
+				8D53F07C29671CCD001A5168 /* AddImageOptionsSheet.swift in Sources */,
 				8D965B20295C89A100F84C61 /* LexicalUnitCreationTranslationsForPartOfSpeechCell.swift in Sources */,
+				8D53F07929671C8A001A5168 /* LexicalUnitCreationRouterImp.swift in Sources */,
 				8DA550B52936468A00490835 /* RootComponent.swift in Sources */,
 				8D70A1BF293C6382000AAC24 /* RootScreenComponent.swift in Sources */,
 				8D10D051293F82E30097916B /* Logger.swift in Sources */,
