@@ -21,3 +21,6 @@ DerivedData
 Podfile.lock
 Pods
 *.xcworkspace
+
+# Generated files
+Needle.generated.swift
