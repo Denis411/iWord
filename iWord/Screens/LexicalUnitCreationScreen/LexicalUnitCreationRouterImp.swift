@@ -15,7 +15,7 @@ import UIKit
 
 protocol LexicalUnitCreationRouter {
     var navigationController: UINavigationController { get }
-    func openAddImageOptionsSheet()
+    func openAddImageOptionsSheet(with completionHandler: @escaping ClosureWithUIImage)
 }
 
 final class LexicalUnitCreationRouterImp: LexicalUnitCreationRouter {
@@ -25,8 +25,8 @@ final class LexicalUnitCreationRouterImp: LexicalUnitCreationRouter {
         self.navigationController = navigationController
     }
 
-    func openAddImageOptionsSheet() {
-        let addImagesOptionsSheet = AddImageOptionsSheet()
+    func openAddImageOptionsSheet(with completionHandler: @escaping ClosureWithUIImage) {
+        let addImagesOptionsSheet = AddImageOptionsSheet(with: completionHandler)
         navigationController.present(addImagesOptionsSheet, animated: true)
     }
 }

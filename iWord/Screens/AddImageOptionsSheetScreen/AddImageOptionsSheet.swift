@@ -13,9 +13,13 @@
 
 import UIKit
 
-final class AddImageOptionsSheet: UIAlertController {
+typealias ClosureWithUIImage = (UIImage) -> Void
 
-    init() {
+final class AddImageOptionsSheet: UIAlertController {
+    private let imageResultClosure: ClosureWithUIImage
+
+    init(with imageResultClosure: @escaping ClosureWithUIImage) {
+        self.imageResultClosure = imageResultClosure
         super.init(nibName: nil, bundle: nil)
         configureActions()
     }
@@ -25,18 +29,41 @@ final class AddImageOptionsSheet: UIAlertController {
     }
 
     private func configureActions() {
-        let pickPictureFromAlbum = UIAlertAction(title: "Choose Picture", style: .default) { _ in
+        addPickPictureAction()
+        addTakePictureAction()
+        addCancelAction()
+    }
+
+    private func addPickPictureAction() {
+        let photoImage = UIImage(systemName: "photo")
+
+        let pickPictureFromAlbum = UIAlertAction(title: "Choose Picture", style: .default) { [unowned self] _ in
             print("Open camera")
+            let personPicture = UIImage(systemName: "person")!
+            self.imageResultClosure(personPicture)
         }
 
-        let takePicture = UIAlertAction(title: "Take Picture", style: .default) { _ in
-            print("Open picture picker")
-        }
-
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        pickPictureFromAlbum.setValue(photoImage, forKey: "image")
 
         self.addAction(pickPictureFromAlbum)
+    }
+
+    private func addTakePictureAction() {
+        let cameraImage = UIImage(systemName: "camera")!
+
+        let takePicture = UIAlertAction(title: "Take Picture", style: .default) { [unowned self] _ in
+            print("Open picture picker")
+            let personPicture = UIImage(systemName: "person")!
+            self.imageResultClosure(personPicture)
+        }
+
+        takePicture.setValue(cameraImage, forKey: "image")
+
         self.addAction(takePicture)
+    }
+
+    private func addCancelAction() {
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
         self.addAction(cancel)
     }
 }

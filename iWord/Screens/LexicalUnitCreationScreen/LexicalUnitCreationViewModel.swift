@@ -156,14 +156,13 @@ extension LexicalUnitCreationViewModelImp: LexicalUnitImageActions {
     }
 
     func addNewPicture() {
-        router.openAddImageOptionsSheet()
-//
-//        if newLexicalUnitModel.value.images == nil {
-//            newLexicalUnitModel.value.images = []
-//        }
-//
-//        let fakeImage = UIImage(systemName: "person")!
-//        newLexicalUnitModel.value.images?.append(fakeImage)
+        router.openAddImageOptionsSheet { [unowned self] image in
+            if self.newLexicalUnitModel.value.images == nil {
+                self.newLexicalUnitModel.value.images = []
+            }
+
+            newLexicalUnitModel.value.images?.append(image)
+        }
     }
 }
 
